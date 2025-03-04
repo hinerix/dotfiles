@@ -1,3 +1,4 @@
+-- save this file on /mnt/c/Users/arys3/
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 local act = wezterm.action
