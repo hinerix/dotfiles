@@ -7,7 +7,7 @@ local act = wezterm.action
 local config = wezterm.config_builder()
 
 -- テーマの設定
-config.color_scheme = "nightfox"
+config.color_scheme = 'Catppuccin Mocha'
 
 -- ウィンドウの設定
 config.window_background_opacity = 0.85
