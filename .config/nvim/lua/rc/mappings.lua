@@ -12,8 +12,8 @@ vim.keymap.set({ "n", "v" }, "x", '"_x', { noremap = true, silent = true })
 -----------------------------
 -- Window
 ----------------------------
-vim.keymap.set("n", "-", ":split<CR>", opts("Split window horizontally"))
-vim.keymap.set("n", "<Bar>", ":vsplit<CR>", opts("Split window vertically"))
+vim.keymap.set("n", "<Leader>w-", ":split<CR>", opts("Split window horizontally"))
+vim.keymap.set("n", "<Leader>w\\", ":vsplit<CR>", opts("Split window vertically"))
 vim.keymap.set("n", "<Leader>wo", ":only<CR>", opts("Close all other windows"))
 vim.keymap.set("n", "<Leader>wq", ":close<CR>", opts("Close current window"))
 
