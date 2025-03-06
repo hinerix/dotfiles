@@ -1,8 +1,5 @@
--- netrwの表示形式を変更(3は詳細が表示される設定)
-vim.cmd("let g:netrw_liststyle = 3")
-
 vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+vim.g.maplocalleader = " "
 
 -- Nerd Font有効化
 vim.g.have_nerd_font = true
