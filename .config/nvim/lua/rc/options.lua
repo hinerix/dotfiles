@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.maplocalleader = "\\"
 
 -- Nerd Font有効化
 vim.g.have_nerd_font = true
@@ -11,7 +11,7 @@ vim.opt.mouse = 'a'
 vim.opt.number = true
 
 -- TabとIndent
-vim.opt.breakindent = true
+vim.opt.breakindent = true -- 折り返しにインデントを反映
 vim.opt.tabstop = 2 -- タブ文字の幅を2文字にする
 vim.opt.shiftwidth = 2 -- インデントのときに挿入するスペース
 vim.opt.softtabstop = 0 -- タブ押下時に挿入されるスペース（0だとtabstopと同じ）
@@ -32,8 +32,8 @@ end)
 vim.opt.cursorline = true
 
 -- split windows
-vim.opt.splitright = true -- 水平分割時、右に分割する
-vim.opt.splitbelow = true -- 垂直分割時、下に分割する
+vim.opt.splitright = true -- 垂直分割時、右に分割する
+vim.opt.splitbelow = true -- 水平分割時、下に分割する
 
 -- turn off swapfile
 vim.opt.swapfile = false

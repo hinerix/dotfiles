@@ -7,7 +7,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', opts("Clean highlight"))
 
 -- 削除したときに yank register に保存しないようにする
 vim.keymap.set({ "n", "v" }, "x", '"_x', { noremap = true, silent = true })
--- keymap.set({ "n", "v" }, "d", '"_d', { noremap = true, silent = true })
+-- vim.keymap.set({ "n", "v" }, "d", '"_d', { noremap = true, silent = true })
 
 -----------------------------
 -- Window
@@ -60,5 +60,5 @@ vim.keymap.set("n", "];", "g,zz", { noremap = true, silent = true })
 ----------------------------
 -- neo-tree
 ----------------------------
-vim.keymap.set("n", "\\", ":Neotree reveal<CR>", opts("focus on neo-tree"))
+vim.keymap.set("n", "<Leader>e", ":Neotree reveal<CR>", opts("focus on neo-tree"))
 
