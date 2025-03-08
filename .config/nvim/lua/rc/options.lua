@@ -10,6 +10,9 @@ vim.opt.mouse = 'a'
 -- 行番号 
 vim.opt.number = true
 
+-- lualineでステータスを表示してるので非表示に設定
+vim.opt.showmode = false
+
 -- TabとIndent
 vim.opt.breakindent = true -- 折り返しにインデントを反映
 vim.opt.tabstop = 2 -- タブ文字の幅を2文字にする
