@@ -4,12 +4,8 @@ return {
 	dependencies = 'nvim-tree/nvim-web-devicons',
 	opts = {
 		options = {
-			separator_style = "slope",
-			hover = {
-				enabled = true,
-				delay = 200,
-				reveal = {'close'}
-			},
+			separator_style = "slant",
+			show_buffer_close_icons = false,
 		},
 	},	
 }
