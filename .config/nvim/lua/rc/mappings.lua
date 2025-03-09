@@ -30,32 +30,33 @@ vim.keymap.set("n", "]T", ":tablast<CR>", opts("Go to last tab"))
 ----------------------------
 -- Quickfix List
 ----------------------------
-vim.keymap.set("n", "[q", ":cprevious<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "]q", ":cnext<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "[Q", ":cfirst<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "]Q", ":clast<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "[q", ":cprevious<CR>", opts("Go to previous quickfix"))
+vim.keymap.set("n", "]q", ":cnext<CR>", opts("Go to next quickfix"))
+vim.keymap.set("n", "[Q", ":cfirst<CR>", opts("Go to first quickfix"))
+vim.keymap.set("n", "]Q", ":clast<CR>", opts("Go to last quickfix"))
 
 ----------------------------
 -- Location List
 ----------------------------
-vim.keymap.set("n", "[l", ":lprevious<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "]l", ":lnext<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "[L", ":lfirst<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "]L", ":llast<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "[l", ":lprevious<CR>", opts("Go to previous location list"))
+vim.keymap.set("n", "]l", ":lnext<CR>", opts("Go to next location list"))
+vim.keymap.set("n", "[L", ":lfirst<CR>", opts("Go to first location list"))
+vim.keymap.set("n", "]L", ":llast<CR>", opts("Go to last location list"))
 
 ----------------------------
 -- Buffers
 ----------------------------
-vim.keymap.set("n", "[b", ":bprevious<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "]b", ":bnext<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "[B", ":bfirst<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "]B", ":blast<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "[b", ":bprevious<CR>", opts("Go to previous buffer"))
+vim.keymap.set("n", "]b", ":bnext<CR>", opts("Go to next buffer"))
+vim.keymap.set("n", "[B", ":bfirst<CR>", opts("Go to first buffer"))
+vim.keymap.set("n", "]B", ":blast<CR>", opts("Go to last buffer"))
+vim.keymap.set("n", "<Leader>bd", "<Cmd>bdelete<CR>", opts("Delete current buffer"))
 
 ----------------------------
 -- jump
 ----------------------------
-vim.keymap.set("n", "[;", "g;zz", { noremap = true, silent = true })
-vim.keymap.set("n", "];", "g,zz", { noremap = true, silent = true })
+vim.keymap.set("n", "[;", "g;zz", opts("Go to previous jump"))
+vim.keymap.set("n", "];", "g,zz", opts("Go to next jump"))
 
 ----------------------------
 -- neo-tree

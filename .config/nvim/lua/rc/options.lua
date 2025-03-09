@@ -13,6 +13,9 @@ vim.opt.number = true
 -- lualineでステータスを表示してるので非表示に設定
 vim.opt.showmode = false
 
+-- True Colorの有効化
+vim.opt.termguicolors = true
+
 -- TabとIndent
 vim.opt.breakindent = true -- 折り返しにインデントを反映
 vim.opt.tabstop = 2 -- タブ文字の幅を2文字にする
