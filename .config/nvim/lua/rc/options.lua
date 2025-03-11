@@ -9,6 +9,7 @@ vim.opt.mouse = 'a'
 
 -- 行番号 
 vim.opt.number = true
+vim.opt.relativenumber = true
 
 -- lualineでステータスを表示してるので非表示に設定
 vim.opt.showmode = false
