@@ -6,5 +6,6 @@ if status is-interactive
 		#abbr
 		abbr ls ls -alSh
 		abbr vi nvim
+		abbr vim nvim
 
 end
