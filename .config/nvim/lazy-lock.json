@@ -7,6 +7,7 @@
   "cmp-nvim-lsp": { "branch": "main", "commit": "99290b3ec1322070bcfb9e846450a46f6efa50f0" },
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "cmp_luasnip": { "branch": "master", "commit": "98d9cb5c2c38532bd9bdb481067b20fea8f32e90" },
+  "ddc-ui-native": { "branch": "main", "commit": "5f82917e69023d41eb8a77dd80e72836785b8a6f" },
   "ddc.vim": { "branch": "main", "commit": "7538d53940542b3769a551b35afee2aa4495b5d8" },
   "denops.vim": { "branch": "main", "commit": "4ff8f353ee54ee67288c1099242444ccb0ab5b69" },
   "friendly-snippets": { "branch": "main", "commit": "efff286dd74c22f731cdec26a70b46e5b203c619" },
@@ -26,6 +27,7 @@
   "nvim-web-devicons": { "branch": "master", "commit": "ab4cfee554e501f497bce0856788d43cf2eb93d7" },
   "plenary.nvim": { "branch": "master", "commit": "857c5ac632080dba10aae49dba902ce3abf91b35" },
   "skkeleton": { "branch": "main", "commit": "f1f0586c69d84c6ee5f3e5a4ca76cc188161b944" },
+  "skkeleton-indicator.nvim": { "branch": "v2", "commit": "d9b649d734ca7d3871c4f124004771d0213dc747" },
   "toggleterm.nvim": { "branch": "main", "commit": "50ea089fc548917cc3cc16b46a8211833b9e3c7c" },
   "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" }
 }
