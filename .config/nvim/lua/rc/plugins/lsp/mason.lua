@@ -18,7 +18,6 @@ return {
 				},
 			},
 		})
-
 		mason_lspconfig.setup({
 			ensure_installed = {
 				-- lua
@@ -40,7 +39,7 @@ return {
 				"yamlls",
 				-- linter, formatter
 				"biome",
-			}
+			},
 		})
 	end,
 }

@@ -4,11 +4,7 @@ return {
   dependencies = {
     "nvim-tree/nvim-web-devicons",
   },
-  opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refr to the configuration section below
-  },
+  opts = {},
   keys = {
     {
       "<Leader>?",

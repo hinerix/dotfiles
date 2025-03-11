@@ -5,9 +5,8 @@ end
 -- Escでハイライトを消す
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', opts("Clean highlight"))
 
--- 削除したときに yank register に保存しないようにする
+-- xキーで削除したときに yank register に保存しないようにする
 vim.keymap.set({ "n", "v" }, "x", '"_x', { noremap = true, silent = true })
--- vim.keymap.set({ "n", "v" }, "d", '"_d', { noremap = true, silent = true })
 
 -----------------------------
 -- Window
@@ -30,6 +29,7 @@ vim.keymap.set("n", "]T", ":tablast<CR>", opts("Go to last tab"))
 ----------------------------
 -- Quickfix List
 ----------------------------
+vim.keymap.set('n', '<Leader>q', vim.diagnostic.setloclist, opts("Open diagnostic [Q]uickfix list"))
 vim.keymap.set("n", "[q", ":cprevious<CR>", opts("Go to previous quickfix"))
 vim.keymap.set("n", "]q", ":cnext<CR>", opts("Go to next quickfix"))
 vim.keymap.set("n", "[Q", ":cfirst<CR>", opts("Go to first quickfix"))
