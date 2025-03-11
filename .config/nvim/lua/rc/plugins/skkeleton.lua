@@ -13,7 +13,7 @@ return {
 				completionRankFile = "~/.skk/skkeleton/rank.json",
 				registerConvertResult = true,
 				keepState = true,
-				eggLikeNewLine = true,
+				eggLikeNewline = true,
 			})
 			vim.fn["skkeleton#register_keymap"]("henkan", "<BS>", 'henkanBackward')
 			vim.fn["skkeleton#register_keymap"]("henkan", "X", '')
