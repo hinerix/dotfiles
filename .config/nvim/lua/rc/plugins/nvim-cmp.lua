@@ -21,38 +21,35 @@ return {
 		local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 		require("luasnip.loaders.from_vscode").lazy_load()
 
+		-- nvim-autopairsとの連携設定
+		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
 		cmp.setup({
 			snippet = { -- スニペットはluasnipを使用する
 				expand = function(args)
 					luasnip.lsp_expand(args.body)
 				end,
 			},
-			mapping = cmp.mapping.preset.insert({
+			mapping = {
 				["<C-n>"] = cmp.mapping.select_next_item(),
 				["<C-p>"] = cmp.mapping.select_prev_item(),
 				["<C-b>"] = cmp.mapping.scroll_docs(-4),
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<C-e>"] = cmp.mapping.abort(), -- close completion window
 				["<CR>"] = cmp.mapping.confirm({ select = false }),
-			}),
+			},
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
 				{ name = "buffer" },
 				{ name = "path" },
 			}),
-
-			-- configure lspkind for vs-code like pictograms in completion menu
-			formatting = {
+			formatting = { -- configure lspkind for vs-code like pictograms in completion menu
 				format = lspkind.cmp_format({
 					maxwidth = 50,
 					ellipsis_char = "...",
 				}),
 			},
-
-			-- nvim-autopairsとの連携設定
-			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-
 		})
 	end,
 }
