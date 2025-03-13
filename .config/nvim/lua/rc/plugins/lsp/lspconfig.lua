@@ -1,21 +1,11 @@
 return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
-	dependencies = {
-		-- cmpでlspを利用できるようにする
-		"hrsh7th/cmp-nvim-lsp"
-	},
 	config = function()
 		local lspconfig = require("lspconfig")
-		local cmp_nvim_lsp = require("cmp_nvim_lsp")
+		local ddc_source_lsp = require("ddc_source_lsp")
 		local mason_lspconfig = require("mason-lspconfig")
-		vim.api.nvim_create_autocmd("LspAttach", {
-			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-			callback = function()
-			end
-		})
-
-		local capabilities = cmp_nvim_lsp.default_capabilities()
+		local capabilities = ddc_source_lsp.make_client_capabilities()
 
 		mason_lspconfig.setup_handlers({
 			function(server_name)
@@ -41,3 +31,4 @@ return {
 		})
 	end
 }
+

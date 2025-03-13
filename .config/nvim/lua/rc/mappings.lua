@@ -58,8 +58,3 @@ vim.keymap.set("n", "<Leader>bd", "<Cmd>bdelete<CR>", opts("Delete current buffe
 vim.keymap.set("n", "[;", "g;zz", opts("Go to previous jump"))
 vim.keymap.set("n", "];", "g,zz", opts("Go to next jump"))
 
-----------------------------
--- neo-tree
-----------------------------
-vim.keymap.set("n", "<Leader>e", ":Neotree reveal<CR>", opts("focus on neo-tree"))
-
