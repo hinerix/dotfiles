@@ -16,6 +16,9 @@ return {
 			"L3MON4D3/LuaSnip",
 			version = "v2.*",
 			build = "make install_jsregexp",
+			dependencies = {
+				"rafamadriz/friendly-snippets"
+			},
 		},
 	},
 	config = function()
@@ -23,6 +26,8 @@ return {
 			function(body)
 			require("luasnip").lsp_expand(body)
 		end)
+
+		require("luasnip.loaders.from_vscode").lazy_load()
 
 		vim.fn["ddc#custom#patch_global"]("ui", "pum")
 		vim.fn["ddc#custom#patch_global"]({
