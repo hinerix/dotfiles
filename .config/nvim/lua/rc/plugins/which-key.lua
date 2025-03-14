@@ -25,28 +25,12 @@ return {
   },
   config = function()
     local wk = require("which-key")
-    local icon = require("which-key.icons")
 
     wk.add({
-      { "<Leader>f", group = "Telescope" },
       { "<Leader>w", group = "Window" },
       { "<Leader>t", group = "Tab" },
       { "<Leader>b", group = "Buffer" },
-      { "<Leader>c", group = "Comment", icon = "#" },
-      { "<Leader>e", group = "Tree", icon = "🌲" },
-      { "<Leader>g", group = "Git" },
-      { "<Leader>l", group = "LSP", icon = "💉" },
-      { "<Leader>x", group = "Trouble", icon = "⚠" },
-      { "<Leader>L", group = "Lint", icon = icon.get_icon("checkhealth") },
-      { "<Leader>F", group = "Format", icon = "🌊" },
-      { "<Leader>/", group = "Toggle Comment" },
-      { "<Leader>k", group = "Knife", icon = "🔪" },
-      { "<Leader>T", group = "Terminal" },
-      { "<Leader>d", group = "Debugger", icon = "🐛" },
-      -- lsp
-      { "<Leader>lg", group = "Goto" },
-      -- git link
-      { "<Leader>gl", group = "GitLink" },
+      { "<Leader>e", group = "Tree" },
     })
   end,
 }
