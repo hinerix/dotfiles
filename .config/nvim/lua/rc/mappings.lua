@@ -54,6 +54,6 @@ vim.keymap.set("n", "<Leader>bd", "<Cmd>bdelete<CR>", opts("Delete current buffe
 ----------------------------
 -- jump
 ----------------------------
-vim.keymap.set("n", "[;", "g;zz", opts("Go to previous jump"))
-vim.keymap.set("n", "];", "g,zz", opts("Go to next jump"))
+vim.keymap.set("n", "<Leader>j;", "g;zz", opts("Go to previous jump"))
+vim.keymap.set("n", "<Leader>j,", "g,zz", opts("Go to next jump"))
 

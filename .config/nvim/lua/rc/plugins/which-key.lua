@@ -31,6 +31,7 @@ return {
       { "<Leader>t", group = "Tab" },
       { "<Leader>b", group = "Buffer" },
       { "<Leader>e", group = "Tree" },
+      { "<Leader>j", group = "Jump" },
     })
   end,
 }
