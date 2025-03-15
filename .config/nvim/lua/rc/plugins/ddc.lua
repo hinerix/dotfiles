@@ -7,7 +7,6 @@ return {
 		"Shougo/ddc-source-around",
 		"matsui54/ddc-source-buffer",
 		"LumaKernel/ddc-source-file",
-		"Shougo/ddc-filter-matcher_head",
 		"Shougo/ddc-filter-sorter_rank",
 		"tani/ddc-fuzzy",
 		"Shougo/pum.vim",
