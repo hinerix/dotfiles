@@ -27,7 +27,7 @@ return {
 			require("luasnip").lsp_expand(body)
 		end)
 
-		require("luasnip.loaders.from_vscode").lazy_load()
+		require("luasnip.loaders.from_vscode").lazy_load() -- frienly-snippetsの設定
 
 		vim.fn["ddc#custom#patch_global"]("ui", "pum")
 		vim.fn["ddc#custom#patch_global"]({
@@ -46,8 +46,8 @@ return {
 					matchers = {"matcher_head"},
 					sorters = {"sorter_rank"},
 				},
-				['around'] = { mark = "[A]" },
-				['buffer'] = { mark = "[B]" },
+				['around'] = { mark = "[Around]" },
+				['buffer'] = { mark = "[Buffer]" },
 				['file'] = {
 					mark = "[F]",
 					isVolatile = true,
