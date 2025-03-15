@@ -39,8 +39,8 @@ return {
 		vim.fn["ddc#custom#patch_global"]({
 			sourceOptions = {
 				["_"] = {
-					matchers = {"matcher_fuzzy"},
-					sorters = {"sorter_fuzzy"},
+					matchers = { "matcher_fuzzy" },
+					sorters = { "sorter_fuzzy" },
 					converters = { "converter_fuzzy" },
 					maxItems = 15,
 				},
@@ -57,6 +57,8 @@ return {
 				},
 				["skkeleton"] = {
 					mark = "[skk]",
+					matchers = {},
+					sorters = { "sorter_rank" },
 					isVolatile = true,
 					minAutoCompleteLength = 1,
 				},
@@ -66,18 +68,16 @@ return {
 		vim.fn["ddc#custom#patch_global"]({
 			sourceParams = {
 				["buffer"] = {
-					limitBytes = 5000000,
 					fromAltBuf = true,
 					bufNameStyle = "baseName",
 				},
 				["lsp"] = {
+					enableResolveItem = true,
+					enableAddtionalTextEdit = true,
 					snippetEngine = vim.fn["denops#callback#register"](function(body)
 						require("luasnip").lsp_expand(body)
 					end),
-					enableResolveItem = true,
-					enableAddtionalTextEdit = true,
-
-				}
+				},
 			},
 		})
 
