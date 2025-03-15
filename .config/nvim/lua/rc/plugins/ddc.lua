@@ -12,18 +12,8 @@ return {
 		"Shougo/pum.vim",
 		"Shougo/ddc-ui-pum",
 		"vim-skk/skkeleton",
-		{
-			"L3MON4D3/LuaSnip",
-			version = "v2.*",
-			build = "make install_jsregexp",
-			dependencies = {
-				"rafamadriz/friendly-snippets"
-			},
-		},
 	},
 	config = function()
-		require("luasnip.loaders.from_vscode").lazy_load() -- frienly-snippetsの設定
-
 		vim.fn["ddc#custom#patch_global"]("ui", "pum")
 		vim.fn["ddc#custom#patch_global"]({
 			sources = {
@@ -52,6 +42,7 @@ return {
 				},
 				["lsp"] = {
 					mark = "[LSP]",
+					dup = "keep",
 					forceCompletionPattern = "\\.\\w*|:\\w*|->\\w*",
 				},
 				["skkeleton"] = {
@@ -95,6 +86,7 @@ return {
 		vim.keymap.set("i", "<C-e>", "<Cmd>call pum#map#cancel()<CR>")
 		vim.keymap.set("i", "<C-f>", "<Cmd>call pum#map#select_relative_page(1)<CR>")
 		vim.keymap.set("i", "<C-b>", "<Cmd>call pum#map#select_relative_page(-1)<CR>")
+
 	end
 }
 
