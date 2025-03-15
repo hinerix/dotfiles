@@ -9,6 +9,7 @@ return {
 		"LumaKernel/ddc-source-file",
 		"Shougo/ddc-filter-matcher_head",
 		"Shougo/ddc-filter-sorter_rank",
+		"tani/ddc-fuzzy",
 		"Shougo/pum.vim",
 		"Shougo/ddc-ui-pum",
 		"vim-skk/skkeleton",
@@ -22,11 +23,6 @@ return {
 		},
 	},
 	config = function()
-		local luasnip_callback_id = vim.fn["denops#callback#register"](
-			function(body)
-			require("luasnip").lsp_expand(body)
-		end)
-
 		require("luasnip.loaders.from_vscode").lazy_load() -- frienly-snippetsの設定
 
 		vim.fn["ddc#custom#patch_global"]("ui", "pum")
@@ -43,8 +39,10 @@ return {
 		vim.fn["ddc#custom#patch_global"]({
 			sourceOptions = {
 				["_"] = {
-					matchers = {"matcher_head"},
-					sorters = {"sorter_rank"},
+					matchers = {"matcher_fuzzy"},
+					sorters = {"sorter_fuzzy"},
+					converters = { "converter_fuzzy" },
+					maxItems = 15,
 				},
 				['around'] = { mark = "[Around]" },
 				['buffer'] = { mark = "[Buffer]" },
@@ -73,7 +71,12 @@ return {
 					bufNameStyle = "baseName",
 				},
 				["lsp"] = {
-					snippetEngine = luasnip_callback_id,
+					snippetEngine = vim.fn["denops#callback#register"](function(body)
+						require("luasnip").lsp_expand(body)
+					end),
+					enableResolveItem = true,
+					enableAddtionalTextEdit = true,
+
 				}
 			},
 		})

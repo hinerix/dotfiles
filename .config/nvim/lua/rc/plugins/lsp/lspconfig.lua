@@ -1,6 +1,9 @@
 return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
+	dependencies = {
+		"williamboman/mason-lspconfig.nvim",
+	},
 	config = function()
 		local lspconfig = require("lspconfig")
 		local ddc_source_lsp = require("ddc_source_lsp")
@@ -20,9 +23,6 @@ return {
 						Lua = {
 							diagnostics = {
 								globals = { "vim" },
-							},
-							completion = {
-								callSnippet = "Replace",
 							},
 						},
 					},
