@@ -12,8 +12,8 @@ return {
 				keepState = true,
 				eggLikeNewline = true,
 			})
-			vim.fn["skkeleton#register_keymap"]("henkan", "<BS>", 'henkanBackward')
-			vim.fn["skkeleton#register_keymap"]("henkan", "X", '')
+			vim.fn["skkeleton#register_keymap"]("henkan", "<BS>", "henkanBackward")
+			vim.fn["skkeleton#register_keymap"]("henkan", "X", "")
 		end
 		-- 初期化
 		vim.api.nvim_create_autocmd("User", {

@@ -16,9 +16,6 @@ return {
 			"L3MON4D3/LuaSnip",
 			version = "v2.*",
 			build = "make install_jsregexp",
-			dependencies = {
-				"rafamadriz/friendly-snippets",
-			},
 		},
 	},
 	config = function()
@@ -41,9 +38,9 @@ return {
 					converters = { "converter_fuzzy" },
 					maxItems = 15,
 				},
-				['around'] = { mark = "[Around]" },
-				['buffer'] = { mark = "[Buffer]" },
-				['file'] = {
+				["around"] = { mark = "[Around]" },
+				["buffer"] = { mark = "[Buffer]" },
+				["file"] = {
 					mark = "[F]",
 					isVolatile = true,
 					forceCompletionPattern = "\\S/\\S*",
