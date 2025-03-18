@@ -6,6 +6,7 @@ vim.g.have_nerd_font = true
 
 -- マウスでカーソル位置操作
 vim.opt.mouse = "a"
+vim.opt.mousemoveevent = true
 
 -- 行番号 
 vim.opt.number = true
