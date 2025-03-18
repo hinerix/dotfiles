@@ -4,6 +4,7 @@
   "auto-session": { "branch": "main", "commit": "317412742990371f8e4709074da5c378456a27ff" },
   "bufferline.nvim": { "branch": "main", "commit": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3" },
   "catppuccin": { "branch": "main", "commit": "5b5e3aef9ad7af84f463d17b5479f06b87d5c429" },
+  "ddc-filter-converter_color": { "branch": "main", "commit": "0384a95745ac1dad86afbd9ffcbc04ce426f0ffb" },
   "ddc-filter-sorter_rank": { "branch": "main", "commit": "b24215966eadcaecbe71185aa0b68f799e658c25" },
   "ddc-fuzzy": { "branch": "main", "commit": "d6cc18a47e9e12f4ed941b6023e7978a4461c692" },
   "ddc-source-around": { "branch": "main", "commit": "32d54dc188b50bcd64f7b410c04aa4ec567ae47f" },

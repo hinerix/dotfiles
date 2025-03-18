@@ -8,6 +8,7 @@ return {
 		"matsui54/ddc-source-buffer",
 		"LumaKernel/ddc-source-file",
 		"Shougo/ddc-filter-sorter_rank",
+		"haxibami/ddc-filter-converter_color",
 		"tani/ddc-fuzzy",
 		"Shougo/pum.vim",
 		"Shougo/ddc-ui-pum",
@@ -47,8 +48,10 @@ return {
 				},
 				["lsp"] = {
 					mark = "[LSP]",
+					converters = { "converter_color" },
 					dup = "keep",
 					forceCompletionPattern = "\\.\\w*|:\\w*|->\\w*",
+					maxItems = 30,
 				},
 				["skkeleton"] = {
 					mark = "[skk]",
