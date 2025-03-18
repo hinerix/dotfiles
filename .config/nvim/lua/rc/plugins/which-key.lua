@@ -32,6 +32,7 @@ return {
       { "<Leader>b", group = "Buffer" },
       { "<Leader>e", group = "Tree" },
       { "<Leader>j", group = "Jump" },
+      { "<Leader>s", group = "Session" },
     })
   end,
 }

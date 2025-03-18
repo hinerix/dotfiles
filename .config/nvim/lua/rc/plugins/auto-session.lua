@@ -6,6 +6,7 @@ return {
 	},
 	keys = {
 		{ "<Leader>sr", "<cmd>SessionRestore<CR>", desc = "Restore session" },
+		{ "<Leader>ss", "<cmd>SessionSave<CR>", desc = "Saves a session for auto session root dir" },
 	}
 }
 
