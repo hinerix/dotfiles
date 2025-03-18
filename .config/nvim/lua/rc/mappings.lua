@@ -50,6 +50,8 @@ vim.keymap.set("n", "]b", ":bnext<CR>", opts("Go to next buffer"))
 vim.keymap.set("n", "[B", ":bfirst<CR>", opts("Go to first buffer"))
 vim.keymap.set("n", "]B", ":blast<CR>", opts("Go to last buffer"))
 vim.keymap.set("n", "<Leader>bd", "<Cmd>bdelete<CR>", opts("Delete current buffer"))
+vim.keymap.set("n", "<Leader>bD", "<Cmd>bdelete!<CR>", opts("Force delete current buffer"))
+vim.keymap.set("n", "<Leader>bo", "<Cmd>%bdelete|e#|bdelete#<CR>", opts("Delete all buffers except current"))
 
 ----------------------------
 -- jump
