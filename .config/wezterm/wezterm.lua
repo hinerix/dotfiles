@@ -1,9 +1,6 @@
--- save this file on /mnt/c/Users/arys3/
--- Pull in the wezterm API
 local wezterm = require("wezterm")
 local act = wezterm.action
 
--- This will hold the configuration.
 local config = wezterm.config_builder()
 
 -- テーマの設定
@@ -75,5 +72,4 @@ config.keys = {
 config.ui_key_cap_rendering = "WindowsSymbols"
 config.command_palette_font_size = 12.0
 
--- and finally, return the configuration to wezterm
 return config
