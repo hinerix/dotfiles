@@ -27,7 +27,6 @@ return {
     local wk = require("which-key")
 
     wk.add({
-      { "<Leader>w", group = "Window" },
       { "<Leader>t", group = "Tab" },
       { "<Leader>b", group = "Buffer" },
       { "<Leader>e", group = "Tree" },

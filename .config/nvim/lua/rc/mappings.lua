@@ -8,14 +8,6 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", opts("Clean highlight"))
 -- xキーで削除したときに yank register に保存しないようにする
 vim.keymap.set({ "n", "v" }, "x", '"_x', { noremap = true, silent = true })
 
------------------------------
--- Window
-----------------------------
-vim.keymap.set("n", "<Leader>w-", ":split<CR>", opts("Split window horizontally"))
-vim.keymap.set("n", "<Leader>w<BAR>", ":vsplit<CR>", opts("Split window vertically"))
-vim.keymap.set("n", "<Leader>wo", ":only<CR>", opts("Close all other windows"))
-vim.keymap.set("n", "<Leader>wq", ":close<CR>", opts("Close current window"))
-
 ----------------------------
 -- Tab
 ----------------------------
