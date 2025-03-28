@@ -5,8 +5,6 @@ return {
 	opts = {
 		options = {
 			separator_style = "slant",
-			-- show_buffer_close_icons = false,
-			buffer_close_icon = '✕ ',
 			indicator = {
 				style = "underline",
 			},
