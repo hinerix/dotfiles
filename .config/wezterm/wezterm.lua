@@ -12,7 +12,7 @@ config.adjust_window_size_when_changing_font_size = false
 config.tab_bar_at_bottom = true
 
 -- フォントの設定
-config.font = wezterm.font("Cica", { weight = "Regular", stretch = "Normal", style = "Normal" })
+config.font = wezterm.font("HackGen Console NF", { weight = "Regular", stretch = "Normal", style = "Normal" })
 
 -- タブの設定
 config.hide_tab_bar_if_only_one_tab = true
