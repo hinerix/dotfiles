@@ -1,11 +1,10 @@
 return {
 	"MeanderingProgrammer/render-markdown.nvim",
-	ft = { 'markdown', 'quarto' },
+	ft = { "markdown", "quarto" },
 	dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
 	opts = {
-		completions = {
-			lsp = { enabled = true }
-		},
 		render_modes = true,
+		completions = { lsp = { enabled = true } },
+		sign = { enabled = false },
 	}
 }
