@@ -58,3 +58,5 @@ vim.opt.inccommand = "split"
 -- カーソルのスクロール開始行数
 vim.opt.scrolloff = 10
 
+-- ターミナルモードでカーソルが点滅しないようにする
+vim.opt.guicursor:append("t:blinkon0")

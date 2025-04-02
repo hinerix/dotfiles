@@ -8,6 +8,9 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", opts("Clean highlight"))
 -- xキーで削除したときに yank register に保存しないようにする
 vim.keymap.set({ "n", "v" }, "x", '"_x', { noremap = true, silent = true })
 
+-- ターミナルモードでノーマルモードにする
+vim.keymap.set("t", "<C-[>", "<C-\\><C-n>", { noremap = true, silent = true })
+
 ----------------------------
 -- Buffers
 ----------------------------
