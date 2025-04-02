@@ -7,6 +7,7 @@ return {
 		completions = { lsp = { enabled = true } },
 		sign = { enabled = false },
 		heading = {
+			position = "inline",
 			backgrounds = {},
 		},
 		code = {
