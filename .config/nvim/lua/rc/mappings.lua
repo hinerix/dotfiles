@@ -19,29 +19,9 @@ vim.keymap.set("n", "[T", ":tabfirst<CR>", opts("Go to first tab"))
 vim.keymap.set("n", "]T", ":tablast<CR>", opts("Go to last tab"))
 
 ----------------------------
--- Quickfix List
-----------------------------
-vim.keymap.set("n", "[q", ":cprevious<CR>", opts("Go to previous quickfix"))
-vim.keymap.set("n", "]q", ":cnext<CR>", opts("Go to next quickfix"))
-vim.keymap.set("n", "[Q", ":cfirst<CR>", opts("Go to first quickfix"))
-vim.keymap.set("n", "]Q", ":clast<CR>", opts("Go to last quickfix"))
-
-----------------------------
--- Location List
-----------------------------
-vim.keymap.set("n", "[l", ":lprevious<CR>", opts("Go to previous location list"))
-vim.keymap.set("n", "]l", ":lnext<CR>", opts("Go to next location list"))
-vim.keymap.set("n", "[L", ":lfirst<CR>", opts("Go to first location list"))
-vim.keymap.set("n", "]L", ":llast<CR>", opts("Go to last location list"))
-
-----------------------------
 -- Buffers
 ----------------------------
-vim.keymap.set("n", "[b", ":bprevious<CR>", opts("Go to previous buffer"))
-vim.keymap.set("n", "]b", ":bnext<CR>", opts("Go to next buffer"))
-vim.keymap.set("n", "[B", ":bfirst<CR>", opts("Go to first buffer"))
-vim.keymap.set("n", "]B", ":blast<CR>", opts("Go to last buffer"))
-vim.keymap.set("n", "<Leader>bd", "<Cmd>bdelete<CR>", opts("Delete current buffer"))
+im.keymap.set("n", "<Leader>bd", "<Cmd>bdelete<CR>", opts("Delete current buffer"))
 vim.keymap.set("n", "<Leader>bD", "<Cmd>bdelete!<CR>", opts("Force delete current buffer"))
 vim.keymap.set("n", "<Leader>bo", "<Cmd>%bdelete|e#|bdelete#<CR>", opts("Delete all buffers except current"))
 
