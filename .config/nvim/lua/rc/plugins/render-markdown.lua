@@ -6,5 +6,13 @@ return {
 		render_modes = true,
 		completions = { lsp = { enabled = true } },
 		sign = { enabled = false },
+		heading = {
+			backgrounds = {},
+		},
+		code = {
+			width = "block",
+			left_pad = 2,
+			right_pad = 4,
+		},
 	},
 }
