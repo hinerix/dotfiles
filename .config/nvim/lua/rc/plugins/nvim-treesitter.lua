@@ -21,6 +21,7 @@ return {
 			"json",
 			"dockerfile",
 			"yaml",
+			"python",
 		},
 	},
 }
