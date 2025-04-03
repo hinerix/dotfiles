@@ -60,3 +60,12 @@ vim.opt.scrolloff = 10
 
 -- ターミナルモードでカーソルが点滅しないようにする
 vim.opt.guicursor:append("t:blinkon0")
+
+-- diagnosticsのVirtual Lineを有効化
+vim.diagnostic.config({
+	virtual_lines = {
+		enabled = true,
+		current_line = true,
+	}
+})
+
