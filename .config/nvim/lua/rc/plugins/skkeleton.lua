@@ -6,11 +6,19 @@ return {
 	config = function()
 		local function skkeleton_init()
 			vim.fn["skkeleton#config"]({
-				globalDictionaries = { "~/.skk/SKK-JISYO.L" },
+				globalDictionaries = {
+					"~/.skk/SKK-JISYO.L",
+					"~/.skk/SKK-JISYO.jinmei",
+					"~/.skk/SKK-JISYO.geo",
+					"~/.skk/SKK-JISYO.station",
+					"~/.skk/SKK-JISYO.propernoun",
+				},
 				completionRankFile = "~/.skk/skkeleton/rank.json",
+				userDictionary = "~/.skk/skkeleton/.skkeleton",
 				registerConvertResult = true,
 				keepState = true,
 				eggLikeNewline = true,
+				immediatelyOkuriConvert = true,
 			})
 			vim.fn["skkeleton#register_keymap"]("henkan", "<BS>", "henkanBackward")
 			vim.fn["skkeleton#register_keymap"]("henkan", "X", "")
