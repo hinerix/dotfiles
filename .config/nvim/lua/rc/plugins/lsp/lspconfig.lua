@@ -105,12 +105,9 @@ return {
             end
         end
 
-        -- mason-lspconfig のハンドラー設定
         mason_lspconfig.setup_handlers({
-            -- デフォルトハンドラー: 上記の default_setup を使用
             default_setup,
 
-            -- lua_ls の設定 (既存の設定を維持)
             ["lua_ls"] = function()
                 lspconfig["lua_ls"].setup({
                     capabilities = capabilities,
@@ -124,16 +121,14 @@ return {
                 })
             end,
 
-            -- denols の設定
             ["denols"] = function()
                 lspconfig.denols.setup({
                     capabilities = capabilities,
                     -- カスタム root_dir 関数を使用
                     root_dir = findRootDirForDeno,
-                    -- Deno 固有の設定
                     settings = {
                         deno = {
-                            enable = true, -- LSP設定内でも有効化
+                            enable = true,
                             lint = true,
                             unstable = true,
                             suggest = {
