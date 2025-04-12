@@ -9,7 +9,7 @@ return {
     config = function()
         local lspconfig = require("lspconfig")
         local mason_lspconfig = require("mason-lspconfig")
-				local neoconf = require("neoconf")
+				local neoconf = require("rc.plugins.neoconf")
         local capabilities = vim.lsp.protocol.make_client_capabilities()
 
         local ft = {
@@ -48,8 +48,8 @@ return {
             -- Node固有ファイルが見つかった場合：neoconf の設定を確認
             -- .vscode/settings.json や .neoconf.json の deno.enable や deno.enablePaths をチェック
             local getOptions = neoconf.getOptions
-            local enable = getOptions("deno.enable", { root = project_root })
-            local enable_paths = getOptions("deno.enablePaths", { root = project_root })
+            local enable = getOptions("deno.enable")
+            local enable_paths = getOptions("deno.enablePaths")
 
             -- プロジェクト全体でDenoが明示的に有効化されているか？ (enable: true)
             if enable == true then
