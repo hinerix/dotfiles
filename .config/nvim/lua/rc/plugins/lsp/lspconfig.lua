@@ -1,152 +1,161 @@
 return {
-    "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-        "williamboman/mason-lspconfig.nvim",
-        "folke/neoconf.nvim",
-        "Shougo/ddc-source-lsp",
-    },
-    config = function()
-        local lspconfig = require("lspconfig")
-        local mason_lspconfig = require("mason-lspconfig")
-				local neoconf = require("rc.plugins.neoconf")
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
+	"neovim/nvim-lspconfig",
+	event = { "BufReadPre", "BufNewFile" },
+	dependencies = {
+		"williamboman/mason-lspconfig.nvim",
+		"folke/neoconf.nvim",
+		"Shougo/ddc-source-lsp",
+	},
+	config = function()
+		local lspconfig = require("lspconfig")
+		local mason_lspconfig = require("mason-lspconfig")
+		local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-        local ft = {
-            deno_files = { "deno.json", "deno.jsonc", "mod.ts", "deps.ts" },
-            node_specific_files = { "package.json", "node_modules", ".npmrc", "yarn.lock", "pnpm-lock.yaml", "tsconfig.json" },
-        }
+		---@param path string
+		---@return string|nil
+		local function findRootDirForDeno(path)
+			vim.notify("findRootDirForDeno called with path: " .. path, vim.log.levels.INFO)
+			local deno_markers = { "deno.json", "deno.jsonc" }
+			local node_markers = { "node_modules", "package.json", "bun.lock", "yarn.lock", "pnpm-lock.yaml" }
+			local root_markers = vim.iter({ ".git", deno_markers, node_markers }):flatten(math.huge):totable()
 
-        ---@param path string
-        ---@return string|nil
-        local function findRootDirForDeno(path)
-            ---@type string|nil プロジェクトルート候補
-            local project_root =
-                vim.fs.root(path, vim.iter({ ".git", ft.deno_files, ft.node_specific_files }):flatten(math.huge):totable())
-            project_root = project_root or vim.uv.cwd() -- 見つからなければカレントディレクトリ
+			local project_root = vim.fs.root(path, root_markers)
+			project_root = project_root or vim.uv.cwd()
+			-- vim.notify("  project_root found: " .. tostring(project_root), vim.log.levels.INFO)
 
-            if not project_root then return nil end -- ルートが見つからない場合は終了
+			if not project_root then
+				-- vim.notify("  No project_root found, returning nil", vim.log.levels.WARN)
+				return nil
+			end
 
-            -- Node.js固有のファイルが存在するかチェック
-            local is_node_files_found = vim.iter(ft.node_specific_files):any(function(file)
-                return vim.uv.fs_stat(vim.fs.joinpath(project_root, file)) ~= nil
-            end)
+			local is_deno_json_found = vim.iter(deno_markers):any(function(marker)
+				return vim.uv.fs_stat(vim.fs.joinpath(project_root, marker)) ~= nil
+			end)
+			-- vim.notify("  is_deno_json_found: " .. tostring(is_deno_json_found), vim.log.levels.INFO)
+			if is_deno_json_found then
+				-- vim.notify("  Returning project_root (deno.json/deno.jsonc found)", vim.log.levels.INFO)
+				return project_root
+			end
 
-            -- Node固有ファイルが見つからない場合
-            if not is_node_files_found then
-                -- Deno固有のファイルが存在するかチェック
-                local is_deno_files_found = vim.iter(ft.deno_files):any(function(file)
-                    return vim.uv.fs_stat(vim.fs.joinpath(project_root, file)) ~= nil
-                end)
-                if is_deno_files_found then
-                    return project_root -- Denoファイルがあれば Deno プロジェクト
-                else
-                    return nil -- NodeもDenoのファイルも見つからなければ対象外
-                end
-            end
+			local is_node_files_found = vim.iter(node_markers):any(function(marker)
+				return vim.uv.fs_stat(vim.fs.joinpath(project_root, marker)) ~= nil
+			end)
+--[[ 
+			vim.notify(
+				"  is_node_files_found (after deno check): " .. tostring(is_node_files_found),
+				vim.log.levels.INFO
+			)
+ ]]
+			-- vim.notify("  Checking neoconf settings (since no deno.json/c found)...", vim.log.levels.INFO)
+			local neoconf_ok, neoconf = pcall(require, "rc.plugins.neoconf")
+			if not neoconf_ok then
+				vim.notify("  Failed to require 'rc.plugins.neoconf'", vim.log.levels.ERROR)
+			else
+				local getOptions = neoconf.getOptions
+				local enable = getOptions("deno.enable")
+				local enable_paths = getOptions("deno.enablePaths")
+				vim.notify("  neoconf deno.enable: " .. tostring(enable), vim.log.levels.INFO)
+				vim.notify("  neoconf deno.enablePaths: " .. vim.inspect(enable_paths), vim.log.levels.INFO)
 
-            -- Node固有ファイルが見つかった場合：neoconf の設定を確認
-            -- .vscode/settings.json や .neoconf.json の deno.enable や deno.enablePaths をチェック
-            local getOptions = neoconf.getOptions
-            local enable = getOptions("deno.enable")
-            local enable_paths = getOptions("deno.enablePaths")
+				if enable == true then
+					vim.notify("  Returning project_root (deno.enable is true via neoconf)", vim.log.levels.INFO)
+					return project_root
+				end
 
-            -- プロジェクト全体でDenoが明示的に有効化されているか？ (enable: true)
-            if enable == true then
-                return project_root
-            end
+				if enable ~= false and type(enable_paths) == "table" then
+					vim.notify("  Checking enablePaths...", vim.log.levels.INFO)
+					local root_in_enable_path = vim.iter(enable_paths)
+						:map(function(p)
+							return vim.fs.joinpath(project_root, p)
+						end)
+						:find(function(absEnablePath)
+							return vim.startswith(path, absEnablePath)
+						end)
 
-            -- 特定のパスでDenoが有効化されているか？ (enablePaths)
-            -- enable が false でなく、enable_paths がテーブルの場合
-            if enable ~= false and type(enable_paths) == "table" then
-                local current_file_path = vim.api.nvim_buf_get_name(0) -- 現在のバッファのフルパスを取得
-                local root_in_enable_path = vim.iter(enable_paths)
-                    :map(function(p)
-                        -- 相対パスを絶対パスに変換
-                        return vim.fs.joinpath(project_root, p)
-                    end)
-                    :find(function(absEnablePath)
-                        -- 現在のファイルパスが、有効化されたパスで始まっているかチェック
-                        -- NOTE: ディレクトリかどうかを確認した方がより正確かもしれない
-                        -- vim.uv.fs_stat(absEnablePath).type == "directory"
-                        return vim.startswith(current_file_path, absEnablePath .. "/") -- ディレクトリ区切り文字を追加して前方一致
-                    end)
+					if root_in_enable_path ~= nil then
+						vim.notify(
+							"  Returning project_root based on enablePaths match (via neoconf)",
+							vim.log.levels.INFO
+						)
+						return project_root
+					end
+				end
+			end
+--[[ 
+			if is_node_files_found then
+				vim.notify(
+					"  Returning nil (Node markers found, but deno not specified/enabled via neoconf)",
+					vim.log.levels.WARN
+				)
+			else
+				vim.notify(
+					"  Returning nil (No specific markers found, and deno not specified/enabled via neoconf)",
+					vim.log.levels.WARN
+				)
+			end
+ ]]
+			return nil
+		end
 
-                if root_in_enable_path ~= nil then
-                    -- マッチした有効化パスをルートとして返す (より限定的なルート)
-                    -- もしくは project_root をそのまま返すか、どちらが良いかはプロジェクト構造による
-                    return project_root -- ここではプロジェクト全体のルートを返すことにする
-                    -- return root_in_enable_path -- 特定のサブディレクトリをルートにする場合
-                end
-            end
+		local function default_setup(server_name)
+			lspconfig[server_name].setup({
+				capabilities = capabilities,
+			})
+		end
 
-            -- Nodeファイルがあり、Denoが明示的に有効化されていない場合は nil を返す
-            return nil
-        end
+		local function typescript_setup(server_name)
+			local current_buf_path = vim.api.nvim_buf_get_name(0)
+			local deno_root = findRootDirForDeno(current_buf_path)
 
-        -- mason-lspconfig で管理されるサーバーのデフォルト設定
-        local function default_setup(server_name)
-            lspconfig[server_name].setup({
-                capabilities = capabilities,
-            })
-        end
+			if deno_root == nil then
+				lspconfig[server_name].setup({
+					capabilities = capabilities,
+				})
+			end
+		end
 
-        -- TypeScript (ts_ls) 用のセットアップ関数
-        local function typescript_setup(server_name)
-            -- 現在のバッファに対して denols が起動すべきか確認
-            local current_buf_path = vim.api.nvim_buf_get_name(0)
-            local deno_root = findRootDirForDeno(current_buf_path)
+		mason_lspconfig.setup_handlers({
+			default_setup,
 
-            -- denols が起動すべきでない場合のみ ts_ls を設定
-            if deno_root == nil then
-                lspconfig[server_name].setup({
-                    capabilities = capabilities,
-                })
-            end
-        end
+			["lua_ls"] = function()
+				lspconfig["lua_ls"].setup({
+					capabilities = capabilities,
+					settings = {
+						Lua = {
+							diagnostics = {
+								globals = { "vim" },
+							},
+						},
+					},
+				})
+			end,
 
-        mason_lspconfig.setup_handlers({
-            default_setup,
+			["denols"] = function()
+				lspconfig.denols.setup({
+					capabilities = capabilities,
+					-- カスタム root_dir 関数を使用
+					root_dir = findRootDirForDeno,
+					settings = {
+						deno = {
+							enable = true,
+							lint = true,
+							unstable = true,
+							suggest = {
+								imports = {
+									hosts = {
+										["https://deno.land"] = true,
+										["https://cdn.nest.land"] = true,
+										["https://crux.land"] = true,
+										["https://esm.sh"] = true,
+									},
+								},
+							},
+						},
+					},
+				})
+			end,
 
-            ["lua_ls"] = function()
-                lspconfig["lua_ls"].setup({
-                    capabilities = capabilities,
-                    settings = {
-                        Lua = {
-                            diagnostics = {
-                                globals = { "vim" },
-                            },
-                        },
-                    },
-                })
-            end,
-
-            ["denols"] = function()
-                lspconfig.denols.setup({
-                    capabilities = capabilities,
-                    -- カスタム root_dir 関数を使用
-                    root_dir = findRootDirForDeno,
-                    settings = {
-                        deno = {
-                            enable = true,
-                            lint = true,
-                            unstable = true,
-                            suggest = {
-                                imports = {
-                                    hosts = {
-                                        ["https://deno.land"] = true,
-                                        ["https://cdn.nest.land"] = true,
-                                        ["https://crux.land"] = true,
-                                        ["https://esm.sh"] = true,
-                                    },
-                                },
-                            },
-                        },
-                    },
-                })
-            end,
-
-						["ts_ls"] = typescript_setup,
-        })
-    end
+			["ts_ls"] = typescript_setup,
+		})
+	end,
 }
