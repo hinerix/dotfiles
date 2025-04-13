@@ -33,7 +33,7 @@ return {
 				return project_root
 			end
 
-		local neoconf_ok, neoconf = pcall(require, "rc.plugins.neoconf")
+			local neoconf_ok, neoconf = pcall(require, "rc.plugins.neoconf")
 			if not neoconf_ok then
 			else
 				local getOptions = neoconf.getOptions
@@ -58,7 +58,7 @@ return {
 					end
 				end
 			end
-		return nil
+			return nil
 		end
 
 		local function default_setup(server_name)
