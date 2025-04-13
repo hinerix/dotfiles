@@ -24,5 +24,5 @@ return {
 		blank = {
 			enable = false,
 		},
-	}
+	},
 }

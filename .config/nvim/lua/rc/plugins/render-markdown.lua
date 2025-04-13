@@ -3,7 +3,6 @@ return {
 	ft = { "markdown" },
 	dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
 	config = function()
-
 		local render_markdown = require("render-markdown")
 
 		render_markdown.setup({
@@ -39,6 +38,5 @@ return {
 		vim.api.nvim_set_hl(0, "@markup.link.url", { fg = C.lavender, bold = false })
 		vim.api.nvim_set_hl(0, "RenderMarkdownLink", { fg = C.lavender, bold = false })
 		vim.api.nvim_set_hl(0, "RenderMarkdownWikiLink", { fg = C.lavender, bold = false })
-
-	end
+	end,
 }

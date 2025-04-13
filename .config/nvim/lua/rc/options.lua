@@ -8,7 +8,7 @@ vim.g.have_nerd_font = true
 vim.opt.mouse = "a"
 vim.opt.mousemoveevent = true
 
--- 行番号 
+-- 行番号
 vim.opt.number = true
 vim.opt.relativenumber = true
 
@@ -33,7 +33,7 @@ vim.opt.smartcase = true -- 検索に大文字を入力した場合は大文字�
 
 -- clipboard(起動時間短縮のため、少し遅らせて実行)
 vim.schedule(function()
-  vim.opt.clipboard = "unnamedplus"
+	vim.opt.clipboard = "unnamedplus"
 end)
 
 -- cursor lineをハイライト
@@ -62,6 +62,5 @@ vim.opt.scrolloff = 10
 vim.diagnostic.config({
 	virtual_text = {
 		enabled = true,
-	}
+	},
 })
-

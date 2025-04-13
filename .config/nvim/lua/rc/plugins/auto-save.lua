@@ -4,7 +4,7 @@ return {
 		trigger_events = {
 			"InsertLeave",
 			"BufLeave",
-			 "FocusLost",
-		}
-	}
+			"FocusLost",
+		},
+	},
 }

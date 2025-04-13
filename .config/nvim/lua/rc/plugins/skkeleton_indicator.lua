@@ -1,4 +1,4 @@
 return {
 	"delphinus/skkeleton-indicator.nvim",
-	opts = {}
+	opts = {},
 }

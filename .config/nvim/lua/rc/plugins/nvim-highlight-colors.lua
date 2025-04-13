@@ -4,5 +4,5 @@ return {
 		render = "virtual",
 		virtual_symbol_suffix = "",
 		enable_tailwind = true,
-	}
+	},
 }

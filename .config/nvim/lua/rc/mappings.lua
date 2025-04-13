@@ -1,5 +1,5 @@
 local opts = function(desc)
-  return { noremap = true, silent = true, desc = desc }
+	return { noremap = true, silent = true, desc = desc }
 end
 
 -- Escでハイライトを消す
@@ -23,4 +23,3 @@ vim.keymap.set("n", "<Leader>bo", "<Cmd>%bdelete|e#|bdelete#<CR>", opts("Delete 
 ----------------------------
 vim.keymap.set("n", "<Leader>j;", "g;zz", opts("Go to previous jump"))
 vim.keymap.set("n", "<Leader>j,", "g,zz", opts("Go to next jump"))
-

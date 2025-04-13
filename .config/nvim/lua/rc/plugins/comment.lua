@@ -8,13 +8,12 @@ return {
 		local ts_comment = require("ts_context_commentstring")
 		local ts_comment_integrations = require("ts_context_commentstring.integrations.comment_nvim")
 
-		ts_comment.setup {
+		ts_comment.setup({
 			enable_autocmd = false,
-		}
+		})
 
-		comment.setup {
+		comment.setup({
 			pre_hook = ts_comment_integrations.create_pre_hook(),
-		}
-
-	end
+		})
+	end,
 }

@@ -27,7 +27,7 @@ return {
 				"buffer",
 				"around",
 				"skkeleton",
-			}
+			},
 		})
 
 		vim.fn["ddc#custom#patch_global"]({
@@ -79,20 +79,17 @@ return {
 
 		vim.fn["ddc#enable"]()
 
-		vim.keymap.set("i", "<C-n>",
-			function ()
-				if vim.fn["pum#visible"]() == true then
-					vim.fn["pum#map#select_relative"](1)
-				else
-					vim.fn["ddc#map#manual_complete"]()
-				end
-			end)
+		vim.keymap.set("i", "<C-n>", function()
+			if vim.fn["pum#visible"]() == true then
+				vim.fn["pum#map#select_relative"](1)
+			else
+				vim.fn["ddc#map#manual_complete"]()
+			end
+		end)
 		vim.keymap.set("i", "<C-p>", "<Cmd>call pum#map#select_relative(-1)<CR>")
 		vim.keymap.set("i", "<C-y>", "<Cmd>call pum#map#confirm()<CR>")
 		vim.keymap.set("i", "<C-e>", "<Cmd>call pum#map#cancel()<CR>")
 		vim.keymap.set("i", "<C-f>", "<Cmd>call pum#map#select_relative_page(1)<CR>")
 		vim.keymap.set("i", "<C-b>", "<Cmd>call pum#map#select_relative_page(-1)<CR>")
-
-	end
+	end,
 }
-

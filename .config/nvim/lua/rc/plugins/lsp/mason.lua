@@ -9,5 +9,5 @@ return {
 				package_uninstalled = "✗",
 			},
 		},
-	}
+	},
 }
