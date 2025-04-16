@@ -10,12 +10,12 @@ vim.keymap.set({ "n", "v" }, "x", '"_x', { noremap = true, silent = true })
 vim.keymap.set("t", "<C-[>", "<C-\\><C-n>", { noremap = true, silent = true })
 
 -- Emacs keybinds
-vim.keymap.set('c', '<c-b>', '<left>', { desc = 'Emacs like left' })
-vim.keymap.set('c', '<c-f>', '<right>', { desc = 'Emacs like right' })
-vim.keymap.set('c', '<c-a>', '<home>', { desc = 'Emacs like home' })
-vim.keymap.set('c', '<c-e>', '<end>', { desc = 'Emacs like end' })
-vim.keymap.set('c', '<c-h>', '<bs>', { desc = 'Emacs like bs' })
-vim.keymap.set('c', '<c-d>', '<del>', { desc = 'Emacs like del' })
+vim.keymap.set("c", "<c-b>", "<left>", { desc = "Emacs like left" })
+vim.keymap.set("c", "<c-f>", "<right>", { desc = "Emacs like right" })
+vim.keymap.set("c", "<c-a>", "<home>", { desc = "Emacs like home" })
+vim.keymap.set("c", "<c-e>", "<end>", { desc = "Emacs like end" })
+vim.keymap.set("c", "<c-h>", "<bs>", { desc = "Emacs like bs" })
+vim.keymap.set("c", "<c-d>", "<del>", { desc = "Emacs like del" })
 
 ----------------------------
 -- Buffers
