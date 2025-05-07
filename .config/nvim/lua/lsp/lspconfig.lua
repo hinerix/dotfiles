@@ -33,7 +33,7 @@ return {
 				return project_root
 			end
 
-			local neoconf_ok, neoconf = pcall(require, "rc.plugins.neoconf")
+			local neoconf_ok, neoconf = pcall(require, "plugins.neoconf")
 			if not neoconf_ok then
 			else
 				local getOptions = neoconf.getOptions
