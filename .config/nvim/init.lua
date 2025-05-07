@@ -1,3 +1,2 @@
-require("rc.options")
-require("rc.mappings")
-require("rc.lazy.lazy")
+require("config")
+require("lsp")
