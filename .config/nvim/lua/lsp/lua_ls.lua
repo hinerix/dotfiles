@@ -1,31 +1,48 @@
 local M = {}
 
-M.cmd = { "lua-language-server" }
-M.filetypes = { "lua" }
-M.on_init = function(client)
-	if client.workspace_folders then
-		local path = client.workspace_folders[1].name
-		if path ~= vim.fn.stdpath("config") and (vim.uv.fs_stat(path.."/.luarc.json") or vim.uv.fs_stat(path.."/.luarc.jsonc")) then
-			return
+---@param names string[]
+---@return string[]
+local function get_plugin_paths(names)
+	local plugins = require("lazy.core.config").plugins
+	local paths = {}
+	for _, name in ipairs(names) do
+		if plugins[name] then
+			table.insert(paths, plugins[name].dir .. "/lua")
+		else
+			vim.notify("Invalid plugin name: " .. name)
 		end
 	end
-	client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
-		runtime = { version = "LuaJIT" },
-		workspace = {
-			checkThirdParty = false,
-			library = vim.list_extend(vim.api.nvim_get_runtime_file("lua", true), {
-				"${3rd}/luv/library",
-				"${3rd}/busted/library",
-			}),
-		}
-	})
-end,
+	return paths
+end
+
+---@param plugins string[]
+---@return string[]
+local function library(plugins)
+  local paths = get_plugin_paths(plugins)
+  table.insert(paths, vim.fn.stdpath("config") .. "/lua")
+  table.insert(paths, vim.env.VIMRUNTIME .. "/lua")
+  table.insert(paths, "${3rd}/luv/library")
+  table.insert(paths, "${3rd}/busted/library")
+  return paths
+end
+
 M.settings = {
 	Lua = {
+		runtime = {
+			version = "LuaJIT",
+			pathStrict = true,
+			path = { "?.lua", "?/init.lua" },
+		},
 		diagnostics = {
-			unusedLocalExclude = { "_*" }
-		}
-	}
+			unusedLocalExclude = { "_*" },
+		},
+		workspace = {
+			library = library({
+				"lazy.nvim",
+			}),
+			checkThirdParty = false,
+		},
+	},
 }
 
 return M
