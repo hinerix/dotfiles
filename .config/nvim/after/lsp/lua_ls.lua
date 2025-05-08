@@ -26,6 +26,8 @@ local function library(plugins)
   return paths
 end
 
+M.cmd = { "lua-language-server" }
+M.filetypes = { "lua" }
 M.settings = {
 	Lua = {
 		runtime = {
