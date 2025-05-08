@@ -58,5 +58,8 @@ vim.opt.inccommand = "split"
 vim.opt.scrolloff = 10
 
 vim.diagnostic.config({
-  virtual_text = true
+  virtual_text = true,
+	float = {
+		source = true,
+	},
 })
