@@ -47,5 +47,5 @@ if vim.fn.has("wsl") == 1 then
 		-- <cfile> はカーソル下のファイル名やURLを取得
 		local target_under_cursor = vim.fn.expand("<cfile>")
 		open_with_wslview_detached(target_under_cursor)
-	end, opts("WSL: カーソル下のパス/URLをwslviewで開く"))
+	end, opts("Open URL or Path"))
 end
