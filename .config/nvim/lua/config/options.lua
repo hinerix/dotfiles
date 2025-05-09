@@ -57,9 +57,3 @@ vim.opt.inccommand = "split"
 -- カーソルのスクロール開始行数
 vim.opt.scrolloff = 10
 
-vim.diagnostic.config({
-  virtual_text = true,
-	float = {
-		source = true,
-	},
-})
