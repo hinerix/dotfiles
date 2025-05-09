@@ -30,6 +30,7 @@ vim.keymap.set("n", "<Leader>bo", "<Cmd>%bdelete|e#|bdelete#<CR>", opts("Delete 
 vim.keymap.set("n", "<Leader>j;", "g;zz", opts("Go to previous jump"))
 vim.keymap.set("n", "<Leader>j,", "g,zz", opts("Go to next jump"))
 
+-- wslでgxコマンドでURLを開くための設定とキーマップ
 if vim.fn.has('wsl') == 1 then
   local function open_with_wslview_detached(target)
     if not target or target == "" then
