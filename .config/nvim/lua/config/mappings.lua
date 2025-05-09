@@ -29,3 +29,22 @@ vim.keymap.set("n", "<Leader>bo", "<Cmd>%bdelete|e#|bdelete#<CR>", opts("Delete 
 ----------------------------
 vim.keymap.set("n", "<Leader>j;", "g;zz", opts("Go to previous jump"))
 vim.keymap.set("n", "<Leader>j,", "g,zz", opts("Go to next jump"))
+
+if vim.fn.has('wsl') == 1 then
+  local function open_with_wslview_detached(target)
+    if not target or target == "" then
+      vim.notify("gx: 対象が見つかりません。", vim.log.levels.WARN)
+      return
+    end
+
+   local cleaned_target = string.gsub(target, "^file://", "") -- 例: file:///mnt/c/foo -> /mnt/c/foo
+
+    vim.fn.jobstart({'wslview', cleaned_target}, {detach = true})
+  end
+
+  vim.keymap.set('n', 'gx', function()
+    -- <cfile> はカーソル下のファイル名やURLを取得
+    local target_under_cursor = vim.fn.expand("<cfile>")
+    open_with_wslview_detached(target_under_cursor)
+  end, opts("WSL: カーソル下のパス/URLをwslviewで開く"))
+end
