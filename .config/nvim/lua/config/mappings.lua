@@ -1,7 +1,5 @@
--- 頻出の設定のユーティリティ関数
-local opts = function(desc)
-	return { noremap = true, silent = true, desc = desc }
-end
+local utils = require("utils")
+local keymapOpts = utils.keymapOpts
 
 -- xキーで削除したときに yank register に保存しないようにする
 vim.keymap.set({ "n", "v" }, "x", '"_x', { noremap = true, silent = true })
@@ -20,15 +18,15 @@ vim.keymap.set("c", "<c-d>", "<del>", { desc = "Emacs like del" })
 ----------------------------
 -- Buffers
 ----------------------------
-vim.keymap.set("n", "<Leader>bd", "<Cmd>bdelete<CR>", opts("Delete current buffer"))
-vim.keymap.set("n", "<Leader>bD", "<Cmd>bdelete!<CR>", opts("Force delete current buffer"))
-vim.keymap.set("n", "<Leader>bo", "<Cmd>%bdelete|e#|bdelete#<CR>", opts("Delete all buffers except current"))
+vim.keymap.set("n", "<Leader>bd", "<Cmd>bdelete<CR>", keymapOpts("Delete current buffer"))
+vim.keymap.set("n", "<Leader>bD", "<Cmd>bdelete!<CR>", keymapOpts("Force delete current buffer"))
+vim.keymap.set("n", "<Leader>bo", "<Cmd>%bdelete|e#|bdelete#<CR>", keymapOpts("Delete all buffers except current"))
 
 ----------------------------
 -- jump
 ----------------------------
-vim.keymap.set("n", "<Leader>j;", "g;zz", opts("Go to previous jump"))
-vim.keymap.set("n", "<Leader>j,", "g,zz", opts("Go to next jump"))
+vim.keymap.set("n", "<Leader>j;", "g;zz", keymapOpts("Go to previous jump"))
+vim.keymap.set("n", "<Leader>j,", "g,zz", keymapOpts("Go to next jump"))
 
 -- wslでgxコマンドでURLを開くための設定とキーマップ
 if vim.fn.has("wsl") == 1 then
@@ -47,5 +45,5 @@ if vim.fn.has("wsl") == 1 then
 		-- <cfile> はカーソル下のファイル名やURLを取得
 		local target_under_cursor = vim.fn.expand("<cfile>")
 		open_with_wslview_detached(target_under_cursor)
-	end, opts("Open URL or Path"))
+	end, keymapOpts("Open URL or Path"))
 end
