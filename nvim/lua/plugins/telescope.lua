@@ -13,6 +13,11 @@ return {
 		telescope.setup({
 			defaults = {
 				path_display = { "smart" },
+				mappings = {
+					i = {
+						["<C-j>"] = false
+					},
+				},
 			},
 		})
 
