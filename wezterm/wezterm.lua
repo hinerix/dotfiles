@@ -7,6 +7,7 @@ local config = wezterm.config_builder()
 config.color_scheme = 'Catppuccin Mocha'
 
 -- ウィンドウの設定
+config.window_decorations = "RESIZE"
 config.window_background_opacity = 0.85
 config.adjust_window_size_when_changing_font_size = false
 config.tab_bar_at_bottom = true
@@ -52,12 +53,12 @@ config.keys = {
 	{ key = "f", mods = "SHIFT|CTRL", action = act.Search("CurrentSelectionOrEmptyString") },
 	{ key = "x", mods = "SHIFT|CTRL", action = act.ActivateCopyMode },
 	{ key = "/", mods = "ALT", action = act.QuickSelect },
-	{ key = "z", mods = "SHIFT|CTRL", action = act.TogglePaneZoomState },
 	{ key = "-", mods = "ALT", action = act({ SplitVertical = { domain = "CurrentPaneDomain" } }) },
+	{ key = "\\", mods = "ALT", action = act({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) },
+	{ key = "z", mods = "SHIFT|CTRL", action = act.TogglePaneZoomState },
 	{ key = "p", mods = "ALT", action = act.PaneSelect },
 	{ key = "n", mods = "ALT", action = act.RotatePanes("Clockwise") },
 	{ key = "n", mods = "SHIFT|ALT", action = act.RotatePanes("CounterClockwise") },
-	{ key = "\\", mods = "ALT", action = act({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) },
 	{ key = "h", mods = "ALT|SHIFT", action = act({ ActivatePaneDirection = "Left" }) },
 	{ key = "l", mods = "ALT|SHIFT", action = act({ ActivatePaneDirection = "Right" }) },
 	{ key = "k", mods = "ALT|SHIFT", action = act({ ActivatePaneDirection = "Up" }) },
