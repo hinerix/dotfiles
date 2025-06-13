@@ -16,8 +16,13 @@ return {
 		end, keymapOpts("Reset hunks"))
 
 		vim.keymap.set("n", "<Leader>hS", gitsigns.stage_buffer, keymapOpts("Stage all hunks in current buffer"))
-		vim.keymap.set("n", "<Leader>hR", gitsigns.reset_buffer, keymapOpts("Reset the lines of all hunks in the buffer"))
+		vim.keymap.set(
+			"n",
+			"<Leader>hR",
+			gitsigns.reset_buffer,
+			keymapOpts("Reset the lines of all hunks in the buffer")
+		)
 		vim.keymap.set("n", "<Leader>hp", gitsigns.preview_hunk, keymapOpts("Preview hunks in popup"))
 		vim.keymap.set("n", "<Leader>hi", gitsigns.preview_hunk_inline, keymapOpts("Preview hunks inline"))
-	end
+	end,
 }

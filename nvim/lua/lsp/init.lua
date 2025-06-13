@@ -1,7 +1,4 @@
-vim.api.nvim_create_user_command(
-	"LspHealth",
-	"checkhealth vim.lsp",
-	{desc = "LSP health check" })
+vim.api.nvim_create_user_command("LspHealth", "checkhealth vim.lsp", { desc = "LSP health check" })
 
 vim.diagnostic.config({
 	virtual_text = true,
@@ -11,7 +8,7 @@ vim.diagnostic.config({
 })
 
 vim.lsp.config("*", {
-	capabilities = require("ddc_source_lsp").make_client_capabilities()
+	capabilities = require("ddc_source_lsp").make_client_capabilities(),
 })
 
 vim.lsp.enable({

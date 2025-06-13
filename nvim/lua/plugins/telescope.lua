@@ -15,7 +15,7 @@ return {
 				path_display = { "smart" },
 				mappings = {
 					i = {
-						["<C-j>"] = false
+						["<C-j>"] = false,
 					},
 				},
 			},
