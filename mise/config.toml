@@ -1,0 +1,4 @@
+[tools]
+node = 'lts'
+deno = 'latest'
+bun = 'latest'

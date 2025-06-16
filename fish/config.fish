@@ -3,9 +3,12 @@ if status is-interactive
     set -U FZF_LEGACY_KEYBINDINGS 0
     set -g theme_display_git_default_branch yes
 
-		#abbr
-		abbr ls ls -alSh
-		abbr vi nvim
-		abbr vim nvim
+	#abbr
+	abbr ls ls -alSh
+	abbr vi nvim
+	abbr vim nvim
+
+	#PATH
+	fish_add_path ~/.local/share/mise/shims
 
 end
