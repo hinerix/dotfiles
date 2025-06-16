@@ -8,7 +8,7 @@ if status is-interactive
 	abbr vi nvim
 	abbr vim nvim
 
-	#PATH
-	fish_add_path ~/.local/share/mise/shims
+	#activate mise
+	~/.local/bin/mise activate fish | source
 
 end
