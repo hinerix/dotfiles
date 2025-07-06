@@ -13,7 +13,7 @@
   "ddc-ui-pum": { "branch": "main", "commit": "79df4ac4bf16cb69b358b5b2eedfeab2b69d0eb0" },
   "ddc.vim": { "branch": "main", "commit": "619f86fed66862e577b9d5ca125eadd6fdc0ab5b" },
   "denops.vim": { "branch": "main", "commit": "2c1717f19bc06ad4693eec0b0f1f6124de31b684" },
-  "gitsigns.nvim": { "branch": "main", "commit": "aa49c9675433d3751b7afd198c9f5d2e03252af1" },
+  "gitsigns.nvim": { "branch": "main", "commit": "362fe61f9f19e9bceff178792780df5cce118a7d" },
   "hlchunk.nvim": { "branch": "main", "commit": "474ec5d0f220158afa83aaefab32402e710d3032" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "lualine.nvim": { "branch": "master", "commit": "a94fc68960665e54408fe37dcf573193c4ce82c9" },
