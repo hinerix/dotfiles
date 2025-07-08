@@ -11,7 +11,7 @@
   "ddc-source-file": { "branch": "main", "commit": "310851e5696a082d7535d1ece422bd679ac03909" },
   "ddc-source-lsp": { "branch": "main", "commit": "5b1de333a5c77d74b7c3fa1839578e4bd47ec1c3" },
   "ddc-ui-pum": { "branch": "main", "commit": "79df4ac4bf16cb69b358b5b2eedfeab2b69d0eb0" },
-  "ddc.vim": { "branch": "main", "commit": "619f86fed66862e577b9d5ca125eadd6fdc0ab5b" },
+  "ddc.vim": { "branch": "main", "commit": "a0169c09f016f45d11d90ebddf7823870e3ed754" },
   "denops.vim": { "branch": "main", "commit": "2c1717f19bc06ad4693eec0b0f1f6124de31b684" },
   "gitsigns.nvim": { "branch": "main", "commit": "362fe61f9f19e9bceff178792780df5cce118a7d" },
   "hlchunk.nvim": { "branch": "main", "commit": "474ec5d0f220158afa83aaefab32402e710d3032" },
