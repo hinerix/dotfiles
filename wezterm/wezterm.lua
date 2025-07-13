@@ -8,7 +8,7 @@ config.color_scheme = 'Catppuccin Mocha'
 
 -- ウィンドウの設定
 config.window_decorations = "RESIZE"
-config.window_background_opacity = 0.85
+-- config.window_background_opacity = 0.85
 config.adjust_window_size_when_changing_font_size = false
 config.tab_bar_at_bottom = true
 
@@ -16,10 +16,48 @@ config.tab_bar_at_bottom = true
 config.font = wezterm.font("HackGen Console NF", { weight = "Regular", stretch = "Normal", style = "Normal" })
 
 -- タブの設定
-config.hide_tab_bar_if_only_one_tab = true
+config.hide_tab_bar_if_only_one_tab = false
+-- The filled in variant of the < symbol
+local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
+-- The filled in variant of the > symbol
+local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
+config.colors = {
+	tab_bar = {
+		background = "#181825",
+		active_tab = {
+			bg_color = "#313244",
+			fg_color = "#cba6f7",
+			intensity = "Bold",
+		},
+		inactive_tab = {
+			bg_color = "#181825",
+			fg_color = "#7f849c",
+		},
+		inactive_tab_hover = {
+			bg_color = "#181825",
+			fg_color = "#585b70",
+		},
+		new_tab = {
+			bg_color = "#181825",
+			fg_color = "#9399b2",
+		},
+		new_tab_hover = {
+			bg_color = "#181825",
+			fg_color = "#a6e3a1",
+			intensity = "Bold",
+		},
+	},
+}
+config.window_frame = {
+	active_titlebar_bg = "#11111b",
+	inactive_titlebar_bg = "#11111b",
+}
 
--- WSL2をデフォルトで起動する
-config.default_domain = "WSL:Ubuntu-24.04"
+config.window_padding = {
+	bottom = 0,
+	left = 0,
+	right = 0,
+}
 
 -- キーボードの設定
 config.use_ime = true
