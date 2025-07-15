@@ -1,3 +1,10 @@
+[mgr]
+show_hidden = true
+linemode = "size"
+
+[preview]
+wrap = "yes"
+
 [[plugin.prepend_fetchers]]
 id   = "git"
 name = "*"
