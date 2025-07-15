@@ -27,6 +27,7 @@ return {
 				"buffer",
 				"around",
 				"skkeleton",
+				"skkeleton_okuri",
 			},
 		})
 
@@ -57,6 +58,12 @@ return {
 					sorters = { "sorter_rank" },
 					isVolatile = true,
 					minAutoCompleteLength = 1,
+				},
+				["skkeleton_okuri"] = {
+					mark = "[SKK*]",
+					matchers = {},
+					sorters = { "sorter_rank" },
+					isVolatile = true,
 				},
 			},
 		})
