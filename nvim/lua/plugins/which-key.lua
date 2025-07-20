@@ -29,7 +29,7 @@ return {
 		wk.add({
 			{ "<Leader>t", group = "Tab" },
 			{ "<Leader>b", group = "Buffer" },
-			{ "<Leader>e", group = "Tree" },
+			{ "<Leader>e", group = "File Manager" },
 			{ "<Leader>j", group = "Jump" },
 			{ "<Leader>f", group = "Telescope" },
 			{ "<Leader>h", group = "Hunk" },
