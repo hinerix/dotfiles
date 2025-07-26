@@ -19,9 +19,10 @@ vim.opt.termguicolors = true
 
 -- TabとIndent
 vim.opt.breakindent = true -- 折り返しにインデントを反映
-vim.opt.tabstop = 2 -- タブ文字の幅
-vim.opt.shiftwidth = 2 -- 自動インデント時のインデント幅
-vim.opt.softtabstop = 0 -- タブ押下時に挿入されるスペース（0だとtabstopと同じ）
+local tabwith = 2
+vim.opt.tabstop = tabwith -- タブ文字の幅
+vim.opt.shiftwidth = tabwith -- 自動インデント時のインデント幅
+vim.opt.softtabstop = tabwith -- タブ押下時に挿入されるスペース
 vim.opt.list = true -- 不可視文字の可視化（タブや改行など）
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" } -- 不可視文字に文字を割り当て（trail=行末スペース, nbsp=改行不可のスペース）
 

@@ -1,7 +1,8 @@
 local utils = require("utils")
 local keymapOpts = utils.keymapOpts
 
-vim.keymap.set({ "n", "v" }, "x", '"_x', keymapOpts("Prevent saving to the yank register when deleting with the 'x' key"))
+vim.keymap.set({ "n", "v" }, "x", '"_x', keymapOpts("delete without yank"))
+vim.keymap.set({ "n", "v" }, "X", '"_d$', keymapOpts("delete to end of line without yank"))
 vim.keymap.set("t", "<C-[>", "<C-\\><C-n>", keymapOpts("Switch to normal mode while in terminal mode"))
 vim.keymap.set("c", "<c-b>", "<left>", { desc = "Emacs like left" })
 vim.keymap.set("c", "<c-f>", "<right>", { desc = "Emacs like right" })
@@ -14,6 +15,8 @@ vim.keymap.set("n", "<Leader>bD", "<Cmd>bdelete!<CR>", keymapOpts("Force delete 
 vim.keymap.set("n", "<Leader>bo", "<Cmd>%bdelete|e#|bdelete#<CR>", keymapOpts("Delete all buffers except current"))
 vim.keymap.set("n", "<Leader>j;", "g;zz", keymapOpts("Go to previous jump"))
 vim.keymap.set("n", "<Leader>j,", "g,zz", keymapOpts("Go to next jump"))
+vim.keymap.set("n", "Y", "y$", keymapOpts("yank to end of line"))
+vim.keymap.set("n", "<Leader>a", "ggVG", keymapOpts("Select all"))
 
 -- wslでgxコマンドでURLを開くための設定とキーマップ
 if vim.fn.has("wsl") == 1 then
