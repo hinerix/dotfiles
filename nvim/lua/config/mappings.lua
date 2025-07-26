@@ -1,30 +1,17 @@
 local utils = require("utils")
 local keymapOpts = utils.keymapOpts
 
--- xキーで削除したときに yank register に保存しないようにする
-vim.keymap.set({ "n", "v" }, "x", '"_x', { noremap = true, silent = true })
-
--- ターミナルモードでノーマルモードにする
-vim.keymap.set("t", "<C-[>", "<C-\\><C-n>", { noremap = true, silent = true })
-
--- Emacs keybinds
+vim.keymap.set({ "n", "v" }, "x", '"_x', keymapOpts("Prevent saving to the yank register when deleting with the 'x' key"))
+vim.keymap.set("t", "<C-[>", "<C-\\><C-n>", keymapOpts("Switch to normal mode while in terminal mode"))
 vim.keymap.set("c", "<c-b>", "<left>", { desc = "Emacs like left" })
 vim.keymap.set("c", "<c-f>", "<right>", { desc = "Emacs like right" })
 vim.keymap.set("c", "<c-a>", "<home>", { desc = "Emacs like home" })
 vim.keymap.set("c", "<c-e>", "<end>", { desc = "Emacs like end" })
 vim.keymap.set("c", "<c-h>", "<bs>", { desc = "Emacs like bs" })
 vim.keymap.set("c", "<c-d>", "<del>", { desc = "Emacs like del" })
-
-----------------------------
--- Buffers
-----------------------------
 vim.keymap.set("n", "<Leader>bd", "<Cmd>bdelete<CR>", keymapOpts("Delete current buffer"))
 vim.keymap.set("n", "<Leader>bD", "<Cmd>bdelete!<CR>", keymapOpts("Force delete current buffer"))
 vim.keymap.set("n", "<Leader>bo", "<Cmd>%bdelete|e#|bdelete#<CR>", keymapOpts("Delete all buffers except current"))
-
-----------------------------
--- jump
-----------------------------
 vim.keymap.set("n", "<Leader>j;", "g;zz", keymapOpts("Go to previous jump"))
 vim.keymap.set("n", "<Leader>j,", "g,zz", keymapOpts("Go to next jump"))
 
