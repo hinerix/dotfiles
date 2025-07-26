@@ -1,5 +1,4 @@
-local utils = require("utils")
-local keymapOpts = utils.keymapOpts
+local keymapOpts = require("utils").keymapOpts
 
 vim.keymap.set({ "n", "v" }, "x", '"_x', keymapOpts("delete without yank"))
 vim.keymap.set({ "n", "v" }, "X", '"_d$', keymapOpts("delete to end of line without yank"))
