@@ -1,16 +1,11 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
+	lazy = false,
+	branch = "main",
 	event = { "BufReadPre", "BufNewFile" },
 	build = ":TSUpdate",
-	main = "nvim-treesitter.configs", -- optsで使用するモジュールを定義
-	opts = {
-		highlight = {
-			enable = true,
-		},
-		indent = {
-			enable = true,
-		},
-		ensure_installed = {
+	config = function()
+		require("nvim-treesitter").install({
 			"lua",
 			"markdown",
 			"typescript",
@@ -21,7 +16,6 @@ return {
 			"json",
 			"dockerfile",
 			"yaml",
-			"python",
-		},
-	},
+		})
+	end
 }
