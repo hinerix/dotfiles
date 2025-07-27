@@ -34,6 +34,7 @@ return {
 				["`"] = "actions.cd",
 				["~"] = "actions.tcd",
 				["g."] = "actions.toggle_hidden",
+				["g\\"] = "actions.toggle_trash",
 				["<C-s>"] = "actions.select_vsplit",
 				["<C-h>"] = "actions.select_split",
 				["<C-t>"] = "actions.select_tab",
