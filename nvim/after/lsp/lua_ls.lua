@@ -1,46 +1,58 @@
--- based on: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
+-- based on: https://zenn.dev/uga_rosa/articles/afe384341fc2e1
 
-return {
-	cmd = { "lua-language-server" },
-	filetypes = { "lua" },
-	on_init = function(client)
-		if client.workspace_folders then
-			local path = client.workspace_folders[1].name
-			if
-				path ~= vim.fn.stdpath("config")
-				and (vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc"))
-			then
-				return
-			end
+---@param names string[]
+---@return Iterator<string>
+local function get_plugin_paths(names)
+	local plugins = require("lazy.core.config").plugins
+	local paths = {}
+	for _, name in ipairs(names) do
+		if plugins[name] then
+			table.insert(paths, plugins[name].dir .. "/lua")
+		else
+			vim.notify("Invalid plugin name: " .. name)
 		end
+	end
+	return paths
+end
 
-		client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
-			runtime = {
-				-- Tell the language server which version of Lua you're using (most
-				-- likely LuaJIT in the case of Neovim)
-				version = "LuaJIT",
-				-- Tell the language server how to find Lua modules same way as Neovim
-				-- (see `:h lua-module-load`)
-				path = {
-					"lua/?.lua",
-					"lua/?/init.lua",
-				},
-			},
-			-- Make the server aware of Neovim runtime files
-			workspace = {
-				checkThirdParty = false,
-				library = {
-					vim.env.VIMRUNTIME,
-					"${3rd}/luv/library",
-					"${3rd}/busted/library",
-				},
-			},
-		})
-	end,
+---@param plugins string[]
+---@return string[]
+local function library(plugins)
+	local paths = get_plugin_paths(plugins)
+	table.insert(paths, vim.fn.stdpath("config") .. "/lua")
+	table.insert(paths, vim.env.VIMRUNTIME .. "/lua")
+	table.insert(paths, "${3rd}/luv/library")
+	table.insert(paths, "${3rd}/busted/library")
+	table.insert(paths, "${3rd}/luassert/library")
+	return paths
+end
+
+---@type vim.lsp.Config
+return {
 	settings = {
 		Lua = {
+      runtime = {
+        version = 'LuaJIT',
+				pathStrict = true,
+        path = {
+          'lua/?.lua',
+          'lua/?/init.lua',
+        },
+      },
+      workspace = {
+        checkThirdParty = false,
+        library = library({
+					"lazy.nvim",
+					"plenary.nvim",
+					"oil.nvim",
+					"nvim-lspconfig",
+				})
+			},
 			diagnostics = {
 				unusedLocalExclude = { "_*" },
+			},
+			format = {
+				enable = false,
 			},
 		},
 	},
