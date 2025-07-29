@@ -19,11 +19,10 @@ return {
     opts = {
 			ensure_installed = {
 				"lua_ls",
-				"stylua",
 				"vtsls",
 				"denols",
 				"biome",
-				"html-lsp",
+				"html",
 				"cssls",
 				"jsonls",
 			},
