@@ -43,7 +43,6 @@ return {
         checkThirdParty = false,
         library = library({
 					"lazy.nvim",
-					"plenary.nvim",
 					"oil.nvim",
 					"nvim-lspconfig",
 				})
