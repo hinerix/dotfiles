@@ -1,0 +1,14 @@
+[env]
+
+[font]
+normal = { family = "Hackgen Console", style = "Regular" }
+bold = { family = "Hackgen Console", style = "Bold" }
+italic = { family = "Hackgen Console", style = "Italic" }
+size = 12
+
+[window]
+padding = { x = 8, y = 8 }
+opacity = 0.7
+
+[mouse]
+hide_when_typing = true
