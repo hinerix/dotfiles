@@ -1,1 +1,1 @@
-set -gx EDITOR /opt/nvim/nvim
+set -gx EDITOR /usr/bin/nvim
