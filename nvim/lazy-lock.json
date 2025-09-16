@@ -28,7 +28,7 @@
   "oil-git-status.nvim": { "branch": "main", "commit": "4b5cf53842c17a09420919e655a6a559da3112d7" },
   "oil.nvim": { "branch": "master", "commit": "07f80ad645895af849a597d1cac897059d89b686" },
   "pum.vim": { "branch": "main", "commit": "03bba26c153d82f0dffc158acf58e499a7b082f3" },
-  "render-markdown.nvim": { "branch": "main", "commit": "2c6cf127c577712bd29d38f6391b3045c5f0180a" },
+  "render-markdown.nvim": { "branch": "main", "commit": "5b01324a5fce277183098eac0a2cdb9c1b446b73" },
   "skkeleton": { "branch": "main", "commit": "42b7b62062e5eb4ba157b9e8d12a104777bbd9b3" },
   "skkeleton-indicator.nvim": { "branch": "v2", "commit": "f08532787cf842b996c8a5065be7e85cd3376c1f" },
   "toggleterm.nvim": { "branch": "main", "commit": "50ea089fc548917cc3cc16b46a8211833b9e3c7c" },
