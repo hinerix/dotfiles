@@ -16,7 +16,7 @@ local function setup_im_mapping()
   _G.__scratchpad_ime_yank_and_close = yank_and_close
 
   -- skkeletonの初期化とキーマッピングの設定
-  require('skkeleton').initialize()
+	vim.fn["skkeleton#initialize"]()
 
   -- このバッファ限定のキーマッピングを設定
   local bufnr = 0 -- 0はカレントバッファを意味する
