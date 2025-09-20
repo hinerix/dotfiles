@@ -11,6 +11,7 @@ local function setup_im_mapping()
     -- バッファを強制的に閉じる（ウィンドウレイアウトに影響を与えないように）
     vim.cmd('bdelete!')
 		vim.cmd('IM')
+		vim.cmd('!hyprctl dispatch togglespecialworkspace VIME')
   end
 
   -- マッピングから呼び出せるように、上記関数をグローバルに登録
