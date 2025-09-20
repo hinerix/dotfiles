@@ -4,6 +4,7 @@ base 3-2
 base-devel 1-2
 bluez 5.83-1
 bluez-utils 5.83-1
+brightnessctl 0.5.1-3
 btop 1.4.4-1
 btrfs-progs 6.16.1-1
 firefox 143.0-1
@@ -30,10 +31,13 @@ pipewire-pulse 1:1.4.8-2
 reflector 2023-3
 ripgrep 14.1.1-1
 sudo-rs 0.2.8-2
+tree-sitter-cli 0.25.9-1
 ttf-cica 5.0.3-1
 ttf-hackgen 2.10.0-1
+unzip 6.0-23
 vim 9.1.1734-1
 waybar 0.14.0-1
 which 2.23-1
 wiremix 0.7.0-1
+wl-clipboard 1:2.2.1-3
 wofi 1.5.1-1
