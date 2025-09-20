@@ -16,6 +16,8 @@ vim.opt.showmode = false
 
 -- True Colorの有効化
 vim.opt.termguicolors = true
+vim.opt.winblend = 20
+vim.opt.pumblend = 20
 
 -- TabとIndent
 vim.opt.breakindent = true -- 折り返しにインデントを反映
