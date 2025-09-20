@@ -10,8 +10,7 @@ if test -z "$VIME"
 else
     if test (hyprctl activewindow -j | jq -r .class) = "VIME"
         # もしウィンドウがフォーカスされている場合
-				hyprctl dispatch movetoworkspace special
-				hyprctl dispatch togglespecialworkspace
+				hyprctl dispatch togglespecialworkspace VIME
     else
         # もしウィンドウがフォーカスされていない場合
         hyprctl dispatch focuswindow 'class:^(VIME)$'
