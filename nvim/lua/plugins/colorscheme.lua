@@ -9,6 +9,5 @@ return {
 				which_key = true,
 			},
 		})
-		vim.cmd([[colorscheme catppuccin-mocha]])
 	end,
 }
