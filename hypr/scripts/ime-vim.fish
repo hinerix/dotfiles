@@ -5,7 +5,7 @@ if test -z "$VIME"
         --class VIME \
         -o 'window.dimensions.columns=55' \
         -o 'window.dimensions.lines=18' \
-        -o 'window.opacity=0.5' \
+        -o 'window.opacity=0.4' \
         -e nvim -c ":IM" /var/tmp/ime-vim
 else
     if test (hyprctl activewindow -j | jq -r .class) = "VIME"
