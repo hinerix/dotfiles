@@ -9,10 +9,8 @@ if test -z "$VIME"
         -e nvim -c ":IM" /var/tmp/ime-vim
 else
     if test (hyprctl activewindow -j | jq -r .class) = "VIME"
-        # もしウィンドウがフォーカスされている場合
 				hyprctl dispatch togglespecialworkspace VIME
     else
-        # もしウィンドウがフォーカスされていない場合
         hyprctl dispatch focuswindow 'class:^(VIME)$'
 				hyprctl dispatch centerwindow
     end
