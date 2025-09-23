@@ -14,5 +14,6 @@ else
     else
         # もしウィンドウがフォーカスされていない場合
         hyprctl dispatch focuswindow 'class:^(VIME)$'
+				hyprctl dispatch centerwindow
     end
 end
