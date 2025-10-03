@@ -1,0 +1,13 @@
+[Unit]
+Description=rclone mount for Dropbox
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/rclone mount dropbox: /home/hinerix/Dropbox/ --vfs-cache-mode writes
+ExecStop=/usr/bin/fusermount3 -u /home/hinerix/Dropbox/
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target
