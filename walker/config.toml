@@ -1,11 +1,12 @@
 force_keyboard_focus = false    # forces keyboard forcus to stay in Walker
 close_when_open = true          # close walker when invoking while already opened
+click_to_close = true           # closes walker if clicking outside of the main content area
 selection_wrap = false          # wrap list if at bottom or top
 global_argument_delimiter = "#" # query: firefox#https://benz.dev => part after delimiter will be ignored when querying. this should be the same as in the elephant config
-keep_open_modifier = "shift"    # won't close on activation, but rather select the next item in the list
 exact_search_prefix = "'"       # disable fuzzy searching
 theme = "default"               # theme to use
 disable_mouse = false           # disable mouse (on input and list only)
+debug = false                   # enables debug printing for some stuff, f.e. keybinds
 
 [shell]
 anchor_top = true
@@ -17,20 +18,18 @@ anchor_right = true
 "default" = { input = "Search", list = "No Results" } # placeholders for input and empty list, key is the providers name, so f.e. "desktopapplications" or "menus:other"
 
 [keybinds]
-close = "Escape"
-next = "ctrl n"
-previous = "ctrl p"
-toggle_exact = "ctrl e"
-resume_last_query = "ctrl r"
+close = ["Escape"]
+next = ["ctrl n"]
+previous = ["ctrl p"]
+toggle_exact = ["ctrl e"]
+resume_last_query = ["ctrl r"]
 quick_activate = ["F1", "F2", "F3", "F4"]
 
 [providers]
 default = [
   "desktopapplications",
-  # "calc",
   "runner",
   "menus",
-  # "websearch",
 ] # providers to be queried by default
 empty = ["desktopapplications"] # providers to be queried when query is empty
 
@@ -46,94 +45,47 @@ provider = "files"
 prefix = "."
 provider = "symbols"
 
-# [[providers.prefixes]]
-# prefix = "!"
-# provider = "todo"
+[providers.actions]
+dmenu = [{ action = "select", default = true, bind = "Return" }]
 
-# [[providers.prefixes]]
-# prefix = "="
-# provider = "calc"
+providerlist = [
+  { action = "activate", default = true, bind = "Return", after = "ClearReload" },
+]
 
-# [[providers.prefixes]]
-# prefix = "@"
-# provider = "websearch"
+bluetooth = [
+  { action = "find", global = true, bind = "ctrl f", after = "AsyncClearReload" },
+  { action = "trust", bind = "ctrl t", after = "AsyncReload" },
+  { action = "untrust", bind = "ctrl t", after = "AsyncReload" },
+  { action = "pair", bind = "Return", after = "AsyncReload" },
+  { action = "remove", bind = "ctrl d", after = "AsyncReload" },
+  { action = "connect", bind = "Return", after = "AsyncReload" },
+  { action = "disconnect", bind = "Return", after = "AsyncReload" },
+]
 
-# [[providers.prefixes]]
-# prefix = ":"
-# provider = "clipboard"
+desktopapplications = [
+  { action = "start", default = true, bind = "Return" },
+  { action = "start", label = "open+next", bind = "shift Return", after = "KeepOpen" },
+  { action = "erase_history", label = "clear hist", bind = "ctrl h", after = "AsyncReload" },
+  { action = "pin", bind = "ctrl p", after = "AsyncReload" },
+  { action = "unpin", bind = "ctrl p", after = "AsyncReload" },
+  { action = "pinup", bind = "ctrl n", after = "AsyncReload" },
+  { action = "pindown", bind = "ctrl m", after = "AsyncReload" },
+]
 
-# [providers.archlinuxpkgs]
-# default = "install"
-# install = "Return"
-# remove = "ctrl d"
+files = [
+  { action = "open", default = true, bind = "Return" },
+  { action = "opendir", label = "open dir", bind = "ctrl Return" },
+  { action = "copypath", label = "copy path", bind = "ctrl shift c" },
+  { action = "copyfile", label = "copy file", bind = "ctrl c" },
+]
 
-# [providers.calc]
-# default = "copy"
-# copy = "Return"
-# save = "ctrl s"
-# delete = "ctrl d"
+runner = [
+  { action = "run", default = true, bind = "Return" },
+  { action = "runterminal", label = "run in terminal", bind = "shift Return" },
+  { action = "erase_history", label = "clear hist", bind = "ctrl h", after = "Reload" },
+]
 
-# [providers.websearch]
-# default = "search"
-# search = "Return"
-# remove_history = "ctrl BackSpace"
-
-[providers.providerlist]
-default = "activate"
-activate = "Return"
-
-# [providers.clipboard]
-# time_format = "%d.%m. - %H:%M" # format for the clipboard item date
-# default = "copy"
-# copy = "Return"
-# delete = "ctrl d"
-# edit = "ctrl o"
-# toggle_images_only = "ctrl i"
-
-[providers.desktopapplications]
-default = "start"
-start = "Return"
-start_keep_open = "shift Return"
-remove_history = "ctrl BackSpace"
-toggle_pin = "ctrl p"
-
-[providers.files]
-default = "open"
-open = "Return"
-open_dir = "ctrl Return"
-copy_path = "ctrl shift c"
-copy_file = "ctrl c"
-
-# [providers.todo]
-# default = "save"
-# save = "Return"
-# delete = "ctrl d"
-# mark_active = "ctrl a"
-# mark_done = "ctrl f"
-# clear = "ctrl x"
-
-[providers.runner]
-default = "start"
-start = "Return"
-start_terminal = "shift Return"
-remove_history = "ctrl BackSpace"
-
-[providers.dmenu]
-default = "select"
-select = "Return"
-
-[providers.symbols]
-default = "copy"
-copy = "Return"
-remove_history = "ctrl BackSpace"
-
-# [providers.unicode]
-# default = "copy"
-# copy = "Return"
-# remove_history = "ctrl BackSpace"
-
-[providers.menus]
-default = "activate"
-activate = "Return"
-remove_history = "ctrl BackSpace"
-
+symbols = [
+  { action = "run_cmd", label = "select", default = true, bind = "Return" },
+  { action = "erase_history", label = "clear hist", bind = "ctrl h", after = "Reload" },
+]
