@@ -8,7 +8,7 @@ if test -z $vime_client
     alacritty \
         --class $class_name \
         -o 'window.opacity=0.4' \
-        -e nvim -c ":IM" /var/tmp/VIME
+        -e nvim -c ":IM" -c "startinsert" /var/tmp/VIME
 # ウィンドウが既に存在する場合
 else
     # 現在アクティブなウィンドウが"VIME"かチェック

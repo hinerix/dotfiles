@@ -25,10 +25,8 @@ local function setup_im_mapping()
   local opts = { buffer = bufnr, noremap = true, silent = true }
   local cmd_str = '<Cmd>lua _G.__scratchpad_ime_yank_and_close()<CR>'
 
-  -- NormalモードでEnterキーにマッピング
-  vim.keymap.set('n', '<CR>', cmd_str, opts)
-  -- VisualモードでEnterキーにマッピング
-  vim.keymap.set('x', '<CR>', cmd_str, opts)
+  -- Enterキーにマッピング
+  vim.keymap.set({'n', 'i', 'x'}, '<CR>', cmd_str, opts)
 end
 
 -- :IM カスタムコマンドの作成
