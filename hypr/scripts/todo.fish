@@ -5,7 +5,7 @@ set todo_client (hyprctl clients -j | jq --arg cn "$class_name" -c '.[] | select
 if test -z $todo_client
     alacritty \
         --class $class_name \
-        -o 'window.opacity=0.4' \
+        -o 'window.opacity=0.7' \
         -e nvim ~/Dropbox/todo.txt
 else
     if string match -q -- $class_name (hyprctl activewindow -j | jq -r .class)

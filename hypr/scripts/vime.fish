@@ -7,7 +7,7 @@ if test -z $vime_client
     # 新しくウィンドウを作成
     alacritty \
         --class $class_name \
-        -o 'window.opacity=0.4' \
+        -o 'window.opacity=0.7' \
         -e nvim -c ":IM" /var/tmp/VIME
 # ウィンドウが既に存在する場合
 else
