@@ -12,11 +12,6 @@ return {
 		"Shougo/pum.vim",
 		"Shougo/ddc-ui-pum",
 		"vim-skk/skkeleton",
-		{
-			"L3MON4D3/LuaSnip",
-			version = "v2.*",
-			build = "make install_jsregexp",
-		},
 	},
 	config = function()
 		vim.fn["ddc#custom#patch_global"]("ui", "pum")
@@ -77,9 +72,6 @@ return {
 				["lsp"] = {
 					enableResolveItem = true,
 					enableAddtionalTextEdit = true,
-					snippetEngine = vim.fn["denops#callback#register"](function(body)
-						require("luasnip").lsp_expand(body)
-					end),
 				},
 			},
 		})
