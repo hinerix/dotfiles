@@ -1,12 +1,12 @@
 return {
-  'stevearc/oil.nvim',
-  ---@module 'oil'
-  ---@type oil.SetupOpts
+	"stevearc/oil.nvim",
+	---@module 'oil'
+	---@type oil.SetupOpts
 	dependencies = {
 		"refractalize/oil-git-status.nvim",
 		"nvim-tree/nvim-web-devicons",
 	},
-  lazy = false,
+	lazy = false,
 	cmd = { "Oil" },
 	keys = {
 		{

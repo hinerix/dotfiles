@@ -37,7 +37,7 @@ return {
 			nvim_treesitter.install(parsers_to_install)
 		end
 
-		vim.api.nvim_create_autocmd('FileType', {
+		vim.api.nvim_create_autocmd("FileType", {
 			pattern = languages,
 			callback = function()
 				vim.treesitter.start()
@@ -45,5 +45,5 @@ return {
 				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 			end,
 		})
-	end
+	end,
 }

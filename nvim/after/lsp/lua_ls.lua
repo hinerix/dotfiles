@@ -31,21 +31,21 @@ end
 return {
 	settings = {
 		Lua = {
-      runtime = {
-        version = 'LuaJIT',
+			runtime = {
+				version = "LuaJIT",
 				pathStrict = true,
-        path = {
-          'lua/?.lua',
-          'lua/?/init.lua',
-        },
-      },
-      workspace = {
-        checkThirdParty = false,
-        library = library({
+				path = {
+					"lua/?.lua",
+					"lua/?/init.lua",
+				},
+			},
+			workspace = {
+				checkThirdParty = false,
+				library = library({
 					"lazy.nvim",
 					"oil.nvim",
 					"nvim-lspconfig",
-				})
+				}),
 			},
 			diagnostics = {
 				unusedLocalExclude = { "_*" },

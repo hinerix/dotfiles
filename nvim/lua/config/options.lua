@@ -1,5 +1,5 @@
 -- 参考: https://zenn.dev/vim_jp/articles/c96e9b1bdb9241
-vim.env.XDG_STATE_HOME = '/tmp'
+vim.env.XDG_STATE_HOME = "/tmp"
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
@@ -53,7 +53,7 @@ vim.opt.swapfile = false
 
 -- Undoの履歴をファイルに保存
 vim.opt.undofile = true
-vim.opt.undodir = vim.env.XDG_STATE_HOME .. '/nvim/undo'
+vim.opt.undodir = vim.env.XDG_STATE_HOME .. "/nvim/undo"
 
 -- 行番号左側の記号を表示する
 vim.opt.signcolumn = "yes"
