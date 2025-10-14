@@ -27,7 +27,7 @@ set satty_options --filename - \
     --copy-command 'wl-copy'
 
 if $should_save
-    set -a satty_options --output-filename "$OUTPUT_DIR/screenshot-(date +'%Y-%m-%d_%H-%M-%S').png"
+    set -a satty_options --output-filename "$OUTPUT_DIR/screenshot-$(date +'%Y-%m-%d_%H-%M-%S').png"
     set -a satty_options --save-after-copy
 end
 
