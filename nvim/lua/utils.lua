@@ -19,4 +19,10 @@ M.debounce = function(func, wait)
 	end
 end
 
+M.get_node_root = function(bufnr)
+  local root_markers =
+    { 'package-lock.json', 'yarn.lock', 'pnpm-lock.yaml', 'bun.lockb', 'bun.lock' }
+  return vim.fs.root(bufnr, root_markers)
+end
+
 return M
