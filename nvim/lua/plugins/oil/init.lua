@@ -46,9 +46,10 @@ return {
 					return vim.tbl_contains(ignore_list, name)
 				end,
 			},
+			skip_confirm_for_simple_edits = true,
 			use_default_keymaps = false,
 			delete_to_trash = true,
-			experimental_watch_for_changes = false,
+			watch_for_changes = true,
 			win_options = {
 				signcolumn = "yes:2",
 			},
@@ -56,6 +57,6 @@ return {
 	end,
 	config = function(_, opts)
 		require("oil").setup(opts)
-		require("oil-git-status").setup()
+		require("oil-git-status").setup(_)
 	end,
 }
