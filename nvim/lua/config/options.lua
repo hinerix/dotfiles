@@ -11,9 +11,6 @@ vim.g.have_nerd_font = true
 vim.opt.mouse = "a"
 vim.opt.mousemoveevent = true
 
--- 行番号
-vim.opt.number = true
-
 -- lualineでステータスを表示してるので非表示に設定
 vim.opt.showmode = false
 
