@@ -17,6 +17,25 @@ return {
     if node_root then
       return on_dir(node_root)
     end
-
   end,
+	settings = {
+		typescript = {
+			inlayHints = {
+				parameterNames = {
+					enabled = "literals",
+					suppressWhenArgumentMatchesName = true,
+				},
+				parameterTypes = { enabled = false },
+				variableTypes = { enabled = false },
+				propertyDeclarationTypes = { enabled = true },
+				functionLikeReturnTypes = { enabled = false},
+				enumMemberValues = { enabled = true },
+			},
+			preferences = { preferTypeOnlyAutoImports = true },
+			preferGoToSourceDefinition = true,
+		},
+		javascript = {
+			preferGoToSourceDefinition = true,
+		},
+	},
 }
