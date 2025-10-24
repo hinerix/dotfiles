@@ -31,3 +31,50 @@ end
 
 -- :IM カスタムコマンドの作成
 vim.api.nvim_create_user_command("IM", setup_im_mapping, { force = true })
+
+
+-- File Path
+-- https://github.com/kawarimidoll/dotfiles/blob/3046503f26fb837e36a16db36e705a7a6f37ef69/.config/nvim/lua/mi/commands.lua#L140C1-L154C89
+local function get_range_str(opts)
+  if opts.range ~= 2 then
+    return ''
+  end
+  if opts.line1 == opts.line2 then
+    return '#L' .. opts.line1
+  end
+  return '#L' .. opts.line1 .. '-L' .. opts.line2
+end
+
+local function copy_path(opts, target)
+  local expr = '%'
+  if target == 'full path' then
+    expr = '%:p'
+  elseif target == 'dir name' then
+    expr = '%:p:h'
+  elseif target == 'file name' then
+    expr = '%:t'
+  end
+
+  local path = target == 'relative path' and vim.fs.relpath(vim.fn.getcwd(), vim.fn.expand('%:p'))
+    or vim.fn.expand(expr)
+  path = path .. get_range_str(opts)
+
+  vim.fn.setreg('+', path)
+  vim.notify('Copied ' .. target .. ': ' .. path)
+end
+
+vim.api.nvim_create_user_command('CopyFullPath', function(opts)
+  copy_path(opts, 'full path')
+end, { range = true, desc = 'Copy the full path of the current file to the clipboard' })
+
+vim.api.nvim_create_user_command('CopyRelativePath', function(opts)
+  copy_path(opts, 'relative path')
+end, { range = true, desc = 'Copy the relative path of the current file to the clipboard' })
+
+vim.api.nvim_create_user_command('CopyDirName', function(opts)
+  copy_path(opts, 'dir name')
+end, { range = true, desc = 'Copy the directory name of the current file to the clipboard' })
+
+vim.api.nvim_create_user_command('CopyFileName', function(opts)
+  copy_path(opts, 'file name')
+end, { range = true, desc = 'Copy the file name of the current file to the clipboard' })
