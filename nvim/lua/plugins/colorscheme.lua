@@ -9,6 +9,11 @@ return {
 				which_key = true,
 			},
 			transparent_background = true,
+			float = {
+				transparent = false,
+			},
+			no_italic = true,
+			no_underline = true,
 		})
 		vim.cmd([[colorscheme catppuccin-frappe]])
 	end,
