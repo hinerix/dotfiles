@@ -15,6 +15,6 @@ return {
 			no_italic = true,
 			no_underline = true,
 		})
-		vim.cmd([[colorscheme catppuccin-frappe]])
+		vim.cmd([[colorscheme catppuccin-mocha]])
 	end,
 }
