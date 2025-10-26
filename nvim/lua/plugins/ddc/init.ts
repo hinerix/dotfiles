@@ -15,15 +15,6 @@ export class Config extends BaseConfig {
 
 		args.contextBuilder.patchGlobal({
 			ui: "pum",
-			dynamicUi: async (denops, args: Record<string, unknown>) => {
-				const uiArgs = args as {
-					items: DdcItem[];
-				};
-				const mode = await fn.mode(denops);
-				return Promise.resolve(
-					mode !== "t" && uiArgs.items.length == 1 ? "inline" : "pum",
-				);
-			},
 			autoCompleteEvents: [
 				"InsertEnter",
 				"CmdlineEnter",

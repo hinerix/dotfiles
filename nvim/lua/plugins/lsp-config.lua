@@ -20,7 +20,11 @@ return {
 
 				vim.keymap.set('n', 'K', function ()
 					vim.lsp.buf.hover({ border = 'single' })
-				end, { buffer = bufnr })
+				end, { silent = true , buffer = bufnr })
+
+				vim.keymap.set('n', 'grs', function()
+					vim.lsp.buf.signature_help({ border = 'single' })
+				end, { desc = "vim.lsp.buf.signature_help()", silent = true, buffer = bufnr })
 
 			end
 		})
