@@ -22,17 +22,45 @@ return {
 		vim.fn["ddc#custom#load_config"](vim.fn.expand("~/.config/nvim/lua/plugins/ddc/init.ts"))
 		vim.fn["ddc#enable"]()
 
-		vim.keymap.set("i", "<C-n>", function()
+		vim.keymap.set({ "i", "c" }, "<c-n>", function()
 			if vim.fn["pum#visible"]() == true then
-				vim.fn["pum#map#select_relative"](1)
-			else
-				vim.fn["ddc#map#manual_complete"]()
+				return "<Cmd>call pum#map#insert_relative(+1)<CR>"
 			end
+			if vim.api.nvim_get_mode().mode == "c" then
+				return "<Cmd>call ddc#map#manual_complete()<CR>"
+			end
+			local col = vim.fn.col(".")
+			local line = vim.fn.getline(".")
+			if col > 1 and type(line) == "string" and string.match(vim.fn.strpart(line, col - 2), "%s") == nil then
+				return "<Cmd>call ddc#map#manual_complete()<CR>"
+			end
+			return "<c-n>"
+		end, { expr = true })
+		vim.keymap.set({ "i", "c" }, "<c-p>", function()
+			if vim.fn["pum#visible"]() then
+				return "<Cmd>call pum#map#insert_relative(-1)<CR>"
+			end
+			return "<c-p>"
+		end, { expr = true })
+		vim.keymap.set({ "i", "c" }, "<c-y>", function()
+			if vim.fn["pum#visible"]() then
+				return "<Cmd>call pum#map#confirm()<CR>"
+			end
+			return "<c-y>"
+		end, { expr = true })
+		vim.keymap.set({ "i", "c" }, "<c-c>", function()
+			if vim.fn["pum#visible"]() then
+				return "<Cmd>call pum#map#cancel()<CR>"
+			end
+			if vim.api.nvim_get_mode().mode == "c" then
+				return "<c-u><c-c>"
+			end
+			return "<c-c>"
+		end, { expr = true })
+
+		-- on insert
+		vim.keymap.set("i", "<c-x><c-f>", function()
+			vim.fn["ddc#map#manual_complete"]({ sources = { "file" } })
 		end)
-		vim.keymap.set("i", "<C-p>", "<Cmd>call pum#map#select_relative(-1)<CR>")
-		vim.keymap.set("i", "<C-y>", "<Cmd>call pum#map#confirm()<CR>")
-		vim.keymap.set("i", "<C-e>", "<Cmd>call pum#map#cancel()<CR>")
-		vim.keymap.set("i", "<C-f>", "<Cmd>call pum#map#select_relative_page(1)<CR>")
-		vim.keymap.set("i", "<C-b>", "<Cmd>call pum#map#select_relative_page(-1)<CR>")
 	end,
 }
