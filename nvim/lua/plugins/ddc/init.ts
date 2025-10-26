@@ -1,0 +1,182 @@
+import { BaseConfig, ConfigArguments } from "@shougo/ddc-vim/config";
+import type { Context, DdcItem } from "@shougo/ddc-vim/types";
+
+import * as fn from "@denops/std/function";
+
+export class Config extends BaseConfig {
+	override config(args: ConfigArguments): Promise<void> {
+
+		const sources = [
+			"lsp",
+			"shell_native",
+			"file",
+			"around",
+			"buffer",
+			"shell_history",
+		];
+
+		args.contextBuilder.patchGlobal({
+			ui: "pum",
+			dynamicUi: async (denops, args: Record<string, unknown>) => {
+				const uiArgs = args as {
+					items: DdcItem[];
+				};
+				const mode = await fn.mode(denops);
+				return Promise.resolve(
+					mode !== "t" && uiArgs.items.length == 1 ? "inline" : "pum",
+				);
+			},
+			dynamicSources: async (denops, args: Record<string, unknown>) => {
+				const sourceArgs = args as {
+				context: Context;
+				sources: string[];
+				};
+				const mode = await fn.mode(denops);
+				return Promise.resolve(
+					mode === "c" && await fn.getcmdtype(denops) === ":"
+						? ["shell_native", ...sourceArgs.sources]
+						: null,
+				);
+			},
+			autoCompleteEvents: [
+				"InsertEnter",
+				"CmdlineEnter",
+				"CmdlineChanged",
+				"TextChangedI",
+				"TextChangedP",
+				"TextChangedT",
+			],
+			sources: sources,
+			cmdlineSources: {
+				":": [
+					"cmdline",
+					"cmdline_history",
+					"around",
+				],
+				"@": [
+					"input",
+					"cmdline_history",
+					"file",
+					"around",
+				],
+				">": [
+					"input",
+					"cmdline_history",
+					"file",
+					"around",
+				],
+				"/": [
+					"around",
+					"line",
+				],
+				"?": [
+					"around",
+					"line",
+				],
+				"-": [
+					"around",
+					"line",
+				],
+				"=": [
+					"input",
+				],
+			},
+			sourceOptions: {
+				_: {
+					ignoreCase: true,
+					matchers: [ "matcher_fuzzy" ],
+					sorters: [ "sorter_fuzzy" ],
+					converters: [ "converter_fuzzy" ],
+					timeout: 1000,
+				},
+				around: { mark: "around" },
+				buffer: { mark: "buffer" },
+				cmdline: {
+					isVolatile: true,
+					mark: "cmdline",
+					matchers: [ "matcher_fuzzy" ],
+					sorters: [ "sorter_fuzzy" ],
+					forceCompletionPattern: String.raw`\S/\S*|\.\w*`,
+				},
+				cmdline_history: {
+					mark: "history",
+					sorters: [],
+				},
+				file: {
+					mark: "file",
+					isVolatile: true,
+					forceCompletionPattern: String.raw`\S/\S*`,
+				},
+				input: {
+					mark: "input",
+					forceCompletionPattern: String.raw`\S/\S*`,
+					isVolatile: true,
+					sorters: [ "sorter_fuzzy" ],
+				},
+				line: {
+					mark: "line",
+				},
+				lsp: {
+					mark: "lsp",
+					dup: "keep",
+					forceCompletionPattern: String.raw`\.\w*|::\w*|->\w*`,
+				},
+				shell_history: {
+					mark: "history",
+					sorters: [],
+				},
+				shell_native: {
+					mark: "sh",
+					isVolatile: true,
+					forceCompletionPattern: String.raw`\S/\S*`,
+					minAutoCompleteLength: 3,
+					sorters: [ "sorter_shell_history" ],
+				},
+				skkeleton: {
+					mark: "skk",
+					matchers: [],
+					sorters: [],
+					isVolatile: true,
+					minAutoCompleteLength: 2,
+				},
+				skkeleton_okuri: {
+					mark: "skk*",
+					matchers: [],
+					sorters: [],
+					isVolatile: true,
+					minAutoCompleteLength: 2,
+				},
+			},
+			sourceParams: {
+				around: { maxSize: 500 },
+				buffer: {
+					requireSameFiletype: false,
+					limitBytes: 50000,
+					fromAltBuf: true,
+					forceCollect: true,
+				},
+				file: {
+					filenameChars: "[:keyword:].",
+				},
+				lsp: {
+					enableAddtionalTextEdit: true,
+					enableDisplayDetail: true,
+					enableResolveItem: true,
+					confirmBehavior: "replace",
+				},
+				shell_history: {
+					paths: ["~/.local/share/fish/fish_history"],
+				},
+				shell_native: {
+					shell: "fish",
+				},
+			},
+			filterParams: {
+				sorter_shell_history: {
+					paths: ["~/.local/share/fish/fish_history"],
+				},
+			},
+		});
+		return Promise.resolve();
+	}
+}
