@@ -8,11 +8,9 @@ export class Config extends BaseConfig {
 
 		const sources = [
 			"lsp",
-			"shell_native",
 			"file",
 			"around",
 			"buffer",
-			"shell_history",
 		];
 
 		args.contextBuilder.patchGlobal({
@@ -24,18 +22,6 @@ export class Config extends BaseConfig {
 				const mode = await fn.mode(denops);
 				return Promise.resolve(
 					mode !== "t" && uiArgs.items.length == 1 ? "inline" : "pum",
-				);
-			},
-			dynamicSources: async (denops, args: Record<string, unknown>) => {
-				const sourceArgs = args as {
-				context: Context;
-				sources: string[];
-				};
-				const mode = await fn.mode(denops);
-				return Promise.resolve(
-					mode === "c" && await fn.getcmdtype(denops) === ":"
-						? ["shell_native", ...sourceArgs.sources]
-						: null,
 				);
 			},
 			autoCompleteEvents: [
@@ -121,17 +107,6 @@ export class Config extends BaseConfig {
 					dup: "keep",
 					forceCompletionPattern: String.raw`\.\w*|::\w*|->\w*`,
 				},
-				shell_history: {
-					mark: "history",
-					sorters: [],
-				},
-				shell_native: {
-					mark: "sh",
-					isVolatile: true,
-					forceCompletionPattern: String.raw`\S/\S*`,
-					minAutoCompleteLength: 3,
-					sorters: [ "sorter_shell_history" ],
-				},
 				skkeleton: {
 					mark: "skk",
 					matchers: [],
@@ -163,17 +138,6 @@ export class Config extends BaseConfig {
 					enableDisplayDetail: true,
 					enableResolveItem: true,
 					confirmBehavior: "replace",
-				},
-				shell_history: {
-					paths: ["~/.local/share/fish/fish_history"],
-				},
-				shell_native: {
-					shell: "fish",
-				},
-			},
-			filterParams: {
-				sorter_shell_history: {
-					paths: ["~/.local/share/fish/fish_history"],
 				},
 			},
 		});

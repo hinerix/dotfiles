@@ -8,19 +8,24 @@ return {
 		"Shougo/ddc-source-input",
 		"Shougo/ddc-source-cmdline",
 		"Shougo/ddc-source-cmdline_history",
-		"Shougo/ddc-source-shell_native",
-		"Shougo/ddc-source-shell_history",
 		"matsui54/ddc-source-buffer",
 		"LumaKernel/ddc-source-file",
 		"Shougo/ddc-filter-sorter_rank",
 		"tani/ddc-fuzzy",
 		"Shougo/pum.vim",
 		"Shougo/ddc-ui-pum",
+		"Shougo/ddc-ui-inline",
 		"vim-skk/skkeleton",
 	},
 	config = function()
 		vim.fn["ddc#custom#load_config"](vim.fn.expand("~/.config/nvim/lua/plugins/ddc/init.ts"))
 		vim.fn["ddc#enable"]()
+		vim.fn["pum#set_option"]({
+			preview = true,
+			preview_border = "single",
+			preview_width = 60,
+			preview_height = 20,
+		})
 
 		vim.keymap.set({ "i", "c" }, "<c-n>", function()
 			if vim.fn["pum#visible"]() == true then
