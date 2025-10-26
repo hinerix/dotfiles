@@ -11,6 +11,8 @@ export class Config extends BaseConfig {
 			"file",
 			"around",
 			"buffer",
+      "skkeleton",
+      "skkeleton_okuri",
 		];
 
 		args.contextBuilder.patchGlobal({
