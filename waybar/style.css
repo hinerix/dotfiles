@@ -75,7 +75,7 @@
 
 /* Simple Hover effect for clock module - BRIGHTER COLOR */
 #clock:hover {
-  background-color: rgba(153, 209, 219, 0.1); /* Brighter highlight */
+  background-color: rgb(41, 42, 53); /* Brighter highlight */
 }
 
 /* --- Right Modules (Single, Seamless Bar ) --- */
@@ -137,7 +137,7 @@
 }
 
 #clock {
-  color: #99d1db;
+  color: #c6d0f5;
   font-weight: 500;
 }
 
