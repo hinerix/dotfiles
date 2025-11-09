@@ -106,8 +106,8 @@
   },
   "pulseaudio": {
     "format": "{icon}  {volume}%",
-    "on-click": "alacritty --class=Wiremix -e wiremix",
-    "on-click-right": "pamixer -t",
+    "on-click": "pamixer -t",
+    "on-click-right": "alacritty --class=Wiremix -e wiremix",
     "scroll-step": 5,
     "format-muted": "󰝟",
     "format-icons": {
