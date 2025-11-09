@@ -14,6 +14,7 @@
     "bluetooth",
     "network",
     "pulseaudio",
+    "pulseaudio#mic",
 		"backlight",
     "battery"
   ],
@@ -111,8 +112,17 @@
     "format-muted": "󰝟",
     "format-icons": {
       "default": ["", "", ""]
-    }
+    },
+		"tooltip": false
   },
+	"pulseaudio#mic": {
+		"format": "{format_source}",
+    "on-click": "pamixer --default-source -t",
+    "scroll-step": 5,
+		"format-source": "",
+		"format-source-muted": "",
+		"tooltip": false
+	},
   "group/tray-expander": {
     "orientation": "inherit",
     "drawer": {
