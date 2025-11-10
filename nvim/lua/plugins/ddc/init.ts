@@ -1,7 +1,4 @@
 import { BaseConfig, ConfigArguments } from "jsr:@shougo/ddc-vim/config";
-import type { Context, DdcItem } from "jsr:@shougo/ddc-vim/types";
-
-import * as fn from "jsr:@denops/std/function";
 
 export class Config extends BaseConfig {
 	override config(args: ConfigArguments): Promise<void> {
