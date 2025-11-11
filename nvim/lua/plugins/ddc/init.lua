@@ -14,7 +14,6 @@ return {
 		"tani/ddc-fuzzy",
 		"Shougo/pum.vim",
 		"Shougo/ddc-ui-pum",
-		"Shougo/ddc-ui-inline",
 		"vim-skk/skkeleton",
 	},
 	config = function()
