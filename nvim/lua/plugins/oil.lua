@@ -17,7 +17,6 @@ return {
 		},
 	},
 	opts = function()
-		local custom_actions = require("plugins.oil.actions")
 		---@type oil.setupOpts
 		return {
 			keymaps = {
@@ -26,7 +25,6 @@ return {
 				["<CR>"] = "actions.select",
 				["-"] = "actions.parent",
 				["<C-p>"] = "actions.preview",
-				["gp"] = custom_actions.weztermPreview,
 				["<esc>"] = "actions.close",
 				["q"] = nil,
 				["<C-l>"] = "actions.refresh",
