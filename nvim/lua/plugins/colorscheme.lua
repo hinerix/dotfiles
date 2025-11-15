@@ -15,6 +15,7 @@ return {
 				return {
 					Pmenu = { bg = colors.surface0 },
 					PmenuSel = { bg = colors.green, fg = colors.base },
+					PmenuExtraSel = { bg = colors.green, fg = colors.base },
 					PmenuMatchSel = { fg = colors.surface2 },
 				}
 			end
