@@ -13,7 +13,7 @@ export class Config extends BaseConfig {
 		];
 
 		args.contextBuilder.patchGlobal({
-			ui: "pum",
+			ui: "native",
 			autoCompleteEvents: [
 				"InsertEnter",
 				"CmdlineEnter",
