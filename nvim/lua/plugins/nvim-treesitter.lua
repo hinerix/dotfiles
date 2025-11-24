@@ -1,49 +1,26 @@
+-- based on: https://github.com/atusy/dotfiles/blob/ca8458a7393366e8233a636b50bd87eb7fa375f7/dot_config/nvim/lua/plugins/nvim-treesitter.lua
 return {
 	"nvim-treesitter/nvim-treesitter",
 	branch = "main",
 	build = ":TSUpdate",
-	config = function()
-		local nvim_treesitter = require("nvim-treesitter")
-		local languages = {
-			"lua",
-			"markdown",
-			"typescript",
-			"tsx",
-			"javascript",
-			"html",
-			"css",
-			"json",
-			"jsonc",
-			"dockerfile",
-			"yaml",
-		}
-
-		local function list_to_set(list)
-			local set = {}
-			for _, item in ipairs(list) do
-				set[item] = true
-			end
-			return set
-		end
-
-		local installed_parsers = list_to_set(nvim_treesitter.get_installed("parsers"))
-		local parsers_to_install = {}
-		for _, lang in ipairs(languages) do
-			if not installed_parsers[lang] then
-				table.insert(parsers_to_install, lang)
-			end
-		end
-
-		if #parsers_to_install > 0 then
-			nvim_treesitter.install(parsers_to_install)
-		end
-
+	init = function()
 		vim.api.nvim_create_autocmd("FileType", {
-			pattern = languages,
-			callback = function()
-				vim.treesitter.start()
-				vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			group = vim.api.nvim_create_augroup("nvim-treesitter", {}),
+			callback = function(c)
+				local filetype = c.match
+				require("nvim-treesitter")
+				local ok = pcall(vim.treesitter.start, c.buf)
+				if ok then
+					return
+				end
+				-- on fail, retry after installing the parser
+				local lang = vim.treesitter.language.get_lang(filetype)
+				require("nvim-treesitter").install({ lang }):await(function(err)
+					if err then
+						vim.notify(err, vim.log.levels.ERROR, { title = "nvim-treesitter" })
+					end
+					pcall(vim.treesitter.start, c.buf)
+				end)
 			end,
 		})
 	end,
