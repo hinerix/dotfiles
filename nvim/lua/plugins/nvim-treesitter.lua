@@ -13,6 +13,7 @@ return {
 			"html",
 			"css",
 			"json",
+			"jsonc",
 			"dockerfile",
 			"yaml",
 		}
