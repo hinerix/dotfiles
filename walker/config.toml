@@ -53,13 +53,13 @@ providerlist = [
 ]
 
 bluetooth = [
-  { action = "find", global = true, bind = "ctrl f", after = "AsyncClearReload" },
+  { action = "find", bind = "ctrl f", after = "AsyncClearReload" },
+  { action = "remove", bind = "ctrl d", after = "AsyncReload" },
   { action = "trust", bind = "ctrl t", after = "AsyncReload" },
   { action = "untrust", bind = "ctrl t", after = "AsyncReload" },
   { action = "pair", bind = "Return", after = "AsyncReload" },
-  { action = "remove", bind = "ctrl d", after = "AsyncReload" },
-  { action = "connect", bind = "Return", after = "AsyncReload" },
-  { action = "disconnect", bind = "Return", after = "AsyncReload" },
+  { action = "connect", default = true, bind = "Return", after = "AsyncReload" },
+  { action = "disconnect", default = true, bind = "Return", after = "AsyncReload" },
 ]
 
 desktopapplications = [
