@@ -1,5 +1,5 @@
 #!/usr/bin/fish
-set -l class_name "Spotify"
+set -l class_name "spotify"
 set spotify_client (hyprctl clients -j | jq --arg cn "$class_name" -c '.[] | select(.class == $cn)')
 
 if test -z $spotify_client
