@@ -10,14 +10,16 @@ if test -z $vime_client
         -o 'window.opacity=0.7' \
         -e nvim -c ":IM" /var/tmp/VIME
 # ウィンドウが既に存在する場合
-else
-    # 現在アクティブなウィンドウが"VIME"かチェック
-    if string match -q -- $class_name (hyprctl activewindow -j | jq -r .class)
-        # そうであれば、special workspace表示をトグルする
-        hyprctl dispatch togglespecialworkspace $class_name
-    else
-        # 違っていれば、"VIME"ウィンドウにフォーカスを移して中央に表示
-        hyprctl dispatch focuswindow "class:^($class_name)\$"
-        hyprctl dispatch centerwindow
-    end
+
+# special workspaceが共存できず、slackとVIMEの運用が微妙になってしまったので、VIMEウインドウを毎回消す運用にした
+# else
+#     # 現在アクティブなウィンドウが"VIME"かチェック
+#     if string match -q -- $class_name (hyprctl activewindow -j | jq -r .class)
+#         # そうであれば、special workspace表示をトグルする
+#         hyprctl dispatch togglespecialworkspace $class_name
+#     else
+#         # 違っていれば、"VIME"ウィンドウにフォーカスを移して中央に表示
+#         hyprctl dispatch focuswindow "class:^($class_name)\$"
+#         hyprctl dispatch centerwindow
+#     end
 end
