@@ -18,7 +18,7 @@ return {
 					PmenuExtraSel = { bg = colors.green, fg = colors.base },
 					PmenuMatchSel = { fg = colors.surface2 },
 				}
-			end
+			end,
 		})
 		vim.cmd([[colorscheme catppuccin-mocha]])
 	end,

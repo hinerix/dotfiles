@@ -9,12 +9,16 @@ return {
 			callback = function(c)
 				local filetype = c.match
 				local ok = pcall(vim.treesitter.start, c.buf)
-				if ok then return end
+				if ok then
+					return
+				end
 
 				-- on fail, retry after installing the parser
 				local ts = require("nvim-treesitter")
 				local lang = vim.treesitter.language.get_lang(filetype)
-				if not lang then return end
+				if not lang then
+					return
+				end
 				local available_langs = ts.get_available(2)
 
 				if not vim.tbl_contains(available_langs, lang) then
