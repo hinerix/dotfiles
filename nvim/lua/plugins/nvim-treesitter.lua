@@ -8,14 +8,20 @@ return {
 			group = vim.api.nvim_create_augroup("nvim-treesitter", {}),
 			callback = function(c)
 				local filetype = c.match
-				require("nvim-treesitter")
 				local ok = pcall(vim.treesitter.start, c.buf)
-				if ok then
+				if ok then return end
+
+				-- on fail, retry after installing the parser
+				local ts = require("nvim-treesitter")
+				local lang = vim.treesitter.language.get_lang(filetype)
+				if not lang then return end
+				local available_langs = ts.get_available(2)
+
+				if not vim.tbl_contains(available_langs, lang) then
 					return
 				end
-				-- on fail, retry after installing the parser
-				local lang = vim.treesitter.language.get_lang(filetype)
-				require("nvim-treesitter").install({ lang }):await(function(err)
+
+				ts.install({ lang }):await(function(err)
 					if err then
 						vim.notify(err, vim.log.levels.ERROR, { title = "nvim-treesitter" })
 					end
