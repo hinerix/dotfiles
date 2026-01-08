@@ -8,7 +8,7 @@ local function setup_im_mapping()
 		-- 取得した行を改行で連結し、クリップボードレジスタ(+)に設定
 		vim.fn.setreg("+", table.concat(lines, "\n"))
 
-		-- バッファを強制的に閉じる（ウィンドウレイアウトに影響を与えないように）
+		-- バッファを強制的に閉じる
 		vim.cmd("bdelete!")
 		vim.cmd("IM")
 		vim.cmd("silent !hyprctl dispatch togglespecialworkspace VIME")
@@ -25,11 +25,9 @@ local function setup_im_mapping()
 	local opts = { buffer = bufnr, noremap = true, silent = true }
 	local cmd_str = "<Cmd>lua _G.__scratchpad_ime_yank_and_close()<CR>"
 
-	-- Enterキーにマッピング
 	vim.keymap.set({ "n", "x" }, "<CR>", cmd_str, opts)
 end
 
--- :IM カスタムコマンドの作成
 vim.api.nvim_create_user_command("IM", setup_im_mapping, { force = true })
 
 
