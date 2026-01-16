@@ -106,6 +106,7 @@
   },
   "pulseaudio": {
     "format": "{icon}  {volume}%",
+    "format-bluetooth": "{icon}  {volume}%",
     "on-click": "pamixer -t",
     "on-click-right": "alacritty --class=Wiremix -e wiremix",
     "scroll-step": 5,
