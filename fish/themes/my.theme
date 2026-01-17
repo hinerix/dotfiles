@@ -1,12 +1,12 @@
-fish_color_autosuggestion brblack --theme=default 
-fish_color_cancel -r --theme=default 
-fish_color_command normal --theme=default 
-fish_color_comment red --theme=default 
-fish_color_cwd green --theme=default 
-fish_color_cwd_root red --theme=default 
-fish_color_end green --theme=default 
-fish_color_error brred --theme=default 
-fish_color_escape brcyan --theme=default 
+fish_color_autosuggestion 707A8C --theme=ayu-mirage 
+fish_color_cancel -r --theme=ayu-mirage 
+fish_color_command 5CCFE6 --theme=ayu-mirage 
+fish_color_comment 5C6773 --theme=ayu-mirage 
+fish_color_cwd 73D0FF --theme=ayu-mirage 
+fish_color_cwd_root red --theme=ayu-mirage 
+fish_color_end F29E74 --theme=ayu-mirage 
+fish_color_error FF3333 --theme=ayu-mirage 
+fish_color_escape 95E6CB --theme=ayu-mirage 
 fish_color_hg_added green 
 fish_color_hg_clean green 
 fish_color_hg_copied magenta 
@@ -16,20 +16,21 @@ fish_color_hg_modified yellow
 fish_color_hg_renamed magenta 
 fish_color_hg_unmerged red 
 fish_color_hg_untracked yellow 
-fish_color_history_current --bold --theme=default 
-fish_color_host normal --theme=default 
-fish_color_host_remote yellow --theme=default 
-fish_color_normal normal --theme=default 
-fish_color_operator brcyan --theme=default 
-fish_color_param cyan --theme=default 
-fish_color_quote yellow --theme=default 
-fish_color_redirection cyan --bold --theme=default 
-fish_color_search_match white --background=brblack --bold --theme=default 
-fish_color_selection white --background=brblack --bold --theme=default 
-fish_color_status red --theme=default 
-fish_color_user brgreen --theme=default 
-fish_color_valid_path --underline --theme=default 
-fish_pager_color_description yellow --italics --theme=default 
-fish_pager_color_prefix normal --bold --underline --theme=default 
-fish_pager_color_progress brwhite --background=cyan --bold --theme=default 
-fish_pager_color_selected_background -r --theme=default 
+fish_color_history_current --bold --theme=ayu-mirage 
+fish_color_host normal --theme=ayu-mirage 
+fish_color_host_remote yellow --theme=ayu-mirage 
+fish_color_normal CBCCC6 --theme=ayu-mirage 
+fish_color_operator FFCC66 --theme=ayu-mirage 
+fish_color_param CBCCC6 --theme=ayu-mirage 
+fish_color_quote BAE67E --theme=ayu-mirage 
+fish_color_redirection D4BFFF --theme=ayu-mirage 
+fish_color_search_match --background=FFCC66 --bold --theme=ayu-mirage 
+fish_color_selection --background=FFCC66 --bold --theme=ayu-mirage 
+fish_color_status red --theme=ayu-mirage 
+fish_color_user brgreen --theme=ayu-mirage 
+fish_color_valid_path --underline --theme=ayu-mirage 
+fish_pager_color_completion normal --theme=ayu-mirage 
+fish_pager_color_description B3A06D yellow --theme=ayu-mirage 
+fish_pager_color_prefix normal --bold --underline --theme=ayu-mirage 
+fish_pager_color_progress brwhite --background=cyan --bold --theme=ayu-mirage 
+fish_pager_color_selected_background --background=FFCC66 --theme=ayu-mirage 
