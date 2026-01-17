@@ -107,13 +107,13 @@
   "pulseaudio": {
     "format": "{icon}  {volume}%",
     "format-bluetooth": "{icon}  {volume}%",
-    "on-click": "pamixer -t",
-    "on-click-right": "alacritty --class=Wiremix -e wiremix",
-    "scroll-step": 5,
     "format-muted": "󰝟",
     "format-icons": {
       "default": ["", "", ""]
     },
+    "on-click": "pamixer -t",
+    "on-click-right": "alacritty --class=Wiremix -e wiremix",
+    "scroll-step": 5,
 		"tooltip": false
   },
 	"pulseaudio#mic": {
