@@ -11,8 +11,8 @@ return {
 				-- https://github.com/kawarimidoll/dotfiles/blob/13a3cfc20fd0bcd748a2d49f3e47ad4d5eba8b5e/.config/nvim/deprecated/minideps.lua#L148C1-L154C10
 				local bufnr = args.buf
 				local client = vim.lsp.get_client_by_id(args.data.client_id)
-				if client and client:supports_method("text/Document/inlayHint", bufnr) then
-					vim.lsp.inlay_hint.enable(true, { bufnr })
+			if client and client:supports_method("text/Document/inlayHint", bufnr) then
+					-- vim.lsp.inlay_hint.enable(true, { bufnr })
 					vim.keymap.set("n", "grh", function()
 						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr }), { bufnr })
 					end, { desc = "Toggle inlayHints" })
