@@ -9,12 +9,8 @@ return {
 			completions = { blink = { enabled = true } },
 			sign = { enabled = false },
 			latex = { enabled = false },
-			heading = {
-				render_modes = true,
-				icons = { "󰬺  ", "󰬻  ", "󰬼  ", "󰬽  ", "󰬾  ", "󰬿  " },
-				position = "inline",
-				backgrounds = {},
-			},
+			heading = { enabled = false },
+			bullet = { enabled = false },
 			checkbox = {
 				unchecked = { icon = "󰄱 " },
 				checked = { icon = "󰄵 " },
