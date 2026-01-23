@@ -57,4 +57,4 @@ vim.opt.signcolumn = "yes"
 vim.opt.inccommand = "split"
 
 -- カーソルのスクロール開始行数
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 8
