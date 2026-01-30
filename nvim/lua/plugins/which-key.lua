@@ -33,6 +33,7 @@ return {
 			{ "<Leader>j", group = "Jump" },
 			{ "<Leader>f", group = "Telescope" },
 			{ "<Leader>h", group = "Hunk" },
+			{ "<Leader>s", group = "Sqls" },
 		})
 	end,
 }
