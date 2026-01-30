@@ -26,6 +26,7 @@ return {
 			"html",
 			"cssls",
 			"jsonls",
+			"sqls",
 		},
 	},
 }
