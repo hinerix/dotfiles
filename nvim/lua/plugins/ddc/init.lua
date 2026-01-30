@@ -12,8 +12,6 @@ return {
 		"LumaKernel/ddc-source-file",
 		"Shougo/ddc-filter-sorter_rank",
 		"tani/ddc-fuzzy",
-		-- "Shougo/pum.vim",
-		{ dir = "~/dev/pum.vim", dev = true },
 		"Shougo/ddc-ui-pum",
 		"Shougo/ddc-ui-native",
 		"vim-skk/skkeleton",
