@@ -573,7 +573,7 @@ later(function()
     shading_factor = 2,
     start_in_insert = true,
     persist_size = true,
-    direction = 'horizontal',
+    direction = 'float',
     close_on_exit = true,
   })
 
