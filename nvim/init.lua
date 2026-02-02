@@ -126,7 +126,7 @@ now(function()
   vim.cmd.colorscheme('catppuccin-mocha')
 end)
 
-later(function()
+now(function()
   require('config.commands')
 end)
 
@@ -697,7 +697,7 @@ later(function()
   vim.fn["ddc#custom#load_config"](vim.fn.expand("~/.config/nvim/lua/plugins/ddc/init.ts"))
 end)
 
-later(function()
+now(function()
   add({
     source = 'https://github.com/vim-skk/skkeleton',
     depends = { 'https://github.com/vim-denops/denops.vim' },
@@ -728,24 +728,22 @@ later(function()
       skkeleton_init()
     end,
   })
+  vim.api.nvim_create_autocmd('User', {
+    pattern = 'skkeleton-enable-pre',
+    callback = function()
+      vim.b.minicompletion_disable = true
+      vim.fn["ddc#enable"]()
+    end,
+  })
+  vim.api.nvim_create_autocmd('User', {
+    pattern = 'skkeleton-disable-pre',
+    callback = function()
+      vim.b.minicompletion_disable = false
+      vim.fn["ddc#disable"]()
+    end,
+  })
   vim.keymap.set({ 'i', 'c', 't' }, '<C-j>', '<Plug>(skkeleton-enable)', { noremap = false })
 end)
-
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'skkeleton-enable-pre',
-  callback = function()
-    vim.b.minicompletion_disable = true
-    vim.fn["ddc#enable"]()
-  end,
-})
-
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'skkeleton-disable-pre',
-  callback = function()
-    vim.b.minicompletion_disable = false
-    vim.fn["ddc#disable"]()
-  end,
-})
 
 later(function()
   add('https://github.com/delphinus/skkeleton-indicator.nvim')
