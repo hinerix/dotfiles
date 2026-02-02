@@ -1,6 +1,6 @@
---- based on: https://zenn.dev/kawarimidoll/articles/b202e546bca344
+-- https://zenn.dev/kawarimidoll/articles/b202e546bca344
 
-local get_node_root = require("utils").get_node_root
+local get_node_root = require("config.utils").get_node_root
 
 ---@type vim.lsp.Config
 return {

@@ -1,32 +1,31 @@
--- based on: https://github.com/kawarimidoll/dotfiles/blob/master/.config/nvim/after/lsp/lua_ls.lua
-
 local function has_luarc(path)
-	return vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc")
+  return vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc')
 end
 return {
-	on_init = function(client)
-		if client.workspace_folders then
-			local path = client.workspace_folders[1].name
-			if path ~= vim.fn.stdpath("config") and has_luarc(path) then
-				return
-			end
-		end
-		client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
-			runtime = { version = "LuaJIT" },
-			workspace = {
-				checkThirdParty = false,
-				library = vim.list_extend(vim.api.nvim_get_runtime_file("lua", true), {
-					"${3rd}/luv/library",
-					"${3rd}/busted/library",
-				}),
-			},
-		})
-	end,
-	settings = {
-		Lua = {
-			diagnostics = {
-				unusedLocalExclude = { "_*" },
-			},
-		},
-	},
+  on_init = function(client)
+    if client.workspace_folders then
+      local path = client.workspace_folders[1].name
+      if path ~= vim.fn.stdpath('config') and has_luarc(path) then
+        return
+      end
+    end
+    client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+      runtime = { version = 'LuaJIT' },
+      workspace = {
+        checkThirdParty = false,
+        library = vim.list_extend(vim.api.nvim_get_runtime_file('lua', true), {
+          '${3rd}/luv/library',
+          '${3rd}/busted/library',
+          -- vim.env.XDG_CONFIG_HOME .. '/lua_ls',
+        }),
+      },
+    })
+  end,
+  settings = {
+    Lua = {
+      diagnostics = {
+        unusedLocalExclude = { '_*' },
+      },
+    },
+  },
 }
