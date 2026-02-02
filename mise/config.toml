@@ -6,6 +6,7 @@ pnpm = 'latest'
 rust = 'latest'
 'npm:@google/gemini-cli' = 'latest'
 'aqua:LuaLS/lua-language-server' = 'latest'
+"github:sqls-server/sqls" = "latest"
 
 [settings]
 trusted_config_paths = [
