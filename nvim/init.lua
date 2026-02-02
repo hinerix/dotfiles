@@ -109,8 +109,14 @@ local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 
 now(function()
   add('https://github.com/catppuccin/nvim')
-  local catppuccin = require("catppuccin")
+  local catppuccin = require('catppuccin')
   catppuccin.setup({
+    integrations = {
+      mini = {
+        enabled = true,
+        indentscope_color = 'sky',
+      },
+    },
     transparent_background = true,
     no_italic = true,
     no_underline = true,
