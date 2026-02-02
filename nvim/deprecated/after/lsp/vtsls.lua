@@ -1,6 +1,6 @@
--- https://github.com/kawarimidoll/dotfiles/blob/master/.config/nvim/after/lsp/denols.lua
+--- based on: https://github.com/kawarimidoll/dotfiles/blob/master/.config/nvim/after/lsp/denols.lua
 
-local get_node_root = require("config.utils").get_node_root
+local get_node_root = require("utils").get_node_root
 
 ---@type vim.lsp.Config
 return {

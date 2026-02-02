@@ -17,12 +17,14 @@ vim.opt.showmode = false
 -- True Colorの有効化
 vim.opt.termguicolors = true
 
--- TabとIndent
+-- use 2-spaces indent
 vim.opt.breakindent = true -- 折り返しにインデントを反映
 local tabwith = 2
 vim.opt.tabstop = tabwith -- タブ文字の幅
 vim.opt.shiftwidth = tabwith -- 自動インデント時のインデント幅
 vim.opt.softtabstop = tabwith -- タブ押下時に挿入されるスペース
+vim.opt.shiftround = true
+vim.opt.expandtab = true
 vim.opt.list = true -- 不可視文字の可視化（タブや改行など）
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" } -- 不可視文字に文字を割り当て（trail=行末スペース, nbsp=改行不可のスペース）
 
@@ -31,10 +33,8 @@ vim.opt.wrapscan = true -- 最後の検索候補の次の検索で最初に戻�
 vim.opt.ignorecase = true -- 検索時に大文字小文字を無視する
 vim.opt.smartcase = true -- 検索に大文字を入力した場合は大文字を考慮する
 
--- clipboard(起動時間短縮のため、少し遅らせて実行)
-vim.schedule(function()
-	vim.opt.clipboard = "unnamedplus"
-end)
+-- share clipboard with OS
+vim.opt.clipboard:append('unnamedplus', 'unnamed')
 
 -- cursor lineをハイライト
 vim.opt.cursorline = true
@@ -56,5 +56,8 @@ vim.opt.signcolumn = "yes"
 -- コマンドの結果をプレビューできる
 vim.opt.inccommand = "split"
 
--- カーソルのスクロール開始行数
-vim.opt.scrolloff = 8
+-- scroll offset as 3 lines
+vim.opt.scrolloff = 3
+
+-- move the cursor to the previous/next line across the first/last character
+vim.opt.whichwrap = 'b,s,h,l,<,>,[,],~'
