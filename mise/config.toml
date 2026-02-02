@@ -1,7 +1,13 @@
 [tools]
-node = "latest"
-deno = "latest"
-bun = "latest"
-pnpm = "latest"
-rust = "latest"
-"npm:@google/gemini-cli" = "latest"
+node = 'latest'
+deno = 'latest'
+bun = 'latest'
+pnpm = 'latest'
+rust = 'latest'
+'npm:@google/gemini-cli' = 'latest'
+'aqua:LuaLS/lua-language-server' = 'latest'
+
+[settings]
+trusted_config_paths = [
+    "~/dotfiles/mise/config.toml"
+]
