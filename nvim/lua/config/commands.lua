@@ -62,6 +62,7 @@ local function get_range_str(opts)
   end
   return '#L' .. opts.line1 .. '-L' .. opts.line2
 end
+
 local function copy_path(opts, target)
   local expr = '%'
   if target == 'full path' then
@@ -76,7 +77,7 @@ local function copy_path(opts, target)
     or vim.fn.expand(expr)
   path = path .. get_range_str(opts)
 
-  vim.fn.setreg('*', path)
+  vim.fn.setreg('+', path)
   vim.notify('Copied ' .. target .. ': ' .. path)
 end
 
