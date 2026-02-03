@@ -693,11 +693,6 @@ later(function()
       'https://github.com/vim-denops/denops.vim',
       'https://github.com/vim-skk/skkeleton',
       'https://github.com/Shougo/ddc-ui-native',
-      'https://github.com/Shougo/ddc-source-around',
-      'https://github.com/Shougo/ddc-source-input',
-      'https://github.com/matsui54/ddc-source-buffer',
-      'https://github.com/Shougo/ddc-filter-sorter_rank',
-      'https://github.com/tani/ddc-fuzzy',
     }
   })
   vim.fn["ddc#custom#load_config"](vim.fn.expand("~/.config/nvim/lua/plugins/ddc/init.ts"))
@@ -737,7 +732,9 @@ now(function()
   vim.api.nvim_create_autocmd('User', {
     pattern = 'skkeleton-enable-pre',
     callback = function()
+    local ddc_events_list = { 'InsertEnter', 'TextChangedI', 'TextChangedP', 'TextChangedT' }
       vim.b.minicompletion_disable = true
+      vim.fn['ddc#custom#patch_global']('autoCompleteEvents', ddc_events_list)
       vim.fn["ddc#enable"]()
     end,
   })
@@ -745,7 +742,7 @@ now(function()
     pattern = 'skkeleton-disable-pre',
     callback = function()
       vim.b.minicompletion_disable = false
-      vim.fn["ddc#disable"]()
+      vim.fn['ddc#custom#patch_global']('autoCompleteEvents', {})
     end,
   })
   vim.keymap.set({ 'i', 'c', 't' }, '<C-j>', '<Plug>(skkeleton-enable)', { noremap = false })
