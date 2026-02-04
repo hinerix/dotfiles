@@ -3,11 +3,10 @@ local function setup_im_mapping()
     local function yank_and_close()
         local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
         vim.fn.setreg("+", table.concat(lines, "\n"))
-        vim.cmd("Bufdelete!")
-        vim.cmd("IM")
+        vim.api.nvim_buf_set_lines(0, 0, -1, false, {})
+        vim.bo.modified = false
         vim.cmd("silent !hyprctl dispatch focuscurrentorlast")
     end
-    vim.fn["skkeleton#initialize"]()
     vim.keymap.set({ "n", "x" }, "<CR>", yank_and_close, { buffer = 0, noremap = true, silent = true })
 end
 vim.api.nvim_create_user_command("IM", setup_im_mapping, { force = true })
