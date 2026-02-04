@@ -3,5 +3,7 @@ if status is-interactive
 
 	#activate mise
 	#~/.local/bin/mise activate fish | source
+  # theme
+  fish_config theme choose catppuccin-mocha
 
 end
