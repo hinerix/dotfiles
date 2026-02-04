@@ -5,6 +5,8 @@ if status is-interactive
 	/usr/bin/mise activate fish | source
 
   # theme
-  fish_config theme choose catppuccin-mocha
+  if test "$TERM" != "linux"
+    fish_config theme choose catppuccin-mocha --color-theme=dark
+  end
 
 end

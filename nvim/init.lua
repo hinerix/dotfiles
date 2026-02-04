@@ -140,8 +140,6 @@ later(function()
   require('config.keymaps')
 end)
 
-
-
 now(function()
   require('mini.icons').setup()
 end)
