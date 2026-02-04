@@ -445,15 +445,12 @@ end)
 later(function()
   require('mini.bufremove').setup()
 
-  vim.api.nvim_create_user_command(
-    'Bufdelete',
-    function()
-      MiniBufremove.delete()
-    end,
-    { desc = 'Remove buffer' }
+  vim.api.nvim_create_user_command( 'Bufdelete', function(opts)
+      MiniBufremove.delete(0, opts.bang)
+    end, { desc = 'Remove buffer', bang = true }
   )
   vim.keymap.set('n', '<space>bd', '<Cmd>Bufdelete<CR>', { desc = 'Delete current buffer' })
-  vim.keymap.set('n', '<space>bo', '<Cmd>%bdelete|e#|bdelete#<CR>', { desc = 'Delete all buffers except current' })
+  vim.keymap.set('n', '<space>bD', '<Cmd>Bufdelete!<CR>', { desc = 'Delete current buffer' })
 end)
 
 now(function()
