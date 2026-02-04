@@ -1,24 +1,14 @@
--- for VIME
+-- VIME
 local function setup_im_mapping()
-	local function yank_and_close()
-		-- カレントバッファ(0)のすべての行を取得
-		local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
-		-- 取得した行を改行で連結し、クリップボードレジスタ(+)に設定
-		vim.fn.setreg("+", table.concat(lines, "\n"))
-		-- バッファを強制的に閉じる
-		vim.cmd("bdelete!")
-		vim.cmd("IM")
-		vim.cmd("silent !hyprctl dispatch focuscurrentorlast")
-	end
-	-- マッピングから呼び出せるように、上記関数をグローバルに登録
-	_G.__scratchpad_ime_yank_and_close = yank_and_close
-	-- skkeletonの初期化とキーマッピングの設定
-	vim.fn["skkeleton#initialize"]()
-	-- このバッファ限定のキーマッピングを設定
-	local bufnr = 0 -- 0はカレントバッファを意味する
-	local opts = { buffer = bufnr, noremap = true, silent = true }
-	local cmd_str = "<Cmd>lua _G.__scratchpad_ime_yank_and_close()<CR>"
-	vim.keymap.set({ "n", "x" }, "<CR>", cmd_str, opts)
+    local function yank_and_close()
+        local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+        vim.fn.setreg("+", table.concat(lines, "\n"))
+        vim.cmd("Bufdelete!")
+        vim.cmd("IM")
+        vim.cmd("silent !hyprctl dispatch focuscurrentorlast")
+    end
+    vim.fn["skkeleton#initialize"]()
+    vim.keymap.set({ "n", "x" }, "<CR>", yank_and_close, { buffer = 0, noremap = true, silent = true })
 end
 vim.api.nvim_create_user_command("IM", setup_im_mapping, { force = true })
 
