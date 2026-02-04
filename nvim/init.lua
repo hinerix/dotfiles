@@ -191,10 +191,12 @@ now(function()
 end)
 
 now(function()
-  require('mini.notify').setup()
-  vim.notify = require('mini.notify').make_notify({
-    ERROR = { duration = 10000 }
+  require('mini.notify').setup({
+    lsp_progress = {
+      enable = false,
+    },
   })
+  vim.notify = require('mini.notify').make_notify()
   vim.api.nvim_create_user_command('NotifyHistory', function()
     MiniNotify.show_history()
   end, { desc = 'Show notify history' })
