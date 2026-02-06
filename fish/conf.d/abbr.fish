@@ -1,3 +1,3 @@
-abbr ls ls -l
+abbr ls ls -lh
 abbr vi nvim
 abbr pn pnpm
