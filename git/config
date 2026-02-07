@@ -1,0 +1,9 @@
+[include]
+	path = ~/.gitconfig.local
+[init]
+	defaultBranch = main
+[core]
+	editor = nvim
+	quotepath = false
+[commit]
+  template = ~/.config/git/message
