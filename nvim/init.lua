@@ -590,39 +590,6 @@ later(function()
   -- default 'guicursor' includes 't:block-blinkon500-blinkoff500-TermCursor'
   vim.opt.guicursor:remove('t:block-blinkon500-blinkoff500-TermCursor')
   vim.opt.guicursor:append('t:block-TermCursor')
-
-  -- https://github.com/akinsho/toggleterm.nvim#custom-terminal-usage
-  local Terminal = require('toggleterm.terminal').Terminal
-  local function create_tui(cmd, ex_command)
-    local cmd_term = Terminal:new({
-      cmd = cmd,
-      dir = 'git_dir',
-      direction = 'float',
-      float_opts = { border = 'rounded' },
-      -- function to run on opening the terminal
-      on_open = function(term)
-        vim.cmd.startinsert({ bang = true })
-        local bufnr = term.bufnr
-        ---@cast bufnr integer
-        vim.keymap.set('n', 'q', function()
-          term:close()
-        end, { desc = 'close ' .. cmd, buffer = bufnr, nowait = true, silent = true })
-      end,
-      -- function to run on closing the terminal
-      on_close = function(_term)
-        vim.cmd.startinsert({ bang = true })
-      end,
-    })
-    vim.api.nvim_create_user_command(ex_command, function()
-      vim.cmd.normal('<c-l>')
-      vim.cmd.nohlsearch()
-      cmd_term:toggle()
-    end, { desc = 'Toggle ' .. cmd })
-  end
-  create_tui('lazygit', 'Lazygit')
-  vim.keymap.set('n', '<space>L', '<cmd>Lazygit<cr>', { desc = 'LazyGit', silent = true })
-  create_tui('lazydocker', 'Lazydocker')
-  vim.keymap.set('n', '<space>D', '<cmd>Lazydocker<cr>', { desc = 'LazyDocker', silent = true })
 end)
 
 now(function()
