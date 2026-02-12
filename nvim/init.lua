@@ -326,6 +326,9 @@ later(function()
       -- 'm' key
       { mode = 'i', keys = 'm' },
 
+      -- 'mm' key
+      { mode = 'n', keys = 'mm', desc = '+mini.map' },
+
       -- Marks
       mode_nx("'"),
       mode_nx('`'),
@@ -543,6 +546,24 @@ later(function()
       timing = animate.gen_timing.linear({ duration = 150, unit = 'total' }),
     }
   })
+end)
+
+later(function()
+  local map = require('mini.map')
+  map.setup({
+    integrations = {
+      map.gen_integration.builtin_search(),
+      map.gen_integration.diff(),
+      map.gen_integration.diagnostic(),
+    },
+    symbols = {
+      scroll_line = '▶',
+    }
+  })
+  vim.keymap.set('n', 'mmf', MiniMap.toggle_focus, { desc = 'MiniMap.toggle_focus' })
+  vim.keymap.set('n', 'mms', MiniMap.toggle_side, { desc = 'MiniMap.toggle_side' })
+  vim.keymap.set('n', 'mmt', MiniMap.toggle, { desc = 'MiniMap.toggle' })
+  vim.keymap.set('n', 'mmr', MiniMap.refresh, { desc = 'MiniMap.refresh' })
 end)
 
 later(function()
