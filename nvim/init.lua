@@ -455,7 +455,7 @@ later(function()
     end, { desc = 'Remove buffer', bang = true }
   )
   vim.keymap.set('n', '<space>bd', '<Cmd>Bufdelete<CR>', { desc = 'Delete current buffer' })
-  vim.keymap.set('n', '<space>bD', '<Cmd>Bufdelete!<CR>', { desc = 'Delete current buffer' })
+  vim.keymap.set('n', '<space>bD', '<Cmd>Bufdelete!<CR>', { desc = 'Force delete current buffer' })
 end)
 
 now(function()
