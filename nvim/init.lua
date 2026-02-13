@@ -324,10 +324,7 @@ later(function()
       mode_nx('g'),
 
       -- 'm' key
-      { mode = 'i', keys = 'm' },
-
-      -- 'mm' key
-      { mode = 'n', keys = 'mm', desc = '+mini.map' },
+      { mode = 'n', keys = 'm' },
 
       -- Marks
       mode_nx("'"),
@@ -364,6 +361,11 @@ later(function()
       clue.gen_clues.registers({ show_contents = true }),
       clue.gen_clues.windows({ submode_resize = true, submode_move = true }),
       clue.gen_clues.z(),
+      { mode = 'n', keys = 'mm', desc = '+mini.map' },
+      { mode = 'n', keys = '<space>b', desc = '+buffer'},
+      { mode = 'n', keys = '<space>f', desc = '+mini.pick'},
+      { mode = 'n', keys = '<space>g', desc = '+mini.git'},
+      { mode = 'n', keys = '<space>s', desc = '+sqls'},
     },
   })
 end)
