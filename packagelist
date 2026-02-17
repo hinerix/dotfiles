@@ -18,7 +18,7 @@ elephant-providerlist 2.19.3-1
 elephant-runner 2.19.3-1
 elephant-symbols 2.19.3-1
 firefox 147.0.3-2
-fish 4.4.0-1
+fish 4.5.0-1
 fprintd 1.94.5-1
 fuse3 3.18.1-1
 fzf 0.67.0-2
@@ -54,8 +54,8 @@ pkgfile 25-2
 podman 5.7.1-1
 rclone 1.73.0-1
 reflector 2023-5
-ripgrep 15.1.0-1
-satty 0.20.1-1
+ripgrep 15.1.0-2
+satty 0.20.1-2
 slack-desktop 4.47.69-1
 spotify 1:1.2.82.428-1
 sudo-rs 0.2.12-1
@@ -66,7 +66,7 @@ ufw 0.36.2-7
 ufw-docker 251123-1
 unzip 6.0-23
 usbutils 019-1
-vim 9.1.2132-1
+vim 9.2.0010-1
 walker 2.14.2-1
 waybar 0.15.0-1
 wev 1.1.0-1
