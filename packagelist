@@ -18,7 +18,7 @@ elephant-providerlist 2.19.3-1
 elephant-runner 2.19.3-1
 elephant-symbols 2.19.3-1
 firefox 147.0.3-2
-fish 4.5.0-1
+fish 4.5.0-2
 fprintd 1.94.5-1
 fuse3 3.18.1-1
 fzf 0.67.0-2
@@ -52,7 +52,7 @@ pipewire 1:1.4.10-2
 pipewire-pulse 1:1.4.10-2
 pkgfile 25-2
 podman 5.7.1-1
-rclone 1.73.0-1
+rclone 1.73.1-1
 reflector 2023-5
 ripgrep 15.1.0-2
 satty 0.20.1-2
