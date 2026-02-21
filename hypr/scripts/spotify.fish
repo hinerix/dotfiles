@@ -6,7 +6,7 @@ if test -z $spotify_client
 		spotify
 else
     if string match -q -- $class_name (hyprctl activewindow -j | jq -r .class)
-        hyprctl dispatch togglespecialworkspace $class_name
+				hyprctl dispatch focuscurrentorlast
     else
         hyprctl dispatch focuswindow "class:^($class_name)\$"
     end
