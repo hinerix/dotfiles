@@ -23,7 +23,7 @@ fprintd 1.94.5-1
 fuse3 3.18.1-1
 fzf 0.68.0-1
 git 2.53.0-1
-github-cli 2.87.0-1
+github-cli 2.87.2-1
 google-chrome 145.0.7632.109-1
 hypridle 0.1.7-6
 hyprland 0.53.3-2
@@ -39,7 +39,7 @@ linux 6.18.9.arch1-2
 linux-firmware 20260110-1
 mako 1.10.0-1
 man-db 2.13.1-1
-mise 2026.2.13-2
+mise 2026.2.17-1
 neovim 0.11.6-1
 networkmanager 1.54.3-1
 noto-fonts-cjk 20240730-1
@@ -66,7 +66,7 @@ ufw 0.36.2-7
 ufw-docker 251123-1
 unzip 6.0-23
 usbutils 019-1
-vim 9.2.0010-1
+vim 9.2.0038-1
 walker 2.14.2-1
 waybar 0.15.0-1
 wev 1.1.0-1
