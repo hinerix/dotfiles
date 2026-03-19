@@ -6,7 +6,7 @@ if status is-interactive
 
   # theme
   if test "$TERM" != "linux"
-    fish_config theme choose catppuccin-mocha --color-theme=dark
+    fish_config theme choose catppuccin-latte
   end
 
 end
