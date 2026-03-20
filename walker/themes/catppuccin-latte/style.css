@@ -1,0 +1,141 @@
+/* =========================================
+   Walker Theme: Catppuccin Latte
+   ========================================= */
+
+/* Catppuccin Latte カラー定義 */
+@define-color window_bg_color #eff1f5; /* Base: メイン背景 */
+@define-color accent_bg_color #1e66f5; /* Blue: アクセント */
+@define-color theme_fg_color  #4c4f69; /* Text: メインテキスト */
+@define-color subtext_color   #5c5f77; /* Subtext0: サブテキスト */
+@define-color mantle_color    #e6e9ef; /* Mantle: 少し暗い背景(入力欄など) */
+@define-color crust_color     #dce0e8; /* Crust: 境界線など */
+@define-color error_bg_color  #d20f39; /* Red: エラー背景 */
+@define-color error_fg_color  #eff1f5; /* Base: エラーテキスト */
+
+/* 全スタイルのリセット */
+* {
+  all: unset;
+}
+
+/* ウィンドウ全体（コンテナ） */
+.box-wrapper {
+  /* ライトテーマに合わせて影の色を調整 */
+  box-shadow:
+    0 19px 38px rgba(76, 79, 105, 0.1),
+    0 15px 12px rgba(76, 79, 105, 0.05);
+  background: @window_bg_color;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid @crust_color;
+}
+
+/* 検索入力フィールド */
+.input {
+  caret-color: @accent_bg_color;
+  background: @mantle_color;
+  padding: 10px;
+  color: @theme_fg_color;
+  border-radius: 10px;
+}
+
+/* 入力フィールドのプレースホルダー */
+.input placeholder {
+  color: @subtext_color;
+  opacity: 0.7;
+}
+
+/* リストアイテム全体 */
+.list {
+  color: @theme_fg_color;
+}
+
+/* 各アイテムのボックス */
+.item-box {
+  border-radius: 10px;
+  padding: 10px;
+}
+
+/* アイテムのホバー時・選択時の挙動 */
+child:hover .item-box,
+child:selected .item-box {
+  background: alpha(@accent_bg_color, 0.15); /* アクセント色を薄く適用 */
+}
+
+/* アイテムのメインテキスト */
+.item-text {
+  font-size: 14px;
+}
+
+/* アイテムのサブテキスト（説明など） */
+.item-subtext {
+  font-size: 12px;
+  color: @subtext_color;
+}
+
+.item-image,
+.item-image-text {
+  margin-right: 10px;
+}
+
+/* クイックアクティベーション (F1, F2などのラベル) */
+.item-quick-activation {
+  margin-left: 10px;
+  background: alpha(@accent_bg_color, 0.15);
+  color: @accent_bg_color;
+  border-radius: 5px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+/* 空の結果時のプレースホルダー */
+.placeholder,
+.elephant-hint {
+  color: @subtext_color;
+}
+
+/* キーバインドの表示領域 */
+.keybinds-wrapper {
+  border-top: 1px solid @crust_color;
+  font-size: 12px;
+  color: @subtext_color;
+  padding-top: 5px;
+}
+
+.keybind-bind {
+  font-weight: bold;
+  text-transform: lowercase;
+  color: @accent_bg_color;
+}
+
+.keybind-label {
+  color: @subtext_color
+}
+
+/* エラー表示 */
+.error {
+  padding: 10px;
+  background: @error_bg_color;
+  color: @error_fg_color;
+  border-radius: 5px;
+}
+
+/* プレビューペイン */
+.preview {
+  border: 1px solid alpha(@accent_bg_color, 0.25);
+  padding: 10px;
+  border-radius: 10px;
+  color: @theme_fg_color;
+}
+
+/* アイコンサイズ */
+.normal-icons {
+  -gtk-icon-size: 16px;
+}
+.large-icons {
+  -gtk-icon-size: 32px;
+}
+
+/* スクロールバーを非表示にする */
+scrollbar {
+  opacity: 0;
+}
