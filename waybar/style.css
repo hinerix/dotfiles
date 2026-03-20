@@ -11,7 +11,7 @@
 /* --- Waybar Container --- */
 #waybar {
   background: transparent;
-  color: #c6d0f5;
+  color: #4c4f69; /* Latte: Text */
   margin: 0px;
   font-weight: 500;
 }
@@ -19,11 +19,11 @@
 /* --- Left Modules (Individual, Fully Rounded Blocks - With Horizontal Spacing & Simple Hover) --- */
 #workspaces,
 #cpu {
-  background-color: #1a1b26;
+  background-color: #eff1f5; /* Latte: Base */
   padding: 0.3rem 0.7rem;
   margin: 5px 0px; /* 5px top/bottom margin, 0px left/right (base for individual control) */
   border-radius: 6px; /* These modules are always rounded */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Lighter shadow for light theme */
   min-width: 0;
   border: none;
   /* Transition for background-color and color only */
@@ -37,11 +37,11 @@
 }
 
 #cpu:hover {
-  background-color: rgb(41, 42, 53); /* Brighter highlight */
+  background-color: #ccd0da; /* Latte: Surface0 (Hover state) */
 }
 
 #workspaces button {
-  color: #babbf1;
+  color: #7287fd; /* Latte: Lavender */
   border-radius: 5px; /* Workspaces buttons are always rounded */
   padding: 0.3rem 0.6rem;
   background: transparent;
@@ -51,23 +51,23 @@
 }
 
 #workspaces button.active {
-  color: #99d1db;
-  background-color: rgba(153, 209, 219, 0.1);
-  box-shadow: inset 0 0 0 1px rgba(153, 209, 219, 0.2);
+  color: #04a5e5; /* Latte: Sky */
+  background-color: rgba(4, 165, 229, 0.15);
+  box-shadow: inset 0 0 0 1px rgba(4, 165, 229, 0.2);
 }
 
 #workspaces button:hover {
-  background: rgb(41, 42, 53); /* Reference bright hover color */
-  color: #c6d0f5;
+  background: #ccd0da; /* Latte: Surface0 */
+  color: #4c4f69; /* Latte: Text */
 }
 
 /* --- Center Module (Individual, Fully Rounded Block - With Simple Hover) --- */
 #clock {
-  background-color: #1a1b26;
+  background-color: #eff1f5; /* Latte: Base */
   padding: 0.3rem 0.7rem;
   margin: 5px 0px;
   border-radius: 6px; /* This module is always rounded */
-  box-shadow: 0 1px 3px rgba(153, 209, 219, 0.2);
+  box-shadow: 0 1px 3px rgba(4, 165, 229, 0.2); /* Tinted shadow with Latte Sky */
   min-width: 0;
   border: none;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
@@ -75,7 +75,7 @@
 
 /* Simple Hover effect for clock module - BRIGHTER COLOR */
 #clock:hover {
-  background-color: rgb(41, 42, 53); /* Brighter highlight */
+  background-color: #ccd0da; /* Latte: Surface0 */
 }
 
 /* --- Right Modules (Single, Seamless Bar ) --- */
@@ -84,7 +84,7 @@
 #backlight,
 #network,
 #battery {
-  background-color: #1a1b26;
+  background-color: #eff1f5; /* Latte: Base */
   padding: 0.3rem 0.7rem;
   margin: 5px 0px; 
   border-radius: 0;
@@ -101,15 +101,15 @@
 #backlight:hover,
 #network:hover,
 #battery:hover {
-  background-color: rgb(41, 42, 53);
+  background-color: #ccd0da; /* Latte: Surface0 */
 }
 
 #custom-expand-icon {
-  background-color: #1a1b26;
+  background-color: #eff1f5; /* Latte: Base */
   padding: 0.3rem;
   margin: 5px 5px;
   border-radius: 6px; /* These modules are always rounded */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   min-width: 0;
   border: none;
   /* Transition for background-color and color only */
@@ -117,7 +117,7 @@
 }
 
 #tray {
-  color: #c6d0f5;
+  color: #4c4f69; /* Latte: Text */
 }
 
 #bluetooth {
@@ -133,57 +133,57 @@
 }
 
 #cpu {
-  color: #c6d0f5;
+  color: #4c4f69; /* Latte: Text */
 }
 
 #clock {
-  color: #c6d0f5;
+  color: #4c4f69; /* Latte: Text */
   font-weight: 500;
 }
 
 #pulseaudio {
-  color: #c6d0f5;
+  color: #4c4f69; /* Latte: Text */
 }
 #backlight {
-  color: #c6d0f5;
+  color: #4c4f69; /* Latte: Text */
 }
 
 #network {
-  color: #c6d0f5;
+  color: #4c4f69; /* Latte: Text */
 }
 #network.disconnected {
-  color: #e78284;
+  color: #d20f39; /* Latte: Red */
 }
 
 #bluetooth {
-  color: #888888;
+  color: #8c8fa1; /* Latte: Overlay0 */
   font-size: 12px;
 }
 #bluetooth.on {
-  color: #2196f3;
+  color: #1e66f5; /* Latte: Blue */
 }
 #bluetooth.connected {
-  color: #99d1db;
+  color: #04a5e5; /* Latte: Sky */
 }
 
 #battery {
-  color: #99d1db;;
+  color: #179299; /* Latte: Teal */
 }
 #battery.charging {
-  color: #a6d189;
+  color: #40a02b; /* Latte: Green */
 }
 #battery.warning:not(.charging) {
-  color: #e78284;
+  color: #d20f39; /* Latte: Red */
 }
 
 /* --- Tooltip Styles --- */
 tooltip {
-  background-color: #1a1b26;
-  color: #dddddd;
+  background-color: #e6e9ef; /* Latte: Mantle (slightly darker than base for contrast) */
+  color: #4c4f69; /* Latte: Text */
   padding: 5px 12px;
   margin: 5px 0px;
   border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(76, 79, 105, 0.1); /* Latte: Text with transparency */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   font-size: 12px;
 }
