@@ -117,17 +117,8 @@ now(function()
         indentscope_color = 'sky',
       },
     },
-    transparent_background = true,
     no_italic = true,
     no_underline = true,
-    custom_highlights = function(colors)
-      return {
-        Pmenu = { bg = colors.surface0 },
-        PmenuSel = { bg = colors.green, fg = colors.base },
-        PmenuExtraSel = { bg = colors.green, fg = colors.base },
-        PmenuMatchSel = { fg = colors.surface2 },
-      }
-    end,
   })
   vim.cmd.colorscheme('catppuccin-latte')
 end)
@@ -444,7 +435,30 @@ now(function()
 end)
 
 later(function()
+  -- 1. まず mini.tabline 本体をセットアップ
   require('mini.tabline').setup()
+
+  local latte = {
+    base = "#eff1f5",
+    mantle = "#e6e9ef",
+    surface0 = "#ccd0da",
+    text = "#4c4f69",
+    subtext0 = "#6c6f85",
+    blue = "#1e66f5",
+    peach = "#fe640b",
+  }
+
+  -- 現在開いているバッファ
+  vim.api.nvim_set_hl(0, "MiniTablineCurrent", { fg = latte.blue, bg = latte.base, bold = true })
+  vim.api.nvim_set_hl(0, "MiniTablineModifiedCurrent", { fg = latte.peach, bg = latte.base, bold = true })
+
+  -- バックグラウンドにあるバッファ
+  vim.api.nvim_set_hl(0, "MiniTablineHidden", { fg = latte.subtext0, bg = latte.mantle })
+  vim.api.nvim_set_hl(0, "MiniTablineModifiedHidden", { fg = latte.peach, bg = latte.mantle })
+
+  -- 別ウィンドウで開いているバッファ
+  vim.api.nvim_set_hl(0, "MiniTablineVisible", { fg = latte.text, bg = latte.surface0 })
+  vim.api.nvim_set_hl(0, "MiniTablineModifiedVisible", { fg = latte.peach, bg = latte.surface0 })
 end)
 
 later(function()
