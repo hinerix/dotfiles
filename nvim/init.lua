@@ -445,20 +445,20 @@ later(function()
     text = "#4c4f69",
     subtext0 = "#6c6f85",
     blue = "#1e66f5",
-    red = "#d20f39",
+    maroon = "#e64553",
   }
 
   -- 現在開いているバッファ
   vim.api.nvim_set_hl(0, "MiniTablineCurrent", { fg = latte.blue, bg = latte.base, bold = true })
-  vim.api.nvim_set_hl(0, "MiniTablineModifiedCurrent", { fg = latte.red, bg = latte.base, bold = true })
+  vim.api.nvim_set_hl(0, "MiniTablineModifiedCurrent", { fg = latte.maroon, bg = latte.base, bold = true })
 
   -- バックグラウンドにあるバッファ
   vim.api.nvim_set_hl(0, "MiniTablineHidden", { fg = latte.subtext0, bg = latte.mantle })
-  vim.api.nvim_set_hl(0, "MiniTablineModifiedHidden", { fg = latte.red, bg = latte.mantle })
+  vim.api.nvim_set_hl(0, "MiniTablineModifiedHidden", { fg = latte.maroon, bg = latte.mantle })
 
   -- 別ウィンドウで開いているバッファ
   vim.api.nvim_set_hl(0, "MiniTablineVisible", { fg = latte.text, bg = latte.surface0 })
-  vim.api.nvim_set_hl(0, "MiniTablineModifiedVisible", { fg = latte.red, bg = latte.surface0 })
+  vim.api.nvim_set_hl(0, "MiniTablineModifiedVisible", { fg = latte.maroon, bg = latte.surface0 })
 end)
 
 later(function()
