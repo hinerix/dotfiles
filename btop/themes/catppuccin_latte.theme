@@ -1,0 +1,86 @@
+# Catppuccin Latte
+
+theme[main_bg]="#eff1f5"
+theme[main_fg]="#4c4f69"
+theme[title]="#4c4f69"
+
+# キーボードショートカットのハイライトカラー (Blue)
+theme[hi_fg]="#1e66f5"
+
+# プロセスリストで選択されたアイテムの背景色 (Surface1)
+theme[selected_bg]="#bcc0cc"
+
+# プロセスリストで選択されたアイテムのテキストカラー (Blue)
+theme[selected_fg]="#1e66f5"
+
+# 非アクティブ/無効なテキストのカラー (Overlay0)
+theme[inactive_fg]="#9ca0b0"
+
+# グラフの上に表示されるテキストのカラー (Subtext0)
+theme[graph_text]="#6c6f85"
+
+# パーセンテージメーターの背景色 (Surface0)
+theme[meter_bg]="#ccd0da"
+
+# プロセスボックスのミニCPUグラフや詳細ステータスなどのその他のカラー (Mauve)
+theme[proc_misc]="#8839ef"
+
+# CPUボックスの枠線カラー (Lavender)
+theme[cpu_box]="#7287fd"
+
+# メモリ/ディスクボックスの枠線カラー (Green)
+theme[mem_box]="#40a02b"
+
+# ネットワークボックスの枠線カラー (Maroon)
+theme[net_box]="#e64553"
+
+# プロセスボックスの枠線カラー (Blue)
+theme[proc_box]="#1e66f5"
+
+# ボックスの区切り線と小さなボックスの線のカラー (Surface2)
+theme[div_line]="#acb0be"
+
+# 温度グラフのカラーグラデーション (Green -> Yellow -> Red)
+theme[temp_start]="#40a02b"
+theme[temp_mid]="#df8e1d"
+theme[temp_end]="#d20f39"
+
+# CPUグラフのカラーグラデーション (Green -> Yellow -> Red)
+theme[cpu_start]="#40a02b"
+theme[cpu_mid]="#df8e1d"
+theme[cpu_end]="#d20f39"
+
+# 空き/使用中メーターのカラーグラデーション (Green -> Yellow -> Red)
+theme[free_start]="#40a02b"
+theme[free_mid]="#df8e1d"
+theme[free_end]="#d20f39"
+
+# キャッシュメーターのカラーグラデーション (Sky -> Sapphire -> Blue)
+theme[cached_start]="#04a5e5"
+theme[cached_mid]="#209fb5"
+theme[cached_end]="#1e66f5"
+
+# 利用可能メーターのカラーグラデーション (Green -> Yellow -> Red)
+theme[available_start]="#40a02b"
+theme[available_mid]="#df8e1d"
+theme[available_end]="#d20f39"
+
+# 使用済みメーターのカラーグラデーション (Green -> Yellow -> Red)
+theme[used_start]="#40a02b"
+theme[used_mid]="#df8e1d"
+theme[used_end]="#d20f39"
+
+# ダウンロードグラフのカラーグラデーション (Lavender -> Mauve)
+theme[download_start]="#7287fd"
+theme[download_mid]="#8839ef"
+theme[download_end]="#8839ef"
+
+# アップロードグラフのカラーグラデーション (Flamingo -> Red)
+theme[upload_start]="#dd7878"
+theme[upload_mid]="#d20f39"
+theme[upload_end]="#d20f39"
+
+# プロセスリストのCPU/メモリ使用量のカラーグラデーション (Green -> Yellow -> Red)
+theme[process_start]="#40a02b"
+theme[process_mid]="#df8e1d"
+theme[process_end]="#d20f39"
