@@ -110,7 +110,11 @@ local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 now(function()
   add('https://github.com/catppuccin/nvim')
   local catppuccin = require('catppuccin')
+  -- 環境変数 NVIM_TRANSPARENT が "1" かどうかを判定（true または false になる）
+  local is_transparent = os.getenv("NVIM_TRANSPARENT") == "1"
   catppuccin.setup({
+    -- 環境変数の判定結果を transparent_background に渡す
+    transparent_background = is_transparent,
     integrations = {
       mini = {
         enabled = true,
