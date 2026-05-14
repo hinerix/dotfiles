@@ -16,7 +16,7 @@ return {
         library = vim.list_extend(vim.api.nvim_get_runtime_file('lua', true), {
           '${3rd}/luv/library',
           '${3rd}/busted/library',
-          -- vim.env.XDG_CONFIG_HOME .. '/lua_ls',
+          '/usr/share/hypr/stubs'
         }),
       },
     })
