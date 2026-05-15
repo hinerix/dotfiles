@@ -1,0 +1,11 @@
+-- Laptop multimedia keys for volume and LCD brightness
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("pamixer -i 5"))
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("pamixer -d 5"))
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd("pamixer -t"))
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("pamixer --default-source -t"))
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl s +5%"))
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 5%-"))
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"))
+hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"))
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"))
+hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"))
