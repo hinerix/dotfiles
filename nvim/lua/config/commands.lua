@@ -5,7 +5,7 @@ local function setup_im_mapping()
         vim.fn.setreg("+", table.concat(lines, "\n"))
         vim.api.nvim_buf_set_lines(0, 0, -1, false, {})
         vim.bo.modified = false
-        vim.cmd("silent !hyprctl dispatch focuscurrentorlast")
+        vim.cmd("silent !hyprctl dispatch 'hl.dsp.focus({ last = true })'")
     end
     vim.keymap.set({ "n", "x" }, "<CR>", yank_and_close, { buffer = 0, noremap = true, silent = true })
 end
