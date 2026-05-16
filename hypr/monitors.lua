@@ -14,5 +14,6 @@ hl.monitor({
   scale = 1,
 })
 
-hl.bind("switch:off:[Lid Switch]", hl.dsp.dpms({action = "on"}))
-hl.bind("switch:on:[Lid Switch]", hl.dsp.dpms({action = "off"}))
+-- Lid Switchは on = 閉じてる状態
+hl.bind("switch:off:Lid Switch", hl.dsp.dpms({action = "on"}), { locked = true })
+hl.bind("switch:on:Lid Switch", hl.dsp.dpms({action = "off"}), { locked = true })
