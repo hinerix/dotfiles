@@ -17,6 +17,9 @@ hl.config({
 				tap_and_drag = false,
     },
   },
+  misc = {
+    middle_click_paste = false,
+  },
 })
 
 -- https://wiki.hypr.land/Configuring/Advanced-and-Cool/Gestures/
