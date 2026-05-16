@@ -1,12 +1,24 @@
 force_keyboard_focus = false    # forces keyboard forcus to stay in Walker
 close_when_open = true          # close walker when invoking while already opened
 click_to_close = true           # closes walker if clicking outside of the main content area
+as_window = false               # launch walker as a regular window instead of layer shell application
+single_click_activation = true  # activate items with a single click opposed to a double click
 selection_wrap = false          # wrap list if at bottom or top
 global_argument_delimiter = "#" # query: firefox#https://benz.dev => part after delimiter will be ignored when querying. this should be the same as in the elephant config
 exact_search_prefix = "'"       # disable fuzzy searching
-theme = "catppuccin-latte"               # theme to use
+theme = "catppuccin-latte"      # theme to use
 disable_mouse = false           # disable mouse (on input and list only)
 debug = false                   # enables debug printing for some stuff, f.e. keybinds
+page_jump_items = 10            # number of items to skip with Page Up/Down
+hide_quick_activation = false   # globally hide the quick activation buttons
+hide_action_hints = false       # globally hide the action hints
+hide_action_hints_dmenu = true  # hide the actions hints for dmenu
+hide_return_action = false      # hide actions that are bound to Return
+keybind_symbols = true          # render keybind hints with key symbols (e.g. ⌃+⏎) instead of plain text ("ctrl Return")
+resume_last_query = false       # open walker with the last query in place
+actions_as_menu = false         # display all possible actions in a submenu
+autoplay_videos = false         # auto-play video previews
+ext_background_effect_blur = false # request the compositor to blur behind the box-wrapper via ext-background-effect-v1 (compositor must support it)
 
 [shell]
 anchor_top = true
@@ -21,9 +33,16 @@ anchor_right = true
 close = ["Escape"]
 next = ["ctrl n"]
 previous = ["ctrl p"]
+left = ["Left"]
+right = ["Right"]
+down = ["Down"]
+up = ["Up"]
 toggle_exact = ["ctrl e"]
 resume_last_query = ["ctrl r"]
 quick_activate = ["F1", "F2", "F3", "F4"]
+page_down = ["Page_Down"]
+page_up = ["Page_Up"]
+show_actions = ["alt j"]
 
 [providers]
 default = [
@@ -60,16 +79,19 @@ bluetooth = [
   { action = "pair", bind = "Return", after = "AsyncReload" },
   { action = "connect", default = true, bind = "Return", after = "AsyncReload" },
   { action = "disconnect", default = true, bind = "Return", after = "AsyncReload" },
+  { action = "power_on", label = "Power On", bind = "ctrl e", after = "AsyncReload" },
+  { action = "power_off", label = "Power Off", bind = "ctrl e", after = "AsyncReload" },
 ]
 
 desktopapplications = [
   { action = "start", default = true, bind = "Return" },
-  { action = "start", label = "open+next", bind = "shift Return", after = "KeepOpen" },
-  { action = "erase_history", label = "clear hist", bind = "ctrl h", after = "AsyncReload" },
+  { action = "start:keep", label = "open+next", bind = "shift Return", after = "KeepOpen" },
+  { action = "new_instance", label = "new instance", bind = "ctrl Return" },
+  { action = "new_instance:keep", label = "new+next", bind = "ctrl alt Return", after = "KeepOpen" },
   { action = "pin", bind = "alt p", after = "AsyncReload" },
   { action = "unpin", bind = "alt p", after = "AsyncReload" },
-  { action = "pinup", bind = "ctrl n", after = "AsyncReload" },
-  { action = "pindown", bind = "ctrl m", after = "AsyncReload" },
+  { action = "pinup", bind = "alt n", after = "AsyncReload" },
+  { action = "pindown", bind = "alt m", after = "AsyncReload" },
 ]
 
 files = [
@@ -77,15 +99,15 @@ files = [
   { action = "opendir", label = "open dir", bind = "ctrl Return" },
   { action = "copypath", label = "copy path", bind = "ctrl shift c" },
   { action = "copyfile", label = "copy file", bind = "ctrl c" },
+  { action = "localsend", label = "localsend", bind = "ctrl l" },
+  { action = "refresh_index", label = "reload", bind = "ctrl r", after = "AsyncReload" },
 ]
 
 runner = [
   { action = "run", default = true, bind = "Return" },
   { action = "runterminal", label = "run in terminal", bind = "shift Return" },
-  { action = "erase_history", label = "clear hist", bind = "ctrl h", after = "Reload" },
 ]
 
 symbols = [
   { action = "run_cmd", label = "select", default = true, bind = "Return" },
-  { action = "erase_history", label = "clear hist", bind = "ctrl h", after = "Reload" },
 ]
