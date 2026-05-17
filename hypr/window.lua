@@ -31,7 +31,7 @@ hl.window_rule({
 	match = {
     class = "^(VIME)$",
   },
-	size = {"(monitor_h*0.6)", "(monitor_h*0.6)"},
+	size = {"(monitor_h*0.6)", "(monitor_h*0.5)"},
 	float = true,
 	workspace = "special:VIME",
   no_blur = true
