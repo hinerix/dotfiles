@@ -1,5 +1,6 @@
 -- Kill window
-hl.bind("SUPER + SHIFT + Q", hl.dsp.window.kill("activewindow"))
+hl.bind("SUPER + SHIFT + Q", hl.dsp.window.close("activewindow"))
+hl.bind("SUPER + CTRL + Q", hl.dsp.window.kill("activewindow"))
 
 -- Move current workspace to other monitor
 hl.bind("SUPER + CTRL + M", hl.dsp.workspace.move({ monitor = "+1" }))
