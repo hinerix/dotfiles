@@ -4,11 +4,12 @@ deno = 'latest'
 bun = 'latest'
 pnpm = 'latest'
 rust = 'latest'
-'npm:@google/gemini-cli' = 'latest'
+'github:google-antigravity/antigravity-cli' = 'latest'
 'aqua:LuaLS/lua-language-server' = 'latest'
-"github:sqls-server/sqls" = "latest"
+"github:sqls-server/sqls" = 'latest'
 
 [settings]
+minimum_release_age = '7d'
 trusted_config_paths = [
-    "~/dotfiles/mise/config.toml"
+    '~/.config/mise/config.toml'
 ]
