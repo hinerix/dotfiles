@@ -31,17 +31,17 @@ for i = 1, 9 do
 end
 
 -- Move window
-hl.bind("SUPER + SHIFT + H", hl.dsp.window.move({ direction = "l" }))
-hl.bind("SUPER + SHIFT + L", hl.dsp.window.move({ direction = "r" }))
-hl.bind("SUPER + SHIFT + K", hl.dsp.window.move({ direction = "u" }))
-hl.bind("SUPER + SHIFT + J", hl.dsp.window.move({ direction = "d" }))
+hl.bind("SUPER + CTRL + H", hl.dsp.window.move({ direction = "l" }))
+hl.bind("SUPER + CTRL + L", hl.dsp.window.move({ direction = "r" }))
+hl.bind("SUPER + CTRL + K", hl.dsp.window.move({ direction = "u" }))
+hl.bind("SUPER + CTRL + J", hl.dsp.window.move({ direction = "d" }))
 
 
 -- Swap window
-hl.bind("SUPER + CTRL + H", hl.dsp.layout("swapcol l"))
-hl.bind("SUPER + CTRL + L", hl.dsp.layout("swapcol r"))
-hl.bind("SUPER + CTRL + K", hl.dsp.window.swap({ direction = "u" }))
-hl.bind("SUPER + CTRL + J", hl.dsp.window.swap({ direction = "d" }))
+hl.bind("SUPER + SHIFT + H", hl.dsp.layout("swapcol l"))
+hl.bind("SUPER + SHIFT + L", hl.dsp.layout("swapcol r"))
+hl.bind("SUPER + SHIFT + K", hl.dsp.window.swap({ direction = "u" }))
+hl.bind("SUPER + SHIFT + J", hl.dsp.window.swap({ direction = "d" }))
 
 -- Example special workspace (scratchpad)
 hl.bind("SUPER + S", hl.dsp.workspace.toggle_special("magic"))
