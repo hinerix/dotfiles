@@ -74,20 +74,6 @@ local function create_autocmd(event, opts)
   )
 end
 
--- https://vim-jp.org/vim-users-jp/2011/02/20/Hack-202.html
-create_autocmd('BufWritePre', {
-  pattern = '*',
-  callback = function(event)
-    local dir = vim.fs.dirname(event.file)
-    local force = U.present(vim.v.cmdbang)
-    if not vim.bool_fn.isdirectory(dir)
-        and (force or vim.fn.confirm('"' .. dir .. '" does not exist. Create?', "&Yes\n&No") == 1) then
-      vim.fn.mkdir(vim.fn.iconv(dir, vim.opt.encoding:get(), vim.opt.termencoding:get()), 'p')
-    end
-  end,
-  desc = 'Auto mkdir to save file'
-})
-
 -- Clone 'mini.nvim' manually in a way that it gets managed by 'mini.deps'
 local path_package = vim.fn.stdpath('data') .. '/site/'
 local mini_path = path_package .. 'pack/deps/start/mini.nvim'
