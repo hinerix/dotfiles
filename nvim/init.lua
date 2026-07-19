@@ -58,6 +58,21 @@ vim.opt.inccommand = 'split'
 -- scroll offset as 3 lines
 vim.opt.scrolloff = 3
 
+-- ref: https://zenn.dev/kawarimidoll/articles/4da7458c102c1f
+  vim.opt.cmdheight = 0
+  require('vim._core.ui2').enable({
+    enable = true,
+    msg = {
+      target = 'msg',
+      msg = {
+        height = 5,
+        timeout = 5000,
+      },
+      pager = {
+        height = 5,
+      },
+    },
+  })
 
 local U = require('config.utils')
 
