@@ -58,21 +58,8 @@ vim.opt.inccommand = 'split'
 -- scroll offset as 3 lines
 vim.opt.scrolloff = 3
 
--- ref: https://zenn.dev/kawarimidoll/articles/4da7458c102c1f
-  vim.opt.cmdheight = 0
-  require('vim._core.ui2').enable({
-    enable = true,
-    msg = {
-      target = 'msg',
-      msg = {
-        height = 5,
-        timeout = 5000,
-      },
-      pager = {
-        height = 5,
-      },
-    },
-  })
+-- hide cmdline
+vim.opt.cmdheight = 0
 
 local U = require('config.utils')
 
@@ -757,4 +744,15 @@ end)
 later(function()
   add('https://github.com/delphinus/skkeleton-indicator.nvim')
   require('skkeleton_indicator').setup()
+end)
+
+now(function()
+  -- experimental(see: h ui2)
+  require('vim._core.ui2').enable({
+    enable = true,
+    msg = {
+      target = 'msg',
+      timeout = 5000,
+    },
+  })
 end)
