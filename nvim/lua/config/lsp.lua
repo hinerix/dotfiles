@@ -1,4 +1,4 @@
-local node_servers_dir = '/home/hinerix/dotfiles/nvim-mini/node_servers'
+local node_servers_dir = '/home/hinerix/dotfiles/nvim/node_servers'
 local node_bin = node_servers_dir .. '/node_modules/.bin'
 if vim.fn.has('vim_starting') == 1 then
   vim.env.PATH = node_bin .. ':' .. vim.env.PATH
@@ -67,17 +67,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.lsp.buf.signature_help({ border = "single" })
     end, { desc = "vim.lsp.buf.signature_help()", silent = true, buffer = bufnr })
 
-    -- WIP 0.12~
-    -- if client:supports_method(Methods.textDocument_documentColor) then
-    --   vim.lsp.document_color.enable(true, args.buf, { style = 'virtual' })
-    -- end
+    if client:supports_method(Methods.textDocument_documentColor) then
+      vim.lsp.document_color.enable(true, args.buf, { style = 'virtual' })
+    end
 
-    -- use conform.nvim instead of this
-    -- if client:supports_method('textDocument/formatting') then
-    --   vim.keymap.set('n', '<space>i', function()
-    --     vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
-    --   end, { buffer = args.buf, desc = 'Format buffer' })
-    -- end
+
   end,
 })
 
