@@ -58,9 +58,6 @@ vim.opt.inccommand = 'split'
 -- scroll offset as 3 lines
 vim.opt.scrolloff = 3
 
--- hide cmdline
-vim.opt.cmdheight = 0
-
 local U = require('config.utils')
 
 -- augroup for this config file
@@ -712,8 +709,7 @@ now(function()
   require('vim._core.ui2').enable({
     enable = true,
     msg = {
-      target = 'msg',
-      timeout = 5000,
+      target = 'cmd',
     },
   })
 end)
