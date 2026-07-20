@@ -483,7 +483,7 @@ later(function()
   vim.ui.select = MiniPick.ui_select
 
   vim.keymap.set('n', '<space>ff', function()
-    MiniPick.builtin.files({ tool = 'git' })
+    MiniPick.builtin.files({ tool = 'rg' })
   end, { desc = 'mini.pick.files' })
 
   vim.keymap.set('n', '<space>fb', function()
@@ -493,6 +493,10 @@ later(function()
     local buffer_mappings = { wipeout = { char = '<c-d>', func = wipeout_cur } }
     MiniPick.builtin.buffers({ include_current = false }, { mappings = buffer_mappings })
   end, { desc = 'mini.pick.buffers' })
+
+  vim.keymap.set('n', '<space>fg', function()
+    MiniPick.builtin.grep({ tool = 'rg' })
+  end, { desc = 'mini.pick.grep' })
 
   require('mini.visits').setup()
   vim.keymap.set('n', '<space>fh', function()
