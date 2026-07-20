@@ -16,14 +16,6 @@ vim.api.nvim_create_user_command('InitLua', function()
   vim.cmd.edit(vim.fn.stdpath('config') .. '/init.lua')
 end, { desc = 'Open init.lua' })
 
-vim.api.nvim_create_user_command('BufDiff', function(arg)
-  vim.cmd.diffsplit({ mods = { vertical = true }, args = (arg.nargs == 1 and arg.args or { '#' }) })
-end, { nargs = '?', complete = 'file', desc = 'Show diff with current buffer' })
-vim.api.nvim_create_user_command('DiffOff', function()
-  vim.cmd.diffoff()
-  vim.cmd.only()
-end, { desc = 'Switch off diff mode and quit other windows' })
-
 -- https://zenn.dev/glaucus03/articles/a4649f70f2b2e8
 vim.api.nvim_create_user_command('BufOnly', function()
   local current_buf = vim.api.nvim_get_current_buf()
