@@ -1,0 +1,57 @@
+{
+  "plugins": {
+    "ddc-ui-native": {
+      "rev": "7b946489962453c485b894c18dd8e81057dd8098",
+      "src": "https://github.com/Shougo/ddc-ui-native"
+    },
+    "ddc.vim": {
+      "rev": "07d2c9995cbcb456ee441b74e098a79016303a20",
+      "src": "https://github.com/Shougo/ddc.vim"
+    },
+    "denops.vim": {
+      "rev": "e82c5a94ca1154b05c9d74d6f6f58c9991b1424f",
+      "src": "https://github.com/vim-denops/denops.vim"
+    },
+    "mini.nvim": {
+      "rev": "a35f08f63b73f0ffac045cd175fb2a22e167c39c",
+      "src": "https://github.com/nvim-mini/mini.nvim"
+    },
+    "nvim": {
+      "rev": "058e83dc009e4dd62f30807054de9cc849699e27",
+      "src": "https://github.com/catppuccin/nvim"
+    },
+    "nvim-lspconfig": {
+      "rev": "e7ca2c95ba316a8b846d3f3546d407908c5c4ccb",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    },
+    "nvim-treesitter": {
+      "rev": "24977147550d53589e53b874ec75e14e4fbc304e",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter",
+      "version": "'main'"
+    },
+    "skkeleton": {
+      "rev": "770b265dd115dba96ea5314642e35764654ef08f",
+      "src": "https://github.com/vim-skk/skkeleton"
+    },
+    "skkeleton-indicator.nvim": {
+      "rev": "b3e5379db47ed86a2f0f6fd9ae2c30a0e8119c23",
+      "src": "https://github.com/delphinus/skkeleton-indicator.nvim"
+    },
+    "sqls.nvim": {
+      "rev": "45e2ea8a684a9a194e8adbde77a02e7ac77f6d4e",
+      "src": "https://github.com/nanotee/sqls.nvim"
+    },
+    "toggleterm.nvim": {
+      "rev": "9a88eae817ef395952e08650b3283726786fb5fb",
+      "src": "https://github.com/akinsho/toggleterm.nvim"
+    },
+    "vim-dbml": {
+      "rev": "c684576d80542c52f888309b715c49bc69a02ed3",
+      "src": "https://github.com/jidn/vim-dbml"
+    },
+    "vimdoc-ja": {
+      "rev": "ca24f39b608df1a8593f665d2ee0680ff55232e9",
+      "src": "https://github.com/vim-jp/vimdoc-ja"
+    }
+  }
+}

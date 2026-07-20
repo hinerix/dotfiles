@@ -76,27 +76,16 @@ local function create_autocmd(event, opts)
   )
 end
 
--- Clone 'mini.nvim' manually in a way that it gets managed by 'mini.deps'
-local path_package = vim.fn.stdpath('data') .. '/site/'
-local mini_path = path_package .. 'pack/deps/start/mini.nvim'
-if not vim.loop.fs_stat(mini_path) then
-  vim.cmd('echo "Installing [`mini.nvim`](../doc/mini-nvim.qmd#mini.nvim)" | redraw')
-  local clone_cmd = {
-    'git', 'clone', '--filter=blob:none',
-    'https://github.com/nvim-mini/mini.nvim', mini_path
-  }
-  vim.fn.system(clone_cmd)
-  vim.cmd('packadd mini.nvim | helptags ALL')
-  vim.cmd('echo "Installed [`mini.nvim`](../doc/mini-nvim.qmd#mini.nvim)" | redraw')
-end
+local add = vim.pack.add
+add({ 'https://github.com/nvim-mini/mini.nvim' })
 
--- Set up 'mini.deps' (customize to your liking)
-require('mini.deps').setup({ path = { package = path_package } })
+local misc = require('mini.misc')
 
-local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
+local now = function(f) misc.safely('now', f) end
+local later = function(f) misc.safely('later', f) end
 
 now(function()
-  add('https://github.com/catppuccin/nvim')
+  add({ 'https://github.com/catppuccin/nvim' })
   local catppuccin = require('catppuccin')
   -- 環境変数 NVIM_TRANSPARENT が "1" かどうかを判定（true または false になる）
   local is_transparent = os.getenv("NVIM_TRANSPARENT") == "1"
@@ -128,45 +117,19 @@ now(function()
 end)
 
 later(function()
-  add('https://github.com/vim-jp/vimdoc-ja')
+  add({ 'https://github.com/vim-jp/vimdoc-ja' })
   vim.opt.helplang:prepend('ja')
 end)
 
 now(function()
   require('mini.statusline').setup()
   vim.opt.laststatus = 3
-  -- hit-enter-promptが煩わしい&cmdheight=0にそこまでこだわりはないので、一旦コメントアウト
-  -- 0.12以降のextuiという機能でスマートにcmdheight=0が実現できるらしいのでstableになるまで全力待機
-  -- vim.opt.cmdheight = 0
-  --
-  -- -- ref: https://github.com/Shougo/shougo-s-github/blob/2f1c9acacd3a341a1fa40823761d9593266c65d4/vim/rc/vimrc#L47-L49
-  -- create_autocmd({ 'RecordingEnter', 'CmdlineEnter' }, {
-  --   pattern = '*',
-  --   callback = function()
-  --     vim.opt.cmdheight = 1
-  --   end,
-  -- })
-  -- create_autocmd('RecordingLeave', {
-  --   pattern = '*',
-  --   callback = function()
-  --     vim.opt.cmdheight = 0
-  --   end,
-  -- })
-  -- create_autocmd('CmdlineLeave', {
-  --   pattern = '*',
-  --   callback = function()
-  --     if vim.fn.reg_recording() == '' then
-  --       vim.opt.cmdheight = 0
-  --     end
-  --   end,
-  -- })
 end)
 
 now(function()
-  require('mini.misc').setup()
-  MiniMisc.setup_restore_cursor()
+  misc.setup_restore_cursor()
   vim.api.nvim_create_user_command('Zoom', function()
-    MiniMisc.zoom(0, {})
+    misc.zoom(0, {})
   end, { desc = 'Zoom current buffer' })
   vim.keymap.set('n', 'mz', '<cmd>Zoom<cr>', { desc = 'Zoom current buffer' })
 end)
@@ -409,20 +372,7 @@ later(function()
 end)
 
 now(function()
-  add('https://github.com/neovim/nvim-lspconfig')
-
-  -- https://github.com/neovim/neovim/discussions/26571#discussioncomment-11879196
-  -- https://github.com/lttb/gh-actions-language-server
-  vim.filetype.add({
-    pattern = {
-      ['compose.*%.ya?ml'] = 'yaml.docker-compose',
-      ['compose/.*%.ya?ml'] = 'yaml.docker-compose',
-      ['docker%-compose.*%.ya?ml'] = 'yaml.docker-compose',
-      ['.*/%.github/workflows/.*%.ya?ml'] = 'yaml.github-actions',
-      ['%.env.*'] = 'sh.env',
-    },
-  })
-
+  add({ 'https://github.com/neovim/nvim-lspconfig' })
   require('config.lsp')
 end)
 
@@ -579,7 +529,7 @@ later(function()
 end)
 
 later(function()
-  add('https://github.com/akinsho/toggleterm.nvim')
+  add({ 'https://github.com/akinsho/toggleterm.nvim' })
   require('toggleterm').setup({
     size = function(term)
       if term.direction == 'horizontal' then
@@ -633,13 +583,22 @@ now(function()
       pcall(wrapped, bufnr, lang)
     end
   end)(vim.treesitter.start)
+
+  vim.api.nvim_create_autocmd('PackChanged', { callback = function(ev)
+    local name, kind = ev.data.spec.name, ev.data.kind
+    if name == 'nvim-treesitter' and kind == 'update' then
+      if not ev.data.active then vim.cmd.packadd('nvim-treesitter') end
+      vim.cmd('TSUpdate')
+    end
+  end })
+
   add({
-    source = 'https://github.com/nvim-treesitter/nvim-treesitter',
-    checkout = 'main',
-    hooks = {
-      post_checkout = U.noarg(vim.cmd.TSUpdate),
+    {
+      src = 'https://github.com/nvim-treesitter/nvim-treesitter',
+      version = 'main'
     },
   })
+
   vim.api.nvim_create_autocmd("FileType", {
     group = augroup,
     callback = function(c)
@@ -672,7 +631,7 @@ now(function()
 end)
 
 later(function()
-  add('https://github.com/nanotee/sqls.nvim')
+  add({ 'https://github.com/nanotee/sqls.nvim' })
 		vim.keymap.set({ "n", "x" }, "<space>sr", "<Cmd>SqlsExecuteQuery<CR>", { desc = 'Run SQL on the buffer(or selected)' })
 		vim.keymap.set("n", "<space>sc", "<Cmd>SqlsSwitchConnection<CR>", { desc = 'Choice a connection' })
 		vim.keymap.set("n", "<space>sd", "<Cmd>SqlsSwitchDatabase<CR>", { desc = 'Choice a database' })
@@ -680,25 +639,23 @@ later(function()
 end)
 
 later(function()
-  add('https://github.com/jidn/vim-dbml')
+  add({ 'https://github.com/jidn/vim-dbml' })
 end)
 
 later(function()
   add({
-    source = 'https://github.com/Shougo/ddc.vim',
-    depends = {
-      'https://github.com/vim-denops/denops.vim',
-      'https://github.com/vim-skk/skkeleton',
-      'https://github.com/Shougo/ddc-ui-native',
-    }
+    'https://github.com/Shougo/ddc.vim',
+    'https://github.com/vim-denops/denops.vim',
+    'https://github.com/vim-skk/skkeleton',
+    'https://github.com/Shougo/ddc-ui-native',
   })
   vim.fn["ddc#custom#load_config"](vim.fn.expand("~/.config/nvim/lua/plugins/ddc/init.ts"))
 end)
 
 now(function()
   add({
-    source = 'https://github.com/vim-skk/skkeleton',
-    depends = { 'https://github.com/vim-denops/denops.vim' },
+   'https://github.com/vim-skk/skkeleton',
+   'https://github.com/vim-denops/denops.vim',
   })
   local function skkeleton_init()
     vim.fn['skkeleton#config']({
@@ -746,7 +703,7 @@ now(function()
 end)
 
 later(function()
-  add('https://github.com/delphinus/skkeleton-indicator.nvim')
+  add({ 'https://github.com/delphinus/skkeleton-indicator.nvim' })
   require('skkeleton_indicator').setup()
 end)
 
