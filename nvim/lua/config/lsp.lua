@@ -6,10 +6,6 @@ end
 
 local Methods = vim.lsp.protocol.Methods
 
-vim.api.nvim_create_user_command('LspHealth', function()
-  vim.cmd.checkhealth('vim.lsp')
-end, { desc = 'LSP health check' })
-
 vim.api.nvim_create_user_command('LsUpdate', function()
   local function on_exit(obj)
     -- bun updateの結果はstderrに出力される
