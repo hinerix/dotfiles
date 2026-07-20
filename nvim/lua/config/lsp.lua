@@ -53,7 +53,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       end, { buffer = args.buf, desc = 'vim.lsp.buf.definition()' })
     end
 
-    if client and client:supports_method("text/Document/inlayHint", bufnr) then
+    if client and client:supports_method(Methods.textDocument_inlayHint, bufnr) then
       vim.keymap.set("n", "grh", function()
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr }), { bufnr })
       end, { desc = "Toggle inlayHints" })
@@ -68,7 +68,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end, { desc = "vim.lsp.buf.signature_help()", silent = true, buffer = bufnr })
 
     if client:supports_method(Methods.textDocument_documentColor) then
-      vim.lsp.document_color.enable(true, args.buf, { style = 'virtual' })
+      vim.lsp.document_color.enable(true, { bufnr = args.buf, style = 'virtual' })
     end
 
 
