@@ -5,7 +5,7 @@
       "src": "https://github.com/Shougo/ddc-ui-native"
     },
     "ddc.vim": {
-      "rev": "8c00a4979b3e01d5d9706a37b8f5c27ee112e39c",
+      "rev": "372197e8f2a1a04fc7fdace6719d1f67fa5ca31b",
       "src": "https://github.com/Shougo/ddc.vim"
     },
     "denops.vim": {
@@ -13,7 +13,7 @@
       "src": "https://github.com/vim-denops/denops.vim"
     },
     "mini.nvim": {
-      "rev": "92fb7b4bd38e932a3d435d0317e08ecf6f54b2b7",
+      "rev": "561751e839b99a4baca36b9d963166b66d2536a6",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "nvim": {
@@ -21,16 +21,16 @@
       "src": "https://github.com/catppuccin/nvim"
     },
     "nvim-lspconfig": {
-      "rev": "ffd261c09c3dabd0bf1a438f47a8ae3b22f3c3ff",
+      "rev": "3e8d598d3b5f8338a41699c436e5fa11d2666cf0",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
-      "rev": "f603a2f4da48728f80257fb5fbb90145fd1dc173",
+      "rev": "910fdf6f49e9dee7e7257c7d11a76b040fdfb9de",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
     "skkeleton": {
-      "rev": "89980892b0c408d3fb3ba0b3fc78268a4d6f062a",
+      "rev": "1f22a0600909b3c7b84e2a3e0d693014e4cb1d1d",
       "src": "https://github.com/vim-skk/skkeleton"
     },
     "skkeleton-indicator.nvim": {
@@ -50,7 +50,7 @@
       "src": "https://github.com/jidn/vim-dbml"
     },
     "vimdoc-ja": {
-      "rev": "14c414edc2096aed90bc17d8bd51c42a9421ec6b",
+      "rev": "0458e291b606fb291c337c5269d38b80b6ae23ed",
       "src": "https://github.com/vim-jp/vimdoc-ja"
     }
   }
