@@ -13,7 +13,7 @@
       "src": "https://github.com/vim-denops/denops.vim"
     },
     "mini.nvim": {
-      "rev": "f9550dd81d0514927b7ad1794fd8eb8606ca28cd",
+      "rev": "22619434ccca787cdb34406c97f0e395d4debadc",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "nvim": {
@@ -21,16 +21,16 @@
       "src": "https://github.com/catppuccin/nvim"
     },
     "nvim-lspconfig": {
-      "rev": "993d048db0d83d8e8ba3f9cb376456321acdcce3",
+      "rev": "4648fd8ba5c678d7e2db75ae44ffac269bb589d8",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
-      "rev": "19bdfc04f40ed2ccb3340591d125f759b0406875",
+      "rev": "37e52c733ada9d8d544d53a763140ef1ba404353",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
     "skkeleton": {
-      "rev": "e78aca14eccc3c5b019449e60d356cf8d5c3ded2",
+      "rev": "42f460d13159068b2773e816b1fa98a9f5b0da22",
       "src": "https://github.com/vim-skk/skkeleton"
     },
     "skkeleton-indicator.nvim": {
@@ -50,7 +50,7 @@
       "src": "https://github.com/jidn/vim-dbml"
     },
     "vimdoc-ja": {
-      "rev": "cd987f402218ccea794230ad067dad4b522017e9",
+      "rev": "23bb2bcc8b4fdb90c126a01967fc29e22b516bbd",
       "src": "https://github.com/vim-jp/vimdoc-ja"
     }
   }
